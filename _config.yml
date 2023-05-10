@@ -20,8 +20,8 @@ author: Helen King
 ###############################################
 
 navbar-links:
-  Course Structure: "course_structure"
-  Practical W1-5:
+  Key Information: "key_info"
+  Practical:
     - 1) Setting Up on the Wolfpack: "practical_overview/Week1A_SettingUpOnKatana"
     - 2) Introducing the Shell: "practical_overview/Week1B_1_Introducing_the_Shell"
     - 3) Navigating Files and Directories: "practical_overview/Week1B_2_Navigating_Files_And_Directories"
@@ -30,7 +30,6 @@ navbar-links:
     - 6) Creating scripts and submitting: "practical_overview/Week1B_5_Writing_Scripts_workingwithdata"
 
 
-  Key Information: "key_info"
 
 ################
 # --- Logo --- #
