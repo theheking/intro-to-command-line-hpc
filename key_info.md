@@ -3,7 +3,7 @@ layout: page
 title: Key Infomation
 ---
 
-# Intro to 
+# Intro to Command Line and HPC
 Welcome All!
 
 
