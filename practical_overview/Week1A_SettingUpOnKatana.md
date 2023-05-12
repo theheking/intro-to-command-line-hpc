@@ -1,15 +1,31 @@
 ---
 layout: page
-title: Week 1A Intro to Shell - Setting Up on Katana
+title: Intro to Shell - Setting Up on Wolfpack
 ---
 
-Setting Up on Katana
+Setting Up on Wolfpack
 =====================
-# The BABS teaching UNIX server
 
-In this prac, we are going to work how many "real" bioinformaticians actually work: we are going to use a remote server for the computationally intensive bits and a user-friendly machine (Windows or Mac) to visualise and analyse the results downstream. We will be using the Katana cluster. 
+Objectives 
+- Open operating system specific terminal
+- Log in to the Garvan wolfpack server
 
-Katana is a shared computational cluster located on campus at UNSW that has been designed to provide easy access to computational resources for groups working with non-sensitive data. It contains over 6,000 CPU cores, 8 GPU compute nodes (V100 and A100), and 6Pb of disk storage. 
+
+Welcome!
+When bioinformaticans try to run a pipeline to discover a pathogenic variant they have to consider how computationally demanding the pipeline is. The two common options of where they can run the pipeline is:
+
+1) locally on their laptop
+2) use a high performance computer (HPC) 
+
+The HPC at Garvan is called the Wolfpack. It is a cluster of computational resources better suited to run more computationally intensive and advanced computation problems like discovering a pathogenic variant.
+
+To interact with the Wolfpack we are going to use an operating specific programme on your laptop. The Wolfpack is a shared computational cluster. 
+We will be using Bash which is a language that interacts with Linux operating system which is found on the Wolfpack cluster.
+
+- For **Mac** users can use the Terminal program. If you spotlight search terminal- it will open. Personally, I prefer to [iTerm2](https://iterm2.com/) which is a macOS terminal replacement. 
+- For **Windows** users:
+ - First check if you the programme Command Prompt or PowerShell locally. You might have to enable ssh using this tutorial recommended by John Reeves (https://www.howtogeek.com/336775/how-to-enable-and-use-windows-10s-built-in-ssh-commands/). 
+ - However, if you are using Windows OS before 10, I recommend you installing [PuTTY](https://www.putty.org/) which is an open source software. 
 
 For many of you, this is your first time using UNIX. As with all bioinformatics, the best way to learn is by trial and error. There is little that you can do wrong, with one important caveat:
 
@@ -20,42 +36,44 @@ For many of you, this is your first time using UNIX. As with all bioinformatics,
  3.    Use  **rm -i**  to provide an additional safety check against rogue deletion.
  4.     Make sure that you keep good notes. Ultimately, it should be fairly straight-forward to regenerate anything from the starting data, provided you have adequate records of how you made it in the first place. This is one of the primary goals of keeping a lab book.
 
-## Setting up the UNSW VPN
+## Setting up the Garvan VPN
 
-To access the servers off-campus, you will need to set up the UNSW Virtual Private Network (VPN), which gives you access to University resources off-campus as if you were on-campus. Details to set this up can be found here: [https://www.myit.unsw.edu.au/services/students/remote-access-vpn](https://www.myit.unsw.edu.au/services/students/remote-access-vpn). Please contact UNSW IT if you have questions or experience problems with the VPN. If you have recurring issues, please let the course coordinator know. You do not need the VPN if using a UNSW machine on campus. (Recommended where possible.)
+To access the servers off-campus, you will need to set up the Garvan Virtual Private Network (VPN), which gives you access to Garvam resources off-site as if you were on-site. Details to set this up can be found with two simple tutorials.
 
-**Using private computers.**
-It is not possible to write this handbook with clear instructions for all combinations of computers and software. As such, the handbook will be written as if you are using a UNSW desktop computer, and tested with off-campus Windows and Mac computers. Please let us know if you are experiencing technical issues through the prac chat channels and we will try to help where we can. However, it is ultimately the responsibility of the student to ensure access to a fit-for-purpose computer.
+1. Setting up single sign-on multifactor authentication setup using [this tutorial](https://intranet.gimr.garvan.org.au/display/ithelp/Single+Sign-On+Multifactor+Authentication+Setup)
+2. Configuring single-sign on vpn configuration using [this tutorial](https://intranet.gimr.garvan.org.au/display/ithelp/Single+Sign-On+VPN+Configuration).
+
+Please contact Garvan IT if you have questions or experience problems with the VPN. If you have recurring issues, please let the me know. 
+
+**The caveat of using different operating systems on different computers.**
+It is not possible to write this website with clear instructions for all combinations of computers and software. As such, the website will be written as if you are using a Mac laptop. Please let us know if you are experiencing technical issues through the slack channels and we will try to help where we can. Key differences include different commands and forward and backslashes when utilising Windows OS. 
 
 **The importance of windows real estate.**
  One thing you will quickly learn is the importance of being able to see clearly what you are doing. This generally means making the Putty/Terminal window much bigger than it opens by default. Ideally, you want it wide enough to avoid long commands and/or screen output wrapping onto multiple lines. You also want to see as many lines as possible to keep track of the context of what you are doing, and to make sure that important messages (particularly errors) do not disappear off the top of the screen. The precise way to resize your window will depend on your computer/software combination, but seek some advice during a prac session if you cannot find out how to do it.
 
+
+
+### Logging on from Mac OSX
+
+You log on to the server using your **zID** and **zPass** and a program that lets you connect via a "secure shell (SSH)".  If you use a Mac, you simply need to open the **Terminal**. Terminal is generally found in the "Other" folder in Launchpad, or just search for "Terminal" with Spotlight. Once open, **Keep in Dock** for handy future access.
+
+To log on from Mac OSX (or a UNIX machine), open the Terminal and type at the prompt (replacing zID with your own **zID** ):
+
+```
+$ ssh username@dice01.garvan.unsw.edu.au
+```
+
+Change the **username**. 
+
 **NOTE:** You will also find life easier with a bigger monitor – use the biggest screen/resolution that you can, especially when working with anything graphical.
-
-## Logging on to the system
-
-You log on to the server using your **zID** and **zPass** and a program that lets you connect via a "secure shell (SSH)". On UNSW machines, we use a program called **Putty**. It's a free, standalone executable that you can download from https://www.putty.org/, or copy a downloaded version onto a windows computer and it should run fine. You If you use a Mac, you simply need to open the **Terminal**. Terminal is generally found in the "Other" folder in Launchpad, or just search for "Terminal" with Spotlight. Once open, **Keep in Dock** for handy future access.
-
-### Logging on the server with putty
-
-On a UNSW machine, Putty is available from the start menu under PuTTY. This will open up the main putty window. In the **Host Name** box type: katana.restech.unsw.edu.au. To save yourself having to type this again, you can **Save** the session as BABS3291 and later **Load** it. (If you change terminal settings, you can save these too.)
-
-![img](../assets/img/1.png)
-![images](../assets/img/2.png)
-
-
-(NB. The screenshot shows connection to backup edwardsstudents01.babs.unsw.edu.au server and saves the session as BABS3151 for a different course.)
-
-Hit **Open** and putty will try to connect to the server. The first time you try this, it will recognise the server as a new connection and check that you are sure (precise details may vary):
-
-![img2](../assets/img/3.png)
-
-Click **Yes**. The main terminal window will now open, prompting you to login as: . Enter your **zID** and (press **ENTER** ) then enter your **zPass** when prompted. (If this does not work, check your VPN is working.)
-
-![img3](../assets/img/4.png)
 
 **NOTE:** For security reasons, you will not see anything appear on-screen when typing your password. Trust that it is registering and hit **ENTER** when complete.
 
+**Logging on from outside the Garvan.**
+ Remember that to log on from outside Garvan, you will need to connect to the virtual private network (VPN).
+ 
+
+ 
 ### Logging off
 
 To log off the server, simply close the Putty window or type:
@@ -63,23 +81,9 @@ To log off the server, simply close the Putty window or type:
 ```
 $ exit
 ```
-
-### Logging on from Mac OSX
-
-To log on from Mac OSX (or a UNIX machine), open the Terminal and type at the prompt (replacing zID with your own **zID** ):
-
-```
-$ ssh zID@katana.restech.unsw.edu.au
-```
-
-Enter your **zPass** when prompted. (If it doesn't work, check that you replaced zID with your own **zID**!)
-
-**Logging on from outside UNSW.**
- Remember that to log on from outside UNSW, you will need to connect to the university virtual private network (VPN). See https://www.myit.unsw.edu.au/services/students/remote-access-vpn for more information.
-
+ 
 ### What happens if the server fails?
-
-Whenever working with servers, there is always the risk that something will go wrong. Fear not! We have contingencies (and back up data) in place in case something goes wrong. Please alert the course convenor and/or demonstrators if you start getting unexpected behaviour from the server.
+Whenever working with servers, there is always the risk that something will go wrong. Fear not! We have contingencies (and back up data) in place in case something goes wrong. 
 
 **Saving your session and sanity with screen.**
  Whenever doing anything that will take a while, it is recommended that you use a utility called "screen", which will maintain an active session even if you log out or your connection to the server is dropped. You can read more about screen in the **Using screen (Advanced)** section after UNIX basics. The core elements are:
@@ -99,5 +103,5 @@ If you have any extra time here are a couple of things to do to make your login 
 3) Edit your bashrc file (this is more complicated and not recommended until you are comfortable with UNIX) (https://docs.rc.fas.harvard.edu/kb/editing-your-bashrc/)
 
 
-Adapted from Handbook by RJ Ewdards
+Adapted from Handbook by RJ Edwards and John Reeves help-page.
 
