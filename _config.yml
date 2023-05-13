@@ -22,12 +22,12 @@ author: Helen King
 navbar-links:
   Key Information: "key_info"
   Practical:
-    - 1) Setting Up on the Wolfpack: "practical_overview/Week1A_SettingUpOnKatana"
-    - 2) Introducing the Shell: "practical_overview/Week1B_1_Introducing_the_Shell"
-    - 3) Navigating Files and Directories: "practical_overview/Week1B_2_Navigating_Files_And_Directories"
-    - 4) Writing Scripts and Working with Data: "practical_overview/Week1B_3_Working_Files_Directories"
-    - 5) Redirection: "practical_overview/Week1B_4_Redirection"
-    - 6) Creating scripts and submitting: "practical_overview/Week1B_5_Writing_Scripts_workingwithdata"
+    - 1) Setting Up on the Wolfpack: "practical_overview/1_SettingUpOnWolfpack"
+    - 2) Introducing the Shell: "practical_overview/2_Introducing_the_Shell"
+    - 3) Navigating Files and Directories: "practical_overview/3_Navigating_Files_And_Directories"
+    - 4) Writing Scripts and Working with Data: "practical_overview/4_Working_Files_Directories"
+    - 5) Redirection: "practical_overview/5_Redirection"
+    - 6) Creating scripts and submitting: "practical_overview/6_Writing_Scripts_workingwithdata"
 
 
 
