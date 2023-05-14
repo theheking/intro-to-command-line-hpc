@@ -54,7 +54,7 @@ On a Mac or Linux machine, you can access a shell through a program called “Te
 
 To save time, we are going to be working on a remote server where all the necessary data and software available. When we say a ‘remote sever’, we are talking about a computer that is not the one you are working on right now. This is Wolfpack where the login instructions are found in the first tutorial.
 
-    `ssh [your_userID]@dice01.garvan.unsw.edu.au`
+    ssh –o ServerAliveInterval=60 [your_userID]@dice01.garvan.unsw.edu.au
 
 Clear Screen
 -------------
