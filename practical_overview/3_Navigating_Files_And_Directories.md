@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Week 1A Intro to Shell - Navigating Files and Directories
+title: 3 - Navigating Files and Directories
 ---
 
 Navigating Files and Directories
@@ -126,7 +126,7 @@ The `cd` command takes an argument which is a directory name. Directories can be
 
 Now enter the following command:
 
-    $ cd [scratch location]/data
+    $ cd [scratch_location]/data
     
 
 These two commands have the same effect, they both take us to the `data` directory. The first uses the absolute path, giving the full address from the home directory. The second uses a relative path, giving only the address from the working directory. A full path always starts with a `/`. A relative path does not.
