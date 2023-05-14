@@ -153,6 +153,9 @@ To find modules of interest, you can use the `grep` command to filter out a stri
 
     $ module avail 2>&1 | grep t
     
+  
+If you are interested in installing user defined packages John Reeves has done an informatic recording with how to use anaconda (an installation manager). https://intranet.gimr.garvan.org.au/display/BINF/Session+2+-+Conda+environments+and+the+Wolfpack+migration
+
     
 > Exercise
 > ------------
