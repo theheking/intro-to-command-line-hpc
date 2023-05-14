@@ -42,7 +42,7 @@ Now that we know how to navigate around our directory structure, let’s start w
 
 Navigate to your `data` directory:
 
-    $ cd [scratch location]/data
+    $ cd [scratch_location]/data
     
 
 We are interested in looking at the FASTQ files in this directory. We can list all files with the .fastq.gz extension using the command:
