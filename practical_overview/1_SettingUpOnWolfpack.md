@@ -43,7 +43,7 @@ To access the servers off-campus, you will need to set up the Garvan Virtual Pri
 1. Setting up single sign-on multifactor authentication setup using [this tutorial](https://intranet.gimr.garvan.org.au/display/ithelp/Single+Sign-On+Multifactor+Authentication+Setup)
 2. Configuring single-sign on vpn configuration using [this tutorial](https://intranet.gimr.garvan.org.au/display/ithelp/Single+Sign-On+VPN+Configuration).
 
-Please contact Garvan IT if you have questions or experience problems with the VPN. If you have recurring issues, please let the me know. 
+Please contact Garvan IT (ithelp@garvan.org.au) if you have questions or experience problems with the VPN. If you have recurring issues, please let the me know. 
 
 **The caveat of using different operating systems on different computers.**
 It is not possible to write this website with clear instructions for all combinations of computers and software. As such, the website will be written as if you are using a Mac laptop. Please let us know if you are experiencing technical issues through the slack channels and we will try to help where we can. Key differences include different commands and forward and backslashes when utilising Windows OS. 
@@ -56,6 +56,10 @@ It is not possible to write this website with clear instructions for all combina
 ### Logging on from Mac OSX
 
 You log on to the server using your **zID** and **zPass** and a program that lets you connect via a "secure shell (SSH)".  If you use a Mac, you simply need to open the **Terminal**. Terminal is generally found in the "Other" folder in Launchpad, or just search for "Terminal" with Spotlight. Once open, **Keep in Dock** for handy future access.
+
+![QSUB](../assets/img/login.png)
+Above is a schematic that displays the setup of the Wolfpack. We will explain complicated part of the diagram concerning volumes and compute nodes in future sessions. What we are doing is the first pink arrow, loggin into the **login** nodes dice01.garvan.unsw.edu.au	or dice02.garvan.unsw.edu.au	.
+
 
 To log on from Mac OSX (or a UNIX machine), open the Terminal and type at the prompt (replacing zID with your own **zID** ):
 
