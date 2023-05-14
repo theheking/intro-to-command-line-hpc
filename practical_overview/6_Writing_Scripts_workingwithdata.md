@@ -3,7 +3,7 @@ layout: page
 title: 6 - Writing Scripts and Working with Data
 ---
 
-Writing Scripts and Submitting Jobs to Katana 
+Writing Scripts and Submitting Jobs to the Wolfpack 
 =============================================
 
 > Overview
