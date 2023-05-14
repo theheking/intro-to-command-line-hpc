@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Week 1A Intro to Shell - Navigating Files and Directories
+title: 4 - Navigating Files and Directories
 ---
 
 Working with Files and Directories
