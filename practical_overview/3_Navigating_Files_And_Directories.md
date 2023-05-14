@@ -37,7 +37,7 @@ We’ve learned how to use `pwd` to find our current location within our file sy
 
 Use the commands we’ve learned so far to navigate to the `data` directory, if you’re not already there.
 
-    $ cd [your scratch directory]
+    $ cd [scratch_location]
     $ cd data
     
 
