@@ -68,29 +68,44 @@ Now you’ve written a file. You can take a look at it with `less` or `cat`, or 
 
 Wolfpack - How to start an interative job
 -----------------------------------------
-For a more in depth understanding of the Wolfpack please navigate through the intranet for more helpful infomation. We will not be going into a deep dive of high performance computers. In essence, compute nodes are just high performance computers. Made up of multiple fast CPUs (computational processing units), extra RAM (random access memory) and you can request whatever your analysis requires
+For a more in depth understanding of the Wolfpack please navigate through the intranet for more helpful infomation. Different clusters use use different tools to manage resources and schedule jobs. Wolfpack uses Sun Grid Engine (SGE) to control access to compute nodes. The implementation of SGE is custom so Googling may or may not provide useful answers. If you run the command below for infomation specific to Wolfpack-specific SGEL
+
+    man qsub
+
+
+We will not be going into a deep dive of high performance computers. In essence, compute nodes are just high performance computers. Made up of multiple fast CPUs (computational processing units), extra RAM (random access memory) and you can request whatever your analysis requires
 
 The head node is not particularly powerful, and is shared by all logged-in users. Never run computational intense jobs there!!
 
-Different clusters use use different tools to manage resources and schedule jobs. Wolfpack uses Sun Grid Engine to control access to compute nodes.
-
-The "polite" thing to do is to request an interactive node, or submit a job. For small jobs that you are troubleshooting, form an interactive session. An interactive job or interactive session is a session on a compute node with the required physical resources for the period of time requested. To request an interactive job, add the -I flag (capital i) to qsub. Default sessions will have 1 CPU core, 1GB and 1 hour
-
-![QSUB](../assets/img/batchjobs.png)
-
-For example, the following two commands. The first provides a default session, the second provides a session with two CPU core and 8GB memory for three hours. You can tell when an interactive job has started when you see the name of the server change from dice01 or dice02 to the name of the server your job is running on. In these cases it’s k181 and k201 respectively.    
-
-    $ qsub -I
-    qsub: waiting for job 313704.kman.restech.unsw.edu.au to start
-    qsub: job 313704.kman.restech.unsw.edu.au ready
+The "polite" thing to do is to request an interactive node, or submit a job. For small jobs that you are troubleshooting, form an interactive session. An interactive job or interactive session is a session on a compute node with the required physical resources for the period of time requested. 
 
 
-    $ qsub -I -l select=1:ncpus=2:mem=8gb,walltime=3:00:00
-    qsub: waiting for job 1234.kman.restech.unsw.edu.au to start
-    qsub: job 1234.kman.restech.unsw.edu.au ready
+
+To request an interactive job, add the -I flag (capital i) to qsub. Default sessions will have 1 CPU core, 1GB and 1 hour
+
+![QSUB](../assets/img/interactive.png)
+
+For example, the following two commands. The first provides a default session, the second provides a session with two CPU cores and 8GB memory. You can tell when an interactive job has started when you see the name of the node from dice01 to delta-3-2 to the name of the server your job is running on. 
 
 
-Jobs are constrained by the resources that are requested. In the previous example the first job - running on k181 - would be terminated after 1 hour or if a command within the session consumed more than 8GB memory. The job (and therefore the session) can also be terminated by the user with CTRL-D or the logout command.
+    $ [helkin@dice02]$ qrsh
+
+
+    $ [helkin@dice01]$ qrsh -l h_data=4G,h_vmem=8G -pe smp 2 
+    $ [helkin@delta-3-2 ~]$
+
+    
+To see what is being run by you:
+
+     $ qstat
+
+Jobs are constrained by the resources that are requested. In the previous example the second job - running on delta-3-2 - would be terminated after 48 hours or if a command within the session consumed more than 8GB memory.
+
+
+The job (and therefore the session) can also be terminated by running the command below.
+  
+     $ qdel
+
 
 
 
@@ -174,23 +189,61 @@ You must now edit your bad-reads-script.sh to have the same format as below.
     #!/bin/bash
     grep -B1 -A2 -h NNNNNNNNNN *.fastq | grep -v '^--' 
 
+![QSUB](../assets/img/batch.png)
+
+
 This script can be now be submitted to the cluster with qsub and it will become a job and be assigned to a queue. 
 
-    $ qsub ./bad-reads-script.sh
+    $ qsub /[location]/bad-reads-script.sh
 
 As with interactive jobs, the -l (lowercase L) flag can be used to specify resource requirements for the job:
 
-    $ qsub -l select=1:ncpus=1:mem=4gb,walltime=12:00:00 ./bad-reads-script.sh
+    $ qsub -cwd -M hking@garvan.org.au -b y -q long.q -N name_of_job -pe smp 4 -l mem_requested=4.5G,tmp_requested=13.5G /[location]/bad-reads-script.sh
 
+
+
+Memory is what your computer uses to store data temporarily. This is called RAM (random acesss memory) is hardware allows the computer to efficiently perform more than one task at a time. Disk space refers to hard drive storage while storage is where you save files permanently.
+
+The total memory is the number of cores (`smp`) times by the value of `mem_requested` requested. Nodes have ~8G per core, up to ~1TB total. Your job will be killed if it uses too much RAM, but there is no error message or way to tell this is the case. 
+
+Total Disk Space is the number of cores (`smp`) times the value of `tmp_requested`. Nodes have up to 250G per core, up to 20TB total. Older nodes have much less.
+
+
+For more infomation on the different settings to use:
+https://intranet.gimr.garvan.org.au/pages/viewpage.action?pageId=74712562
 
 You can also rewrite your original script to include the job requests within the script like below:
 
-    #!/bin/bash
-    #PBS -l select=1:ncpus=1:mem=4gb
-    #PBS -l walltime=12:00:00
-    grep -B1 -A2 -h NNNNNNNNNN *.fastq | grep -v '^--' 
+    #$ -S /bin/sh
+    #$ -q short.q
+    #$ -pe smp 2
+    #$ -j y
+    #$ -b y
+
+    . ~/.bash_profile
+    export PATH="/share/ClusterShare/biodata/contrib/helkin/anaconda3/bin:$PATH"
+    module load fastqc
 
 
+### Extension task
+Check the memory for each node.
+
+    qstat -F | grep 'mem\|local'
+
+
+
+Check the core and RAM usage (all somewhat unreliable) using EG:
+    
+    /usr/bin/time -v echo test program
+    #       (user time + sys time) / real time
+    qacct/qstat -j 12345
+    
+    
+ Check the diskspace 
+    
+    du -sh "$TMPDIR"
+    
+    
 Transferring Data Between your Local Machine and Wolfpack (there and back again)
 ----------------------------------------------------------------------
 
@@ -219,7 +272,6 @@ e.g ***On my Mac computer**** scp username@dice01.garvan.unsw.edu.au:"somewhere/
     $ find ~ -name *.txt
     
 
-    
 
 > Key Points
 > ----------
