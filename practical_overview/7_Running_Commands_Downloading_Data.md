@@ -3,7 +3,7 @@ layout: page
 title: 7 - Running a Command  Read Quality
 subtitle: Using FASTQC to produce quality report adapted from Data Carpentry course
 ---
-Assessing Read Quality
+Running FASTQC to Assess Read Quality
 ======================
 
 > Overview
