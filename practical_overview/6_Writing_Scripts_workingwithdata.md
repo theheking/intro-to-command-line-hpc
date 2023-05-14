@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Week 2A Intro to Shell - Writing Scripts and Working with Data
+title: 6 - Writing Scripts and Working with Data
 ---
 
 Writing Scripts and Submitting Jobs to Katana 
@@ -66,19 +66,19 @@ Now you’ve written a file. You can take a look at it with `less` or `cat`, or 
 >
 
 
-Katana - How to start an interative job
+Wolfpack - How to start an interative job
 -----------------------------------------
-For a more in depth understanding of Katana (https://unsw-restech.github.io/using_katana/). We will not be going into a deep dive of high performance computers. In essence, compute nodes are just high performance computers. Made up of multiple fast CPUs (computational processing units), extra RAM (random access memory) and you can request whatever your analysis requires
+For a more in depth understanding of the Wolfpack please navigate through the intranet for more helpful infomation. We will not be going into a deep dive of high performance computers. In essence, compute nodes are just high performance computers. Made up of multiple fast CPUs (computational processing units), extra RAM (random access memory) and you can request whatever your analysis requires
 
 The head node is not particularly powerful, and is shared by all logged-in users. Never run computational intense jobs there!!
 
-Different clusters use use different tools to manage resources and schedule jobs. Katana uses OpenPBS to control access to compute nodes.
+Different clusters use use different tools to manage resources and schedule jobs. Wolfpack uses Sun Grid Engine to control access to compute nodes.
 
 The "polite" thing to do is to request an interactive node, or submit a job. For small jobs that you are troubleshooting, form an interactive session. An interactive job or interactive session is a session on a compute node with the required physical resources for the period of time requested. To request an interactive job, add the -I flag (capital i) to qsub. Default sessions will have 1 CPU core, 1GB and 1 hour
 
 ![QSUB](../assets/img/batchjobs.png)
 
-For example, the following two commands. The first provides a default session, the second provides a session with two CPU core and 8GB memory for three hours. You can tell when an interactive job has started when you see the name of the server change from katana1 or katana2 to the name of the server your job is running on. In these cases it’s k181 and k201 respectively.    
+For example, the following two commands. The first provides a default session, the second provides a session with two CPU core and 8GB memory for three hours. You can tell when an interactive job has started when you see the name of the server change from dice01 or dice02 to the name of the server your job is running on. In these cases it’s k181 and k201 respectively.    
 
     $ qsub -I
     qsub: waiting for job 313704.kman.restech.unsw.edu.au to start
@@ -165,9 +165,9 @@ The script should run the same way as before, but now we’ve created our very o
 
 
 
-Katana - How to start an batch job
+Wolfpack - How to start an batch job
 -------------------------------------------
-A batch job is a script that runs autonomously on a compute node. The script must contain the necessary sequence of commands to complete a task independently of any input from the user. This section contains information about how to create and submit a batch job on Katana.
+A batch job is a script that runs autonomously on a compute node. The script must contain the necessary sequence of commands to complete a task independently of any input from the user. This section contains information about how to create and submit a batch job on Wolfpack.
 
 You must now edit your bad-reads-script.sh to have the same format as below.
 
@@ -191,7 +191,7 @@ You can also rewrite your original script to include the job requests within the
     grep -B1 -A2 -h NNNNNNNNNN *.fastq | grep -v '^--' 
 
 
-Transferring Data Between your Local Machine and Katana (there and back again)
+Transferring Data Between your Local Machine and Wolfpack (there and back again)
 ----------------------------------------------------------------------
 
 ### Uploading Data to your Virtual Machine with scp
@@ -203,15 +203,15 @@ Transferring Data Between your Local Machine and Katana (there and back again)
 
 Note that you are always running `scp` locally, but that _doesn’t_ mean that you can only move files from your local computer. In order to move a file from your local computer to an AWS instance, the command would look like this:
 
-    $ scp <local file> <katana login details>:"location"
+    $ scp <local file> <wolfpack login details>:"location"
     
-e.g ***On my Mac computer**** scp README.md zID@katana.restech.unsw.edu.au:"somewhere/nice/"
+e.g ***On my Mac computer**** scp README.md username@dice01.garvan.unsw.edu.au:"somewhere/nice/"
     
 To move it back to your local computer, you re-order the `to` and `from` fields:
 
-    $ scp <katana login details> <local file>:"location"
+    $ scp <wolfpack login details> <local file>:"location"
     
-e.g ***On my Mac computer**** scp zID@katana.restech.unsw.edu.au:"somewhere/nice/README.md" /somewhere/okay/
+e.g ***On my Mac computer**** scp username@dice01.garvan.unsw.edu.au:"somewhere/nice/README.md" /somewhere/okay/
 
 
 **Tip:** If you are looking for another (or any really) text file in your home directory to use instead, try:
