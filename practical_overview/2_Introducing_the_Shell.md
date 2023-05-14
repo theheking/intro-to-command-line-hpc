@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Week 1A Intro to Shell - Introducting the Shell 
+title: 2 - Introducting the Shell 
 ---
 
 Introducing the Shell
@@ -50,9 +50,11 @@ In this lesson you will learn how to use the command line interface to move arou
 How to access the shell
 -----------------------
 
-On a Mac or Linux machine, you can access a shell through a program called “Terminal”, which is already available on your computer. The Terminal is a window into which we will type commands. If you’re using Windows, you’ll need to download a separate program to access the shell.
+On a Mac or Linux machine, you can access a shell through a program called “Terminal”, which is already available on your computer. The Terminal is a window into which we will type commands. If you’re using Windows, you’ll need to download a separate program to access the shell. More details on how to set this up can be found in the first tutorial.
 
-To save time, we are going to be working on a remote server where all the necessary data and software available. When we say a ‘remote sever’, we are talking about a computer that is not the one you are working on right now. This is Katana where the login instructions are Week 1A.
+To save time, we are going to be working on a remote server where all the necessary data and software available. When we say a ‘remote sever’, we are talking about a computer that is not the one you are working on right now. This is Wolfpack where the login instructions are found in the first tutorial.
+
+    `ssh [your_userID]@dice01.garvan.unsw.edu.au`
 
 Clear Screen
 -------------
@@ -83,7 +85,7 @@ Basic Commands - Where am I?
 
 The dollar sign is a **prompt**, which shows us that the shell is waiting for input; your shell may use a different character as a prompt and may add information before the prompt. When typing commands, either from these lessons or from other sources, do not type the prompt, only the commands that follow it.
 
-Let’s find out where we are by running a command called `pwd` (which stands for “print working directory”). At any moment, our **current working directory** is our current default directory, i.e., the directory that the computer assumes we want to run commands in, unless we explicitly specify something else. Here, the computer’s response is `/home/[your_zID]`, which is the top level directory within our cloud system:
+Let’s find out where we are by running a command called `pwd` (which stands for “print working directory”). At any moment, our **current working directory** is our current default directory, i.e., the directory that the computer assumes we want to run commands in, unless we explicitly specify something else. Here, the computer’s response is `/home/[your_userid]`, which is the top level directory within our cloud system:
 
     $ pwd
   
@@ -98,15 +100,17 @@ Let’s look at how our file system is organized. We can see what files and subd
 > Basic Commands - Navigating to your directory 
 > ----------------------------------------------
 
-On the Katana HPC, you will have two locations: 
+On the Wolfpack HPC, you will have three locations: 
 
 1. Home directory - which is the location where you are when you login
     - Small space, keep scripts or other small files here.
     
     
 2. Scratch - where to keep large files 
-    - Your scratch is /srv/scratch/[insert your zID here]
+    - Your scratch is `/share/ScratchGeneral/[your_userid]/`
     - Large space, regularly cleaned of old files 
+
+3. Cluster share - where large communal files are kept such as genome reference files.
 
 The command to change locations in our file system is `cd`, followed by a directory name to change our working directory. `cd` stands for “change directory”.
 
@@ -161,7 +165,7 @@ Here we are using the -p option for mkdir. This option allows mkdir to create th
 It will take about 5 minutes to download the files.
 **NB. Please make sure you are in your scratch directory **
 
-    $   mkdir -p [yourscratch]/data/
+    $   mkdir -p /share/ScratchGeneral/[your_userid]/data/
     $   cd data
 
     $   wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
