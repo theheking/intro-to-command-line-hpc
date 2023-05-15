@@ -30,17 +30,17 @@ Bioinformatic workflows
 
 When working with high-throughput sequencing data, the raw reads you get off of the sequencer will need to pass through a number of different tools in order to generate your final desired output. The execution of this set of tools in a specified order is commonly referred to as a _workflow_ or a _pipeline_.
 
-An example of the workflow we will be using for our variant calling analysis is provided below with a brief description of each step.
+An example of the RNA workflow is provided below.
 
-![workflow](../assets/img/variant_calling_workflow.png)
+![workflow](../assets/img/de_workflow.png)
 
 1.  Quality control - Assessing quality using FastQC
 2.  Quality control - Trimming and/or filtering reads (if necessary)
 3.  Align reads to reference genome
-4.  Perform post-alignment clean-up
-5.  Variant calling
+4.  Differential expression DESeq2 
 
-Standard data formats are essential and used throughout bioinfomatics.
+Standard data formats are essential and used throughout bioinfomatics. We will be only performing quality control to check the quality of FastQC.
+
 
 Starting with data
 ==================
