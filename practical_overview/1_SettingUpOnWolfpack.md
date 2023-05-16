@@ -1,3 +1,4 @@
+
 ---
 layout: page
 title: Intro to Shell - Setting Up on Wolfpack
@@ -10,26 +11,26 @@ Objectives
 - Open operating system specific terminal
 - Log in to the Garvan wolfpack server
 
-
 Welcome!
-When bioinformaticans try to run a pipeline to discover a pathogenic variant they have to consider how computationally demanding the pipeline is. The two common options of where they can run the pipeline is:
 
-1) locally on their laptop
-2) use a high performance computer (HPC) 
+When bioinformaticians run a pipeline to discover a pathogenic variant, they need to consider the computational demands of the pipeline. There are two common options for running the pipeline:
 
-The HPC at Garvan is called the Wolfpack. It is a cluster of computational resources better suited to run more computationally intensive and advanced computation problems like discovering a pathogenic variant.
+Running it locally on their laptop.
+Using a high-performance computer (HPC).
+The HPC at Garvan is called the Wolfpack, which is a cluster of computational resources designed for running computationally intensive and advanced computation problems like discovering a pathogenic variant.
 
-To interact with the Wolfpack we are going to use an operating specific programme on your laptop. The Wolfpack is a shared computational cluster. 
-We will be using Bash which is a language that interacts with Linux operating system which is found on the Wolfpack cluster.
+To interact with the Wolfpack, we will use an operating system-specific program on your laptop. The Wolfpack is a shared computational cluster, and we will be using Bash, which is a language that interacts with the Linux operating system found on the Wolfpack cluster.
 
-- For **Mac** users can use the Terminal program. If you spotlight search terminal- it will open. Personally, I prefer to [iTerm2](https://iterm2.com/) which is a macOS terminal replacement. 
-- For **Windows** users:
- - First check if you the programme Command Prompt or PowerShell locally. You might have to enable ssh using this tutorial recommended by John Reeves (https://www.howtogeek.com/336775/how-to-enable-and-use-windows-10s-built-in-ssh-commands/). 
- - However, if you are using Windows OS before 10, I recommend you installing [PuTTY](https://www.putty.org/) which is an open source software. 
+Mac users can use the Terminal program. 
+
+- For **Mac** users can use the Terminal program. You can open it by spotlight searching "Terminal." Alternatively, you can use [iTerm2](https://iterm2.com/), which is a macOS terminal replacement that I personally prefer.
+- **Windows** users:
+ - First, check if you have the Command Prompt or PowerShell program locally. You might need to enable SSH using the tutorial recommended by John Reeves: [How to Enable and Use Windows 10's Built-in SSH Commands.](https://www.howtogeek.com/336775/how-to-enable-and-use-windows-10s-built-in-ssh-commands/). 
+ - Second, if you do not have either Command Prompt or PowerShell installed, it is likely your laptop has a Windows OS before 10. Therefore, I recommend installing [PuTTY](https://www.putty.org/) which is an open source software. 
 
 For many of you, this is your first time using UNIX. As with all bioinformatics, the best way to learn is by trial and error. There is little that you can do wrong, with one important caveat:
 
-**READ THIS IF YOU DON'T READ ANYTHING ELSE!**
+**Please Read!**
  Unix has  **no undo**  function. If you  **delete or overwrite**  a file, it will be gone forever! As a result, you should:
  1.    Keep  **backup copies**  of important files.
  2.    Be  **very careful**  with the command rm ("remove", i.e. delete) and any commands to move/create files that might over-write something important (mv, cp and redirecting output with \> and \>\>).
@@ -53,15 +54,15 @@ It is not possible to write this website with clear instructions for all combina
 
 
 
-### Logging on from Mac OSX
+### Logging on
 
-You log on to the server using your **zID** and **zPass** and a program that lets you connect via a "secure shell (SSH)".  If you use a Mac, you simply need to open the **Terminal**. Terminal is generally found in the "Other" folder in Launchpad, or just search for "Terminal" with Spotlight. Once open, **Keep in Dock** for handy future access.
+You log on to the server using your **username** and a program that lets you connect via a "secure shell (SSH)".  If you use a Mac, you simply need to open the **Terminal**. Terminal is generally found in the "Other" folder in Launchpad, or just search for "Terminal" with Spotlight. Once open, **Keep in Dock** for handy future access. If using Windows, either open PowerShell or PuTTy as mentioned previously.
 
 ![QSUB](../assets/img/login.png)
 Above is a schematic that displays the setup of the Wolfpack. We will explain complicated part of the diagram concerning volumes and compute nodes in future sessions. What we are doing is the first pink arrow, loggin into the **login** nodes dice01.garvan.unsw.edu.au	or dice02.garvan.unsw.edu.au	.
 
 
-To log on from Mac OSX (or a UNIX machine), open the Terminal and type at the prompt (replacing zID with your own **zID** ):
+To log on from Mac OSX (or a UNIX machine), open the Terminal and type at the prompt (replacing username with your own **username** ):
 
 ```
 $ ssh username@dice01.garvan.unsw.edu.au
@@ -88,6 +89,13 @@ $ exit
  
 ### What happens if the server fails?
 Whenever working with servers, there is always the risk that something will go wrong. Fear not! We have contingencies (and back up data) in place in case something goes wrong. 
+
+
+
+
+
+
+
 
 **Saving your session and sanity with screen.**
  Whenever doing anything that will take a while, it is recommended that you use a utility called "screen", which will maintain an active session even if you log out or your connection to the server is dropped. You can read more about screen in the **Using screen (Advanced)** section after UNIX basics. The core elements are:
