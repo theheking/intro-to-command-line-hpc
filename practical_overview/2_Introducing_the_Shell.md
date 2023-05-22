@@ -48,7 +48,7 @@ There are many reasons to learn about the shell:
 In this lesson you will learn how to use the command line interface to move around in your file system.
 
 **What is the difference between Unix, Linux and Shell?**
-Simply, Bash is a specific shell program used to interact with the operating system. Shell refers to a broader category of command interpreters. Linux is an open-source operating system that uses the Linux kernel, often paired with a shell like Bash. Unix is a family of operating systems that share similar design principles, including the use of a shell-based command-line interface. Bash is commonly used as the default shell in Linux and Unix systems.
+Simply, Bash is a specific shell program used to interact with the operating system. Shell refers to a broader category of command interpreters. Linux is an open-source operating system that uses a shell like Bash. Unix is a family of operating systems that share similar design principles, including the use of a shell-based command-line interface. Bash is commonly used as the default shell in Linux and Unix systems.
 
 
 
