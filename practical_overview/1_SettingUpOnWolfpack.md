@@ -113,7 +113,7 @@ If you have any extra time here are a couple of things to do to make your login 
 
 1) [Login without using ssh without a password](https://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/)
 2) [Form a symbolic link for your scratch location. This means that instead of having to write out the entire location, you can have a fake folder ](https://www.faqforge.com/linux/create-shortcuts-in-linux-symbolic-links/)
-3) [Edit your bashrc file (this is more complicated and not recommended until you are comfortable with UNIX)] (https://docs.rc.fas.harvard.edu/kb/editing-your-bashrc/)
+3) [Edit your bashrc file (this is more complicated and not recommended until you are comfortable with UNIX)](https://docs.rc.fas.harvard.edu/kb/editing-your-bashrc/)
 
 
 Adapted from Handbook by RJ Edwards and John Reeves help-page.
