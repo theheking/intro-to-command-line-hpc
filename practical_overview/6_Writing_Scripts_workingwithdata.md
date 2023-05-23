@@ -81,7 +81,7 @@ The "polite" thing to do is to request an interactive node, or submit a job. For
 
 
 
-To request an interactive job, add the -I flag (capital i) to qsub. Default sessions will have 1 CPU core, 1GB and 1 hour
+To request an interactive job, use the function `qrsh`. Default sessions will have 1 CPU core, 1GB and 1 hour
 
 ![QSUB](../assets/img/interactive.png)
 
