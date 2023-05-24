@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Week 1B Intro to Shell - Project Organization
+title: 10 - Project Organization
 ---
 
 ADDITIONAL: Project Organization
@@ -9,8 +9,6 @@ ADDITIONAL: Project Organization
 > Overview
 > --------
 > 
-> **Teaching:** 15 min  
-> **Exercises:** 15 min
 > 
 > **Questions**
 > 
