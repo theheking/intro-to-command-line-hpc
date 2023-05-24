@@ -27,9 +27,11 @@ navbar-links:
     - 3) Navigating Files and Directories: "practical_overview/3_Navigating_Files_And_Directories"
     - 4) Writing Scripts and Working with Data: "practical_overview/4_Working_Files_Directories"
     - 5) Redirection: "practical_overview/5_Redirection"
-    - 6) Creating scripts and submitting: "practical_overview/6_Writing_Scripts_workingwithdata"
-    - 7) Running commands and Downloading Data: "practical_overview/7_Running_Commands_Downloading_Data"
-    - 8) Additional Project Organisation: "practical_overview/8_Project_Organisation"
+    - 6) Using the Text Editor vim: "practical_overview/6_Using_text_editor_vim"
+    - 7) Writing Scripts and Working with Data: "practical_overview/7_Writing_Scripts_workingwithdata"
+    - 8) Running Commands Downloading Data: "practical_overview/8_Running_Commands_Downloading_Data"
+    - 9) Understanding FASTQ File: "practical_overview/9_Understanding_FASTQ_File"
+    - 10) Project Organisation: "practical_overview/10_Project_Organisation"
 
 
 ################
