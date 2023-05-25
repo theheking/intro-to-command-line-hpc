@@ -42,7 +42,7 @@ Other questions might arise along the way:
 *   Which quality cutoff did you use?
 *   What version of a given program did you implement your analysis in?
 
-Good documentation is key to avoiding this issue, and luckily enough, recording your computational experiments is even easier than recording lab data. Copy/Paste will become your best friend, sensible file names will make your analysis understandable by you and your collaborators, and writing the methods section for your next paper will be easy! Remember that in any given project of yours, it’s worthwhile to consider a future version of yourself as an entirely separate collaborator. The better your documenation is, the more this ‘collaborator’ will feel indebted to you!
+Good documentation is key to avoiding this issue, and luckily enough, recording your computational experiments is even easier than recording lab data. Copy/Paste will become your best friend, sensible file names will make your analysis understandable by you and your collaborators, and writing the methods section for your next paper will be easy! Remember that in any given project of yours, it’s worthwhile to consider a future version of yourself as an entirely separate collaborator. The better your documentation is, the more this ‘collaborator’ will feel indebted to you!
 
 With this in mind, let’s have a look at the best practices for documenting your genomics project. Your future self will thank you.
 
