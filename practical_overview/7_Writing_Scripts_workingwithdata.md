@@ -26,14 +26,14 @@ Submitting Jobs to the Wolfpack
 > 
 
 
-Wolfpack - How to start an interative job
+Wolfpack - How to start an interactive job
 -----------------------------------------
-For a more in depth understanding of the Wolfpack please navigate through the intranet for more helpful infomation. Different clusters use use different tools to manage resources and schedule jobs. Wolfpack uses Sun Grid Engine (SGE) to control access to compute nodes. The implementation of SGE is custom so Googling may or may not provide useful answers. If you run the command below for infomation specific to Wolfpack-specific SGEL
+For a more in depth understanding of the Wolfpack please navigate through the intranet for more helpful information. Different clusters use different tools to manage resources and schedule jobs. Wolfpack uses Sun Grid Engine (SGE) to control access to compute nodes. The implementation of SGE is custom so Googling may or may not provide useful answers. If you run the command below for information specific to Wolfpack-specific SGEL
 
     man qsub
 
 
-We will not be going into a deep dive of high performance computers. In essence, compute nodes are just high performance computers. Made up of multiple fast CPUs (computational processing units), extra RAM (random access memory) and you can request whatever your analysis requires
+We will not be going into a deep dive of high-performance computers. In essence, compute nodes are just high-performance computers. Made up of multiple fast CPUs (computational processing units), extra RAM (random access memory) and you can request whatever your analysis requires.
 
 The head node is not particularly powerful, and is shared by all logged-in users. Never run computational intense jobs there!!
 
@@ -41,7 +41,7 @@ The "polite" thing to do is to request an interactive node, or submit a job. For
 
 
 
-To request an interactive job, use the function `qrsh`. Default sessions will have 1 CPU core, 1GB and 1 hour
+To request an interactive job, use the function `qrsh`. Default sessions will have 1 CPU core, 1GB and 1 hour.
 
 ![QSUB](../assets/img/interactive.png)
 
@@ -68,7 +68,7 @@ The job (and therefore the session) can also be terminated by running the comman
 
 
 
-Wolfpack - How to start an batch job
+Wolfpack - How to start a batch job
 -------------------------------------------
 A batch job is a script that runs autonomously on a compute node. The script must contain the necessary sequence of commands to complete a task independently of any input from the user. This section contains information about how to create and submit a batch job on Wolfpack.
 
@@ -90,14 +90,14 @@ As with interactive jobs, the -l (lowercase L) flag can be used to specify resou
 
 
 
-Memory is what your computer uses to store data temporarily. This is called RAM (random acesss memory) is hardware allows the computer to efficiently perform more than one task at a time. Disk space refers to hard drive storage while storage is where you save files permanently.
+Memory is what your computer uses to store data temporarily. This is called RAM (random access memory) which is hardware that allows the computer to efficiently perform more than one task at a time. Disk space refers to hard drive storage while storage is where you save files permanently.
 
 The total memory is the number of cores (`smp`) times by the value of `mem_requested` requested. Nodes have ~8G per core, up to ~1TB total. Your job will be killed if it uses too much RAM, but there is no error message or way to tell this is the case. 
 
 Total Disk Space is the number of cores (`smp`) times the value of `tmp_requested`. Nodes have up to 250G per core, up to 20TB total. Older nodes have much less.
 
 
-For more infomation on the different settings to use:
+For more information on the different settings to use:
 https://intranet.gimr.garvan.org.au/pages/viewpage.action?pageId=74712562
 
 You can also rewrite your original script to include the job requests within the script like below:
@@ -146,13 +146,13 @@ Note that you are always running `scp` locally, but that _doesn’t_ mean that y
 
     $ scp <local file> <wolfpack login details>:"location"
     
-e.g ***On my Mac computer**** scp README.md username@dice01.garvan.unsw.edu.au:"somewhere/nice/"
+e.g *** On my Mac computer**** `scp README.md username@dice01.garvan.unsw.edu.au:"somewhere/nice/"`
     
 To move it back to your local computer, you re-order the `to` and `from` fields:
 
     $ scp <wolfpack login details> <local file>:"location"
-    
-e.g ***On my Mac computer**** scp username@dice01.garvan.unsw.edu.au:"somewhere/nice/README.md" /somewhere/okay/
+
+*** On my Mac computer *** `scp username@dice01.garvan.unsw.edu.au:"somewhere/nice/README.md"` /somewhere/okay/
 
 
 **Tip:** If you are looking for another (or any really) text file in your home directory to use instead, try:
