@@ -39,7 +39,7 @@ An example of the RNA workflow is provided below.
 3.  Align reads to reference genome
 4.  Differential expression DESeq2 
 
-Standard data formats are essential and used throughout bioinfomatics. We will be only performing quality control to check the quality of FastQC.
+Standard data formats are essential and used throughout bioinformatics. We will be only performing quality control to check the quality of FastQC.
 
 
 Starting with data
@@ -48,7 +48,7 @@ Starting with data
 
 **Recap** 
 ## What is the difference between single and paired end reads?
-With paired-end sequencing, both ends of the fragment are sequenced. With single-end seuqecing, only one end is of a fragment is sequenced. If the data is paired-end, you have two files for each sample.
+With paired-end sequencing, both ends of the fragment are sequenced. With single-end sequencing, only one end is of a fragment is sequenced. If the data is paired-end, you have two files for each sample.
 
 To download the data, please:
 
@@ -57,7 +57,7 @@ To download the data, please:
 2) Use `mkdir` to create a folder for your input fasta file e.g. **data**
 You can use the `-p` option for `mkdir`. This option allows `mkdir` to create the new directory, even if one of the parent directories does not already exist. It also supresses errors if the directory already exists, without overwriting that directory.
 
-3) Download the your dataset below to your local scratch 
+3) Download the dataset below to your local scratch 
 
     $   mkdir -p [yourscratch]/data/
     $   cd data
@@ -129,7 +129,7 @@ Try and run fastqc to see if it is available, if not we will "load" into your lo
 ![installation](../assets/img/installation.png)
 
 
-You will not be asked to install any packages in this course. However, the functions will be available through a main installation, but you need to modify your local environment so your computer know exactly where the main installation is. 
+You will not be asked to install any packages in this course. The functions will be available through a main installation but you will need to modify your local environment so your computer knows exactly where the main installation is. 
 
     $ module avail 
     
@@ -278,7 +278,7 @@ Assessing quality using FastQC
 
 In real life, you will not be assessing the quality of your reads by visually inspecting your FASTQ files. Rather, you will be using a software program to assess read quality and filter out poor quality reads. We will first use a program called [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) to visualize the quality of our reads. Later in our workflow, we will use another program to filter out poor quality reads.
 
-FastQC has a number of features which can give you a quick impression of any problems your data may have, so you can take these issues into consideration before moving forward with your analyses. Rather than looking at quality scores for each individual read, FastQC looks at quality collectively across all reads within a sample. The image below shows one FastQC-generated plot that indicates a very high quality sample:
+FastQC has a number of features that can give insight into any problems your data may have. This can sto you from carrying issues forward in your analyses. Rather than looking at quality scores for each individual read, FastQC looks at quality collectively across all reads within a sample. The image below shows one FastQC-generated plot that indicates a very high quality sample:
 
 ![good_quality](../assets/img/good_quality1.8.png)
 
@@ -344,9 +344,9 @@ Now we can navigate into this results directory and do some closer inspection of
 Viewing the FastQC results
 --------------------------
 
-If we were working on our local computers, we would be able to look at each of these HTML files by opening them in a web browser. However, to look at a summary vesion of the Fastqc html files- we need to create a summary file.
+If we were working on our local computers, we would be able to look at each of these HTML files by opening them in a web browser. However, to look at a summary version of the Fastqc html files- we need to create a summary file.
 
-However, these files are currently sitting on Katana, where our local computer can not see them. And, since we are only logging into the Katana  via the command line - it does not have any web browser setup to display these files either.
+These files are currently sitting on Wolfpack, where our local computer cannot see them. And, since we are only logging into the Wolfpack via the command line - it does not have any web browser setup to display these files either.
 
 So the easiest way to look at these webpage summary reports will be to transfer them to our local computers (i.e. your laptop).
 
@@ -360,7 +360,7 @@ First we will make a new directory on our computer to store the HTML files we ar
 Now we can transfer our HTML files to our local computer.
 
 1) Check if you have a Mac/Linux operating system or Windows operating system.
-2) Open a new terminal/putty window where you are NOT logged into Katana
+2) Open a new terminal/putty window where you are NOT logged into Wolfpack.
 
 
 **For a Mac/Linux OS:**
@@ -374,9 +374,9 @@ Now we can transfer our HTML files to our local computer.
 3) Navigate into a known location with the equivalent command as `cd` which is `pushd` or `popd`
 
   
-4) Using `scp` to move some infomation from scratch to your local computer.
+4) Using `scp` to move some information from scratch to your local computer.
 
-    $ scp []@katana.restech.unsw.edu.au:"srv/scratch/[your_zID]/data_fastqc/*.html" .
+    $ scp [userID]@dice01.garvan.unsw.edu.au:"[your_scratch_directory]/data_fastqc/*.html" .
     
     
  Understanding the Phred Quality Score
