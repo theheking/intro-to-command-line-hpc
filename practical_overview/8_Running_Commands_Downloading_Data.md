@@ -149,9 +149,11 @@ If you are interested in installing user defined packages John Reeves has done a
    
     
     
-To load the function. You need 
+To load the function. You need to first load the path where fastqc is located.
 
-    $ module load centos7.8/elypar/fastqc/0.11.5 
+    $ export MODULEPATH=/share/ClusterShare/Modules/modulefiles/contrib/centos7.8:$MODULEPATH
+
+    $ module load elypar/fastqc/0.11.5 
     
 
 
@@ -341,6 +343,28 @@ Now we can navigate into this results directory and do some closer inspection of
     $ cd [yourscratch]/fastqc_data/
     
 
+Running FastQC in Batch 
+------------------------
+
+In batch mode, instead of interactive mode, you have to load the environment within the script you are trying to submit. This is why you have to perform the loading of environment, and module load..
+
+
+        #$ -S /bin/sh
+        #$ -pe smp 2
+        #$ -cwd
+        
+        #making sure bashprofile is loaded -this depends on whether this is in your /home/user/ folder
+        #. ~/.bash_profile
+        #loading module path for setting up environment within qsub job
+        export MODULEPATH=/share/ClusterShare/Modules/modulefiles/contrib/centos7.8:$MODULEPATH
+        #this is the module i need to run
+        module load phuluu/fastqc/0.11.9
+        
+        echo "check my script"
+        
+        fastqc *.fastq*
+
+
 Viewing the FastQC results
 --------------------------
 
@@ -405,6 +429,8 @@ Depending on your system, you should be able to select and open them all at once
 
 
 
+
+
 Working with the FastQC text output
 -----------------------------------
 
@@ -426,7 +452,6 @@ Use `less` to preview the `summary.txt` file for this sample.
     $ cat SRR2584863_FASTQC/summary.txt
     
 The summary file gives us a list of tests that FastQC ran, and tells us whether this sample passed, failed, or is borderline (`WARN`). Remember, to quit from `less` you must type `q`.
-
 
    
 
