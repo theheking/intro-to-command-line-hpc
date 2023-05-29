@@ -18,12 +18,15 @@ Submitting Jobs to the Wolfpack
 
 > **Objectives**
 > 
->  *   Use `qsub` to run a job interactively.
+>  *   Use `qrsh` to run a job interactively.
+>  
+>   *   Use `qsub` to submit a batch job
 >     
 > *   Use the `bash` command to execute a shell script.
 >     
 > *   Use `chmod` to make a script an executable program.
 > 
+
 
 
 Wolfpack - How to start an interactive job
@@ -86,8 +89,7 @@ This script can be now be submitted to the cluster with qsub and it will become 
 
 As with interactive jobs, the -l (lowercase L) flag can be used to specify resource requirements for the job:
 
-    $ qsub -cwd -M hking@garvan.org.au -b y -q long.q -N name_of_job -pe smp 4 -l mem_requested=4.5G,tmp_requested=13.5G /[location]/bad-reads-script.sh
-
+    $ qsub -cwd -M hking@garvan.org.au -b y -N name_of_job -pe smp 4 -l mem_requested=4.5G,tmp_requested=13.5G /[location]/bad-reads-script.sh
 
 
 Memory is what your computer uses to store data temporarily. This is called RAM (random access memory) which is hardware that allows the computer to efficiently perform more than one task at a time. Disk space refers to hard drive storage while storage is where you save files permanently.
@@ -102,15 +104,35 @@ https://intranet.gimr.garvan.org.au/pages/viewpage.action?pageId=74712562
 
 You can also rewrite your original script to include the job requests within the script like below:
 
-    #$ -S /bin/sh
-    #$ -q short.q
-    #$ -pe smp 2
-    #$ -j y
-    #$ -b y
+        #$ -S /bin/sh
+        #$ -pe smp 2
+        #$ -cwd
+        
+        #making sure bashprofile is loaded -this depends on whether this is in your /home/user/ folder
+        #. ~/.bash_profile
+        #loading module path for setting up environment within qsub job
+        export MODULEPATH=/share/ClusterShare/Modules/modulefiles/contrib/centos7.8:$MODULEPATH
+        #this is the module i need to run
+        module load phuluu/fastqc/0.11.9
+        
+        echo "check my script"
 
-    . ~/.bash_profile
-    export PATH="/share/ClusterShare/biodata/contrib/helkin/anaconda3/bin:$PATH"
-    module load fastqc
+
+Vocabulary
+-----------
+The role of the SGE scheduler is to match available resources to jobs.
+In different contexts, the terms can have varying meanings. However, if we focus in the context of HPC, here are the definitions:
+> A *cluster* consists of multiple compute nodes.
+> A *node* refers to a unit within a computer cluster, typically a computer. It usually has one or two CPUs, each with multiple cores. The cores on the same CPU share memory, but memory is generally not shared between CPUs.
+> A *CPU (computational processing unit)* is a resource provided by a node. In this context, it can refer to a core or a hardware thread based on the SGE configuration.
+> A core is the part of a processor responsible for computations. A processor can have multiple cores.
+> A login node is the destination for SSH access. In the case of the Wolfpack, there are two login nodes: dice01 and dice02.
+> A compute node provides resources like processors, random access memory (RAM), and disk space.
+> In the context of SGE, a processor is referred to as a socket, which is the physical slot on the motherboard hosting the processor. A single core can have one or two hardware threads. Hardware multi-threading allows the operating system to perceive a doubled number of cores while only doubling certain core components, typically related to memory and I/O rather than computation. Hardware multi-threading is often disabled in HPC (high-performance computing) environments.
+> A *job* consists of one or more sequential steps, and each step can have one or more parallel tasks. A task represents an instance of a running program, which may include subprocesses or software threads.
+> Multiple tasks are dispatched to potentially multiple nodes, depending on their core requirements. The number of cores a task needs depends on the number of subprocesses or software threads within the running program instance. The goal is to assign each hardware thread to a core and ensure that all cores assigned to a task are on the same node.
+> When a job is submitted to the SGE scheduler, it initially waits in the queue before being executed on the compute nodes. The duration spent in the queue is referred to as the queue time, while the time it takes for the job to run on the compute nodes is called the execution time.
+
 
 
 ### Extension task
