@@ -8,8 +8,8 @@ Welcome All!
 
 
 ### Dates
-- Day 1: 9am - 1pm Tuesday 23rd May 
-- Day 2: 9am - 1pm Friday 26th May 
+- Day 1: 1pm -  4:30pm Wednesday 15th May
+- Day 2: 11:30am - 4:30pm Thursday 16th May
 
 
 ## Before the course please make sure you have:
@@ -24,6 +24,9 @@ Welcome All!
 - Be able to submit a job
 
 
+You will also need to sign up for DICE, our internal HPC, using the following instructions here: 
+
+https://intranet.gimr.garvan.org.au/display/DSP/Apply+for+access+to+the+on-premises+HPC+systems. 
 
 
 #### We acknowledge and pay respects to the Elders and Traditional Owners of the land
