@@ -56,7 +56,7 @@ Simon Yun has collated an expansive list of workflows, all of which are everyday
 
 ## 1: find out the queues and their status
 
-[workflow_1](../assets/img/flow_1.png)
+![workflow_1](../assets/img/flow_1.png)
 
 | Category | Link | Details |
 | ---- | ---- | ---- |
@@ -89,7 +89,7 @@ It's a good idea to **contact the support team at the specific site** if you hav
 
 **Unless you request an interactive job (or submit a job to a queue), you should avoid heavy computation and data transfer activities!**
 
-[workflow_1](../assets/img/flow_2.png)
+![workflow_1](../assets/img/flow_2.png)
 
 
 | Category | Link | Details |
