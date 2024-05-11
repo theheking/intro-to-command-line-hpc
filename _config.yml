@@ -27,7 +27,6 @@ navbar-links:
     - 3) Navigating Files and Directories: "practical_overview/3_Navigating_Files_And_Directories"
     - 4) Writing Scripts and Working with Data: "practical_overview/4_Working_Files_Directories"
     - 5) Redirection: "practical_overview/5_Redirection"
-    More Practical:
     - 6) Using the Text Editor vim: "practical_overview/6_Using_text_editor_vim"
     - 7A) Writing Scripts and Working with Data: "practical_overview/7A_Writing_Scripts_workingwithdata"
     - 7B) Differences between Wolfpack and other HPCs: "practical_overview/7B_Different_HPC"
