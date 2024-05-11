@@ -142,7 +142,4 @@ Replace `<my_Garvan_project>`, `<my_UNSW_project>` and `<my_NCI_project>` as app
 
 -----
 
-Adapted from the Data Carpentry Intro to Command Line -shell genomics https://datacarpentry.org/shell-genomics/
-
-Licensed under CC-BY 4.0 2018–2021 by The Carpentries  
-Licensed under CC-BY 4.0 2016–2018 by [Data Carpentry](http://datacarpentry.org)
+Written by Simon Yin - Linux Administrator for DSP
