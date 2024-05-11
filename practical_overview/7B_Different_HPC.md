@@ -41,21 +41,22 @@ Workflows for Beginners
 Simon Yun has collated an expansive list of workflows, all of which are everyday ways to interact with your HPC of interest.  
 
 1) Find out the queues and their status
+   
 2) Find out the site limits
+   
 3) Working interactively
+   
 4) Requesting more RAM
+   
 5) Requesting more RAM and **more** time
+   
 6) Requesting more RAM and more time and *more CPU cores**
+   
 7) Using a project code
 
 ## 1: find out the queues and their status
 
-```mermaid
-flowchart TD;
-    ssh["Login on the login node"];
-    ssh    --> qstat["Check the status of queues"];
-    qstat  --> logout["Logout"];
-```
+[workflow_1](../assets/img/flow_1.png)
 
 | Category | Link | Details |
 | ---- | ---- | ---- |
@@ -84,22 +85,12 @@ It's a good idea to **contact the support team at the specific site** if you hav
 
 
 ## 3: begin working interactively
-**Important Note:** You need to request an `interactive job` whenever you are working interactively.  
+**Important Note:** You must request an `interactive job` whenever you work interactively.  
 
 **Unless you request an interactive job (or submit a job to a queue), you should avoid heavy computation and data transfer activities!**
 
-```mermaid
-flowchart TD;
-    ssh["Login on the login node"];
-    ssh --> qlogin["Request an interactive session from the scheduler"];
-    qlogin --> wait["Wait in queue"];
-    wait --> start_interact["Interactive session starts..."];
-    start_interact -->repl["Start R/Python/Julia/Perl... etc"];
-    repl --> perform_task["Perform your tasks"];
-    perform_task --> end_repl["Exit R/Python/Julia/Perl"];
-    end_repl --> end_interact["Exit interactive session"];
-    end_interact-->logout["Logout"];
-```
+[workflow_1](../assets/img/flow_2.png)
+
 
 | Category | Link | Details |
 | ---- | ---- | ---- |
@@ -108,7 +99,8 @@ flowchart TD;
 | | [UNSW](https://docs.restech.unsw.edu.au/using_katana/running_jobs/#interactive-jobs) | For Katana HPC at UNSW |
 
 ## 4: requesting more RAM
-To request 16GB RAM, modify Section 3.3 with:
+To request 16GB RAM, modify Section 3 with:
+
 | Category | Site | Details |
 | ---- | ---- | ---- |
 | Request more RAM | Garvan | `qlogin -l mem_requested=16G` |
@@ -117,6 +109,7 @@ To request 16GB RAM, modify Section 3.3 with:
 
 ## 5: requesting more RAM + more time
 To request 1 hour 30 minutes of time:
+
 | Category | Site | Details |
 | ---- | ---- | ---- |
 | Request more RAM + more time | Garvan | `qlogin -l mem_requested=16G,h_rt=01:30:00` |
@@ -126,11 +119,13 @@ To request 1 hour 30 minutes of time:
 ## 6: requesting more RAM + more time + more cpu-cores
 To request 4 cpu-cores:
 
+
 | Category | Site | Details |
 | ---- | ---- | ---- |
 | Request more RAM + more time + more cpu-cores | Garvan | `qlogin -l mem_requested=16G,h_rt=01:30:00 -pe smp 4`</br></br>**Important note:**</br></br> $total\space memory = mem\_requested \times cpucores$ |
 | | NCI| `qsub -I -l mem=16gb,ncpus=4,walltime=01:30:00` |
 | | UNSW | `qsub -I -l select=1:mem=16gb,ncpus=4,walltime=01:30:00` |
+
 
 ## 7: using a project code
 Replace `<my_Garvan_project>`, `<my_UNSW_project>` and `<my_NCI_project>` as appropriate for your own case.
