@@ -11,11 +11,11 @@ Submitting Jobs to the Wolfpack
 > 
 > **Objectives**
 > 
->  *   Understand the difference between between:
+> Understand the difference between between:
 >    
->  *   Available commands
+>  * Available commands
 > 
->  *    Limits on time, storage space and other resources
+>  * Limits on time, storage space and other resources
 >
 > * Environment and site policies
 >   
@@ -23,18 +23,33 @@ Submitting Jobs to the Wolfpack
 
 
 
-Resources Available
--------------------
+Different Scheduler Commands Across Different HPCs  
+---------------------
 
-| Category | Link | Details |
-| ---- | ---- | ---- |
-| HPC scheduler commands | [Garvan](https://gridscheduler.sourceforge.net/htmlman/htmlman1/qsub.html) | For Wolfpack HPC that is locally hosted at Garvan |
-| | [NCI](https://help.altair.com/2022.1.0/PBS%20Professional/Japanese/PBSUserGuide2022.1.pdf) | For Gadi HPC at NCI in Canberra |
-| | [UNSW](https://docs.restech.unsw.edu.au/faq/#scheduler-faq) | For Katana HPC at UNSW |
+When submitting a script, as we did in the previous session, there are slightly different commands **and** flags to customise the submission. 
 
-# 3.0 Workflows
+An example includes requesting an interactive login session. In Wolfpack, the command is `qrsh`, NCI GADi is `qsub -I ` and UNSW Katana is `qsub -l`.
 
-## 3.1 Beginner 1: find out the queues and their status
+| Link | Details |
+| ---- | ---- |
+| [Garvan Wolfpack](https://gridscheduler.sourceforge.net/htmlman/htmlman1/qsub.html) | For Wolfpack HPC that is locally hosted at Garvan |
+| [NCI GADI Submission](../img/job_submission.pdf) [NCI GADI Flags](../img/PBS_directives.pdf) | For Gadi HPC at NCI in Canberra |
+| [UNSW Katana](https://docs.restech.unsw.edu.au/using_katana/running_jobs/) | For Katana HPC at UNSW |
+
+Workflows for Beginners
+----------------------------
+Simon Yun has collated an expansive list of workflows, all of which are everyday ways to interact with your HPC of interest.  
+
+1) Find out the queues and their status
+2) Find out the site limits
+3) Working interactively
+4) Requesting more RAM
+5) Requesting more RAM and **more** time
+6) Requesting more RAM and more time and *more CPU cores**
+7) Using a project code
+
+## 1: find out the queues and their status
+
 ```mermaid
 flowchart TD;
     ssh["Login on the login node"];
@@ -48,8 +63,8 @@ flowchart TD;
 | | [NCI](https://opus.nci.org.au/pages/viewpage.action?pageId=236881198) | For Gadi HPC at NCI in Canberra, login and then run:</br></br> `qstat -Q`</br></br> |
 | | [UNSW](https://docs.restech.unsw.edu.au/using_katana/running_jobs/#get-information-about-the-state-of-the-scheduler) | For Katana HPC at UNSW, login and then run:</br></br> `pstat`</br></br> |
 
-## 3.2 Beginner 2: find out the site limits
-**Note:** site limits vary depending on the queue you select!
+## 2: find out the site limits
+**Note:** Site limits vary depending on the queue you select!
 
 | Category | Link | Details |
 | ---- | ---- | ---- |
@@ -68,10 +83,11 @@ It's a good idea to **contact the support team at the specific site** if you hav
 | | UNSW | restech.support@unsw.edu.au |
 
 
-## 3.3 Beginner 3: begin working interactively
-**Important Note:** you need to request an `interactive job` whenever you are working interactively.  
+## 3: begin working interactively
+**Important Note:** You need to request an `interactive job` whenever you are working interactively.  
 
 **Unless you request an interactive job (or submit a job to a queue), you should avoid heavy computation and data transfer activities!**
+
 ```mermaid
 flowchart TD;
     ssh["Login on the login node"];
@@ -91,7 +107,7 @@ flowchart TD;
 | | [NCI](./nci_gadi_request_interactive.pdf) | For Gadi HPC at NCI in Canberra |
 | | [UNSW](https://docs.restech.unsw.edu.au/using_katana/running_jobs/#interactive-jobs) | For Katana HPC at UNSW |
 
-## 3.4 Beginner 4: requesting more RAM
+## 4: requesting more RAM
 To request 16GB RAM, modify Section 3.3 with:
 | Category | Site | Details |
 | ---- | ---- | ---- |
@@ -99,7 +115,7 @@ To request 16GB RAM, modify Section 3.3 with:
 | | NCI| `qsub -I -l mem=16gb` |
 | | UNSW | `qsub -I -l select=1:mem=16gb` |
 
-## 3.5 Beginner 5: requesting more RAM + more time
+## 5: requesting more RAM + more time
 To request 1 hour 30 minutes of time:
 | Category | Site | Details |
 | ---- | ---- | ---- |
@@ -107,7 +123,7 @@ To request 1 hour 30 minutes of time:
 | | NCI| `qsub -I -l mem=16gb,walltime=01:30:00` |
 | | UNSW | `qsub -I -l select=1:mem=16gb,walltime=01:30:00` |
 
-## 3.6 Beginner 6: requesting more RAM + more time + more cpu-cores
+## 6: requesting more RAM + more time + more cpu-cores
 To request 4 cpu-cores:
 
 | Category | Site | Details |
@@ -116,7 +132,7 @@ To request 4 cpu-cores:
 | | NCI| `qsub -I -l mem=16gb,ncpus=4,walltime=01:30:00` |
 | | UNSW | `qsub -I -l select=1:mem=16gb,ncpus=4,walltime=01:30:00` |
 
-## 3.7 Beginner 7: using a project code
+## 7: using a project code
 Replace `<my_Garvan_project>`, `<my_UNSW_project>` and `<my_NCI_project>` as appropriate for your own case.
 
 
