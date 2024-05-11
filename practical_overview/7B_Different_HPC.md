@@ -60,9 +60,9 @@ Simon Yun has collated an expansive list of workflows, all of which are everyday
 
 | Category | Link | Details |
 | ---- | ---- | ---- |
-| Site queues | [Garvan](../assets/img/garvan_site_queues.pdf) | For Wolfpack HPC that is locally hosted at Garvan, login and then run:</br></br> `qstat -f`</br></br>|
-| | [NCI](https://opus.nci.org.au/pages/viewpage.action?pageId=236881198) | For Gadi HPC at NCI in Canberra, login and then run:</br></br> `qstat -Q`</br></br> |
-| | [UNSW](https://docs.restech.unsw.edu.au/using_katana/running_jobs/#get-information-about-the-state-of-the-scheduler) | For Katana HPC at UNSW, login and then run:</br></br> `pstat`</br></br> |
+| Site queues | [Garvan](../assets/img/garvan_site_queues.pdf) | For Wolfpack HPC that is locally hosted at Garvan, login and then run: `qstat -f`|
+| | [NCI](https://opus.nci.org.au/pages/viewpage.action?pageId=236881198) | For Gadi HPC at NCI in Canberra, login and then run: `qstat -Q` |
+| | [UNSW](https://docs.restech.unsw.edu.au/using_katana/running_jobs/#get-information-about-the-state-of-the-scheduler) | For Katana HPC at UNSW, login and then run: `pstat` |
 
 ## 2: find out the site limits
 **Note:** Site limits vary depending on the queue you select!
@@ -122,7 +122,7 @@ To request 4 cpu-cores:
 
 | Category | Site | Details |
 | ---- | ---- | ---- |
-| Request more RAM + more time + more cpu-cores | Garvan | `qlogin -l mem_requested=16G,h_rt=01:30:00 -pe smp 4`</br></br>**Important note:**</br></br> $total\space memory = mem\_requested \times cpucores$ |
+| Request more RAM + more time + more cpu-cores | Garvan | `qlogin -l mem_requested=16G,h_rt=01:30:00 -pe smp 4`**Important note:** *total memory = mem_requested x cpucores* |
 | | NCI| `qsub -I -l mem=16gb,ncpus=4,walltime=01:30:00` |
 | | UNSW | `qsub -I -l select=1:mem=16gb,ncpus=4,walltime=01:30:00` |
 
@@ -133,8 +133,8 @@ Replace `<my_Garvan_project>`, `<my_UNSW_project>` and `<my_NCI_project>` as app
 
 | Category | Site | Details |
 | ---- | ---- | ---- |
-| Use a project code | Garvan | `qlogin -P <my_Garvan_project> -l mem_requested=16G,h_rt=01:30:00 -pe smp 4`</br></br>**Useful note:**</br></br> Use: `qconf -sprjl` to see the list of projects. |
-| | NCI|  `qsub -I -P <my_NCI_project> -l mem=16gb,ncpus=4,walltime=01:30:00`</br></br>**Note:**</br></br>Use: `nci_account` to see your NCI project code. |
+| Use a project code | Garvan | `qlogin -P <my_Garvan_project> -l mem_requested=16G,h_rt=01:30:00 -pe smp 4`**Useful note:** Use: `qconf -sprjl` to see the list of projects. |
+| | NCI|  `qsub -I -P <my_NCI_project> -l mem=16gb,ncpus=4,walltime=01:30:00`**Note:** Use: `nci_account` to see your NCI project code. |
 | | UNSW |  `qsub -I -P <my_UNSW_project> -l select=1:mem=16gb,ncpus=4,walltime=01:30:00` |
 
 
