@@ -28,7 +28,7 @@ Different Scheduler Commands Across Different HPCs
 
 When submitting a script, as we did in the previous session, there are slightly different commands **and** flags to customise the submission. 
 
-An example includes requesting an interactive login session. In Wolfpack, the command is `qrsh`, NCI GADi is `qsub -I ` and UNSW Katana is `qsub -l`.
+An example includes requesting an interactive login session. In Wolfpack, the command is `qrsh`, NCI GADi is `qsub -I ` and UNSW Katana is `qsub -I`.
 
 | Link | Details |
 | ---- | ---- |
@@ -50,7 +50,7 @@ Simon Yun has collated an expansive list of workflows, all of which are everyday
    
 5) Requesting more RAM and **more** time
    
-6) Requesting more RAM and more time and *more CPU cores**
+6) Requesting more RAM and more time and **more CPU cores**
    
 7) Using a project code
 
