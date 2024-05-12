@@ -69,7 +69,7 @@ Simon Yin has collated an expansive list of workflows, all of which are everyday
 
 | Category | Link | Details |
 | ---- | ---- | ---- |
-| Site limits | [Garvan](./garvan_site_limits.pdf) | For Wolfpack HPC that is locally hosted at Garvan |
+| Site limits | [Garvan](../assets/img/garvan_site_limits.pdf) | For Wolfpack HPC that is locally hosted at Garvan |
 | | [NCI](https://opus.nci.org.au/pages/viewpage.action?pageId=236881198) | For Gadi HPC at NCI in Canberra |
 | | [UNSW](https://docs.restech.unsw.edu.au/using_katana/running_jobs/#job-queue-limits-summary) | For Katana HPC at UNSW |
 
@@ -94,8 +94,8 @@ It's a good idea to **contact the support team at the specific site** if you hav
 
 | Category | Link | Details |
 | ---- | ---- | ---- |
-| Requesting an interactive session | [Garvan](./garvan_request_interactive.pdf) | For Wolfpack HPC locally hosted at Garvan |
-| | [NCI](./nci_gadi_request_interactive.pdf) | For Gadi HPC at NCI in Canberra |
+| Requesting an interactive session | [Garvan](../assets/img/garvan_request_interactive.pdf) | For Wolfpack HPC locally hosted at Garvan |
+| | [NCI](../assets/img/nci_gadi_request_interactive.pdf) | For Gadi HPC at NCI in Canberra |
 | | [UNSW](https://docs.restech.unsw.edu.au/using_katana/running_jobs/#interactive-jobs) | For Katana HPC at UNSW |
 
 ## 4: requesting more RAM
