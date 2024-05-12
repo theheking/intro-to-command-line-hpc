@@ -38,7 +38,7 @@ An example includes requesting an interactive login session. In Wolfpack, the co
 
 Workflows for Beginners
 ----------------------------
-Simon Yin has collated an expansive list of workflows, all of which are everyday ways to interact with your HPC of interest.  
+Simon Thing-Yew Yin has collated an expansive list of workflows, all of which are everyday ways to interact with your HPC of interest.  
 
 1) Find out the queues and their status
    
@@ -142,4 +142,4 @@ Replace `<my_Garvan_project>`, `<my_UNSW_project>` and `<my_NCI_project>` as app
 
 -----
 
-Written by Simon Yin - Linux Administrator for DSP
+Written by Simon Thing-Yew Yin - Linux Administrator for DSP
