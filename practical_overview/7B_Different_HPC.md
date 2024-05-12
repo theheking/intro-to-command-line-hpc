@@ -38,7 +38,7 @@ An example includes requesting an interactive login session. In Wolfpack, the co
 
 Workflows for Beginners
 ----------------------------
-Simon Yun has collated an expansive list of workflows, all of which are everyday ways to interact with your HPC of interest.  
+Simon Yin has collated an expansive list of workflows, all of which are everyday ways to interact with your HPC of interest.  
 
 1) Find out the queues and their status
    
