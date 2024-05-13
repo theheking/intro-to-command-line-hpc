@@ -21,6 +21,7 @@ Submitting Jobs to the Wolfpack
 >   
     
 
+This is an additional guide to getting familiar with the differences but please attend Intro to HPC - GADI put on by the Data Science Pillar (DSP) and Katana specific course.
 
 
 Different Scheduler Commands Across Different HPCs  
@@ -54,7 +55,7 @@ Simon Thing-Yew Yin has collated an expansive list of workflows, all of which ar
    
 7) Using a project code
 
-## 1: find out the queues and their status
+## 1: Find out out the queues and their status
 
 ![workflow_1](../assets/img/flow_1.png)
 
@@ -64,7 +65,7 @@ Simon Thing-Yew Yin has collated an expansive list of workflows, all of which ar
 | | [NCI](https://opus.nci.org.au/pages/viewpage.action?pageId=236881198) | For Gadi HPC at NCI in Canberra, login and then run: `qstat -Q` |
 | | [UNSW](https://docs.restech.unsw.edu.au/using_katana/running_jobs/#get-information-about-the-state-of-the-scheduler) | For Katana HPC at UNSW, login and then run: `pstat` |
 
-## 2: find out the site limits
+## 2: Find out the Site Limits
 **Note:** Site limits vary depending on the queue you select!
 
 | Category | Link | Details |
@@ -73,7 +74,7 @@ Simon Thing-Yew Yin has collated an expansive list of workflows, all of which ar
 | | [NCI](https://opus.nci.org.au/pages/viewpage.action?pageId=236881198) | For Gadi HPC at NCI in Canberra |
 | | [UNSW](https://docs.restech.unsw.edu.au/using_katana/running_jobs/#job-queue-limits-summary) | For Katana HPC at UNSW |
 
-**Exceptions to site limits**
+**Exceptions to Site Limits**
 
 It's a good idea to **contact the support team at the specific site** if you have a **well justified** reason to apply for an exception to any of the published site limits:
 
@@ -84,7 +85,7 @@ It's a good idea to **contact the support team at the specific site** if you hav
 | | UNSW | restech.support@unsw.edu.au |
 
 
-## 3: begin working interactively
+## 3: Begin Working Interactively
 **Important Note:** You must request an `interactive job` whenever you work interactively.  
 
 **Unless you request an interactive job (or submit a job to a queue), you should avoid heavy computation and data transfer activities!**
@@ -98,7 +99,7 @@ It's a good idea to **contact the support team at the specific site** if you hav
 | | [NCI](../assets/img/nci_gadi_request_interactive.pdf) | For Gadi HPC at NCI in Canberra |
 | | [UNSW](https://docs.restech.unsw.edu.au/using_katana/running_jobs/#interactive-jobs) | For Katana HPC at UNSW |
 
-## 4: requesting more RAM
+## 4: Requesting more RAM
 To request 16GB RAM, modify Section 3 with:
 
 | Category | Site | Details |
@@ -107,7 +108,7 @@ To request 16GB RAM, modify Section 3 with:
 | | NCI| `qsub -I -l mem=16gb` |
 | | UNSW | `qsub -I -l select=1:mem=16gb` |
 
-## 5: requesting more RAM + more time
+## 5: Requesting more RAM + more time
 To request 1 hour 30 minutes of time:
 
 | Category | Site | Details |
@@ -116,7 +117,7 @@ To request 1 hour 30 minutes of time:
 | | NCI| `qsub -I -l mem=16gb,walltime=01:30:00` |
 | | UNSW | `qsub -I -l select=1:mem=16gb,walltime=01:30:00` |
 
-## 6: requesting more RAM + more time + more cpu-cores
+## 6: Requesting more RAM + more time + more cpu-cores
 To request 4 cpu-cores:
 
 
@@ -127,7 +128,8 @@ To request 4 cpu-cores:
 | | UNSW | `qsub -I -l select=1:mem=16gb,ncpus=4,walltime=01:30:00` |
 
 
-## 7: using a project code
+## 7: Using a Project Code
+When you sign up for each HPC, you will usually be allocated a project based on your lab.
 Replace `<my_Garvan_project>`, `<my_UNSW_project>` and `<my_NCI_project>` as appropriate for your own case.
 
 
@@ -142,5 +144,6 @@ Replace `<my_Garvan_project>`, `<my_UNSW_project>` and `<my_NCI_project>` as app
 
 -----
 
-Written by Simon Thing-Yew Yin - Linux Administrator for DSP
+Written by [Simon Thing-Yew Yin](https://www.linkedin.com/in/simon-yin-76b420/) - Linux Administrator for DSP
+
 Edited by HK 
