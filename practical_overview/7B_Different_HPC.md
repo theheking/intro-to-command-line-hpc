@@ -21,13 +21,13 @@ Submitting Jobs to the Wolfpack
 >   
     
 
-This is an additional guide to getting familiar with the differences but please attend Intro to HPC - GADI put on by the Data Science Pillar (DSP) and Katana specific course.
+This is an additional guide useful for familiarising yourself with other HPCs, but please attend the in-person courses for both GADI and Katana to maximise your (and their) computational potential. This includes Intro to HPC—GADI, put on by the Data Science Pillar (DSP), and the Katana-specific course.
 
 
 Different Scheduler Commands Across Different HPCs  
 ---------------------
 
-When submitting a script, as we did in the previous session, there are slightly different commands **and** flags to customise the submission. 
+As we did in the previous session, when submitting a script, there are slightly different commands **and** flags to customise the submission. 
 
 An example includes requesting an interactive login session. In Wolfpack, the command is `qrsh`, NCI GADi is `qsub -I ` and UNSW Katana is `qsub -I`.
 
