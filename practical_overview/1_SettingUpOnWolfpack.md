@@ -38,6 +38,8 @@ For many of you, this is your first time using UNIX. As with all bioinformatics,
  3.    Use  **rm -i**  to provide an additional safety check against rogue deletion.
  4.     Make sure that you keep good notes. Ultimately, it should be fairly straight-forward to regenerate anything from the starting data, provided you have adequate records of how you made it in the first place. This is one of the primary goals of keeping a lab book.
 
+The issue is Microsoft Word, and other traditional text editors do not format code properly. So when writing code please use a GUI such as [Visual Studio Codes](https://vscode.dev/). This is the web-interface version. However, there is a Desktop version [available](https://code.visualstudio.com/). This makes for a much more seamless integration and if you want to include the HPC you can add extensions by following this [blog post](https://blog.wytamma.com/blog/hcp-vscode/).
+
 ## Setting up the Garvan VPN
 
 To access the servers off-campus, you will need to set up the Garvan Virtual Private Network (VPN), which gives you access to Garvam resources off-site as if you were on-site. Details to set this up can be found with two simple tutorials.
