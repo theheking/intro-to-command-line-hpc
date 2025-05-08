@@ -57,9 +57,9 @@ How to access the shell
 
 On a Mac or Linux machine, you can access a shell through a program called “Terminal”, which is already available on your computer. The Terminal is a window into which we will type commands. If you’re using Windows, you’ll need to download a separate program to access the shell. More details on how to set this up can be found in the first tutorial.
 
-To save time, we are going to be working on a remote server where all the necessary data and software available. When we say a ‘remote sever’, we are talking about a computer that is not the one you are working on right now. This is Wolfpack where the login instructions are found in the first tutorial.
+To save time, we are going to be working on a remote server where all the necessary data and software available. When we say a ‘remote sever’, we are talking about a computer that is not the one you are working on right now. This is NCI GADI where the login instructions are found in the first tutorial.
 
-    ssh –o ServerAliveInterval=60 [your_userID]@dice01.garvan.unsw.edu.au
+    ssh –o ServerAliveInterval=60 [your_userID]@gadi.nci.org.au
 
 Clear Screen
 -------------
@@ -105,17 +105,23 @@ Let’s look at how our file system is organized. We can see what files and subd
 > Basic Commands - Navigating to your directory 
 > ----------------------------------------------
 
-On the Wolfpack HPC, you will have three locations: 
+On the NCI GADI HPC, you will have three locations: 
 
-1. Home directory - which is the location where you are when you login
+1. Home directory - which is the location where you are when you login.
     - Small space, keep scripts or other small files here.
     
-    
 2. Scratch - where to keep large files 
-    - Your scratch is `/share/ScratchGeneral/[your_userid]/`
-    - Large space, regularly cleaned of old files 
+    - Your scratch is `/scratch/[proj_id]/[your_userid]//`
+    - Large space, regularly cleaned of old files (files that are not accessed for more than 100 days will be moved to the quarantine area), and 14 days later they will be deleted.
+    - Suitable for data that is actively used by any applications.
 
-3. Cluster share - where large communal files are kept such as genome reference files.
+3. Gdata share - where large communal files are kept for project datasets.
+
+4. MDSS (Mass Data Storage System)- where to store backups.
+   - For archiving data files.
+   - There is no direct filesystem access.
+
+
 
 The command to change locations in our file system is `cd`, followed by a directory name to change our working directory. `cd` stands for “change directory”.
 
@@ -135,16 +141,16 @@ Anything with a “/” after it is a directory. Things with a “\*” after th
 
     $ man ls
 
-`man` (short for manual) displays detailed documentation (also referred as man page or man file) for `bash` commands. It is a powerful resource to explore `bash` commands, understand their usage and flags. Some manual files are very long. You can scroll through the file using your keyboard’s down arrow or use the Space key to go forward one page and the b key to go backwards one page. When you are done reading, hit q to quit.
+`man` (short for manual) displays detailed documentation (also referred as man page or man file) for `bash` commands. It is a powerful resource for exploring `bash` commands and understanding their usage and flags. Some manual files are very long. You can scroll through the file using your keyboard’s down arrow or use the Space key to go forward one page and the b key to go backwards one page. When you are done reading, hit q to quit.
 
 > Challenge
 > ---------
 > 
-> Use the `-l` option for the `ls` command to display more information for each item in the directory. What is one piece of additional information this long format gives you that you don’t see with the bare `ls` command? Which flag should you use to display human-readable format?
+> Use the `-l` option for the `ls` command to display more information for each item in the directory. What is one piece of additional information this long format gives you that you don’t see with the bare `ls` command? Which flag should you use to display a human-readable format?
 
-> > The additional information given includes the name of the owner of the file, when the file was last modified, and whether the current user has permission to read and write to the file.
+> > The additional information given includes the name of the file's owner, when the file was last modified, and whether the current user has permission to read and write to the file.
 
-No one can possibly learn all of these arguments, that’s what the manual page is for. You can (and should) refer to the manual page or other help files as needed.
+No one can learn all these arguments; that’s what the manual page is for. You can (and should) refer to the manual page or other help files as needed.
 
 
 ### Shortcut: Tab Completion
@@ -170,7 +176,7 @@ Here we are using the -p option for mkdir. This option allows mkdir to create th
 It will take about 5 minutes to download the files.
 **NB. Please make sure you are in your scratch directory **
 
-    $   mkdir -p /share/ScratchGeneral/[your_userid]/data/
+    $   mkdir -p /scratch/[proj_id]/[your_userid]/data/
     $   cd data
 
     $   wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
@@ -212,7 +218,7 @@ In the next few episodes, we’ll be expanding on these skills and seeing how us
 > Key Points
 > ----------
 > 
-> *   The shell gives you the ability to work more efficiently by using keyboard commands rather than a GUI.
+> *   The shell allows you to work more efficiently using keyboard commands rather than a GUI.
 >     
 > *   Useful commands for navigating your file system include: `ls`, `mkdir`, `wget`, `pwd`, and `cd`.
 >     
