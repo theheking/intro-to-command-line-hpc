@@ -12,7 +12,7 @@ Navigating Files and Directories
 > 
 > **Questions**
 > 
-> *   How can I perform operations on files outside of my working directory?
+> *   How can I perform operations on files outside my working directory?
 >     
 > *   What are some navigational shortcuts I can use to make my work more efficient?
 >     
@@ -33,15 +33,15 @@ Navigating Files and Directories
 Moving around the file system
 -----------------------------
 
-We’ve learned how to use `pwd` to find our current location within our file system. We’ve also learned how to use `cd` to change locations and `ls` to list the contents of a directory. Now we’re going to learn some additional commands for moving around within our file system.
+We’ve learned how to use `pwd` to find our current location within our file system. We’ve also learned how to use `cd` to change locations and `ls` to list the contents of a directory. Now we will learn some additional commands for moving around within our file system.
 
 Use the commands we’ve learned so far to navigate to the `data` directory, if you’re not already there.
 
-    $ cd [scratch_location]
+    $ cd /scratch/im21/[your_userid]/
     $ cd data
     
 
-What if we want to move back up and out of this directory and to our top level directory? Can we type `cd shell_data`? Try it and see what happens.
+What if we want to move back up and out of this directory and to our top-level directory? Can we type `cd shell_data`? Try it and see what happens.
 
     $ cd shell_data
     
@@ -62,7 +62,7 @@ Now we can use `pwd` to make sure that we are in the directory we intended to na
     $ ls
      
 
-From this output, we can see that `..` did indeed take us back one level in our file system.
+From this output, we can see that `..` took us back one level in our file system.
 
 You can chain these together like so:
 
@@ -88,20 +88,20 @@ You can chain these together like so:
 > >     $ man ls
 > >     
 > > 
-> > The `-a` option is short for `all` and says that it causes `ls` to “not ignore entries starting with .” This is the option we want.
+> > The `-a` option is short for `all` and says it causes `ls` to “not ignore entries starting with .” This is the option we want.
 > > 
 > >     $ ls -a
 > >     
 > >     
 > > 
-> > And then list the contents of the directory using `ls`.
+> > And then list the directory's contents using `ls`.
 > > 
 > >     $ ls
 > >     
 > >     
 > > 
 
-In most commands the flags can be combined together in no particular order to obtain the desired results/output.
+In most commands, the flags can be combined in no particular order to obtain the desired results/output.
 
     $ ls -Fa
     $ ls -laF
@@ -110,7 +110,7 @@ In most commands the flags can be combined together in no particular order to ob
 Examining the contents of other directories
 -------------------------------------------
 
-By default, the `ls` commands lists the contents of the working directory (i.e. the directory you are in). You can always find the directory you are in using the `pwd` command. However, you can also give `ls` the names of other directories to view. Navigate to your home directory if you are not already there.
+By default, the `ls` command lists the contents of the working directory (i.e. the directory you are in). You can always find the directory you are in using the `pwd` command. However, you can also give `ls` the names of other directories to view. Navigate to your home directory if you are not already there.
 
     $ cd
     
@@ -118,7 +118,7 @@ By default, the `ls` commands lists the contents of the working directory (i.e. 
 Full vs. Relative Paths
 -----------------------
 
-The `cd` command takes an argument which is a directory name. Directories can be specified using either a _relative_ path or a full _absolute_ path. The directories on the computer are arranged into a hierarchy. The full path tells you where a directory is in that hierarchy. Navigate to the home directory, then enter the `pwd` command.
+The `cd` command takes an argument, which is a directory name. Directories can be specified using either a _relative_ path or a full _absolute_ path. The directories on the computer are arranged into a hierarchy. The full path tells you where a directory is in that hierarchy. Navigate to the home directory, then enter the `pwd` command.
 
     $ cd data
     $ pwd  
@@ -126,16 +126,16 @@ The `cd` command takes an argument which is a directory name. Directories can be
 
 Now enter the following command:
 
-    $ cd [scratch_location]/data
+    $ cd /scratch/im21/[your_userid]//data
     
 
-These two commands have the same effect, they both take us to the `data` directory. The first uses the absolute path, giving the full address from the home directory. The second uses a relative path, giving only the address from the working directory. A full path always starts with a `/`. A relative path does not.
+These two commands have the same effect, taking us to the `data` directory. The first uses the absolute path, giving the full address from the home directory. The second uses a relative path, giving only the address from the working directory. A full path always starts with a `/`. A relative path does not.
 
-A relative path is like getting directions from someone on the street. They tell you to “go right at the stop sign, and then turn left on Main Street”. That works great if you’re standing there together, but not so well if you’re trying to tell someone how to get there from another country. A full path is like GPS coordinates. It tells you exactly where something is no matter where you are right now.
+A relative path is like getting directions from someone on the street. They tell you to “go right at the stop sign, and then turn left on Main Street”. That works great if you’re standing together, but not so well if you’re trying to tell someone how to get there from another country. A full path is like GPS coordinates. It tells you exactly where something is, no matter where you are right now.
 
-You can usually use either a full path or a relative path depending on what is most convenient. If we are in the home directory, it is more convenient to enter the full path. If we are in the working directory, it is more convenient to enter the relative path since it involves less typing.
+You can usually use either a full path or a relative path, depending on what is most convenient. If we are in the home directory, it is more convenient to enter the full path. If we are in the working directory, it is more convenient to enter the relative path since it involves less typing.
 
-Over time, it will become easier for you to keep a mental note of the structure of the directories that you are using and how to quickly navigate amongst them.
+Over time, it will become easier to keep a mental note of the structure of the directories you use and how to quickly navigate among them.
 
 
 
