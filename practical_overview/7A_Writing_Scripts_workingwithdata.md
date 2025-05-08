@@ -152,7 +152,7 @@ Transferring Data Between your Local Machine and NCI GADI (there and back again)
 
 ### Uploading Data to your Virtual Machine with scp
 
-`scp` stands for ‘secure copy protocol’, and is a widely used UNIX tool for moving files between computers. The simplest way to use `scp` is to run it in your local terminal, and use it to copy a single file:
+`scp` stands for ‘secure copy protocol’, and is a widely used UNIX tool for moving files between computers. The simplest way to use `scp` is to run it in your local terminal and use it to copy a single file:
 
     scp <file I want to move> <where I want to move it>
     
