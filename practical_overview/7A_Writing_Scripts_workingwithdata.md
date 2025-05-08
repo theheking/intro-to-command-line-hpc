@@ -91,7 +91,7 @@ Memory is what your computer uses to store data temporarily. This is called RAM 
 
 The total memory, `mem`, is shared across the number of cores (`ncpus`). Depending on the queue, different hardware can have varying amounts of RAM ~8G per core, up to ~1TB. Your job will be killed if it uses too much RAM, but there is no error message or way to tell that this is the case.  
 
-Please change to the `copyq` node if you run a job requiring internet access, long software installation and access to massdata.
+Please change to the `copyq` node if you run a job requiring internet access, long software installation and access to mass data.
 
 You can also rewrite your original script to include the job requests within the script, like below:
 
