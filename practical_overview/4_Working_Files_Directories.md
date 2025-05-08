@@ -26,7 +26,7 @@ Working with Files and Directories
 >     
 > *   Use wildcards (`*`) to perform operations on multiple files.
 >     
-> *   Make a file read only.
+> *   Make a file read-only.
 >     
 > *   Use the `history` command to view and repeat recently used commands.
 >     
@@ -36,7 +36,7 @@ Working with Files
 
 ### Our data set: FASTQ files
 
-Now that we know how to navigate around our directory structure, let’s start working with our sequencing files. We did a sequencing experiment and have two results files, which are stored in our `data` directory.
+Now that we can navigate our directory structure, let’s start working with our sequencing files. We did a sequencing experiment and have two files, which are stored in our `data` directory.
 
 ### Wildcards
 
@@ -135,7 +135,7 @@ The `-n` option to either of these commands can be used to print the first or la
 > Exercise
 > --------
 > 
-> 1.  Print out the contents of the `[scratch loc]/data/SRR097977.fastq` file. What is the last line of the file? **Hint use the command `tail`**
+> 1.  Print out the contents of the `/scratch/im21/[your_userid]/data/SRR097977.fastq` file. What is the last line of the file? **Hint use the command `tail`**
 > 2.  From your home directory, and without changing directories, use one short command to unzip all files in the `data` directory.
 > 
 
@@ -216,7 +216,7 @@ View the current permissions on a file using the `-l` (long) flag for the `ls` c
 
     $ ls -l
     
-    -rw-r--r-- 1 helkin helkin 43332 Nov 15 23:02 SRR2589044_1-backup.fastq
+    -rw-r--r-- 1 hk1145 oo78 43332 May 8 23:02 SRR2589044_1-backup.fastq
     
 
 The first part of the output for the `-l` flag gives you information about the file’s current permissions. There are ten slots in the permissions list. The first character in this list is related to file type, not permissions, so we’ll ignore it for now. The next three characters relate to the permissions that the file owner has, the next three relate to the permissions for group members, and the final three characters specify what other users outside of your group can do with the file. We’re going to concentrate on the three positions that deal with your permissions (as the file owner).
@@ -230,12 +230,12 @@ Our goal for now is to change permissions on this file so that you no longer hav
     $ chmod -w SRR2589044_1-backup.fastq
     $ ls -l 
    
-    -r--r--r-- 1 helkin helkin 43332 Nov 15 23:02 SRR2589044_1-backup.fastq
+    -r--r--r-- 1 hk1145 oo78 43332 May 8 23:02 SRR2589044_1-backup.fastq
     
 
 ### Removing
 
-To prove to ourselves that you no longer have the ability to modify this file, try deleting it with the `rm` command:
+To prove to ourselves that you no longer can modify this file, try deleting it with the `rm` command:
 
     $ rm SRR2589044_1-backup.fastq
     
@@ -245,9 +245,9 @@ You’ll be asked if you want to override your file permissions:
     rm: remove write-protected regular file ‘SRR2589044_1-backup.fastq’? 
     
 
-You should enter `n` for no. If you enter `n` (for no), the file will not be deleted. If you enter `y`, you will delete the file. This gives us an extra measure of security, as there is one more step between us and deleting our data files.
+You should enter `n` for no. If you enter `n` (for no), the file will not be deleted. If you enter `y`, you will delete the file. This gives us an extra security measure, as there is one more step between us and deleting our data files.
 
-**Important**: The `rm` command permanently removes the file. Be careful with this command. It doesn’t just nicely put the files in the Trash. They’re really gone.
+**Important**: The `rm` command permanently removes the file. Be careful with this command. It doesn’t just nicely put the files in the Trash. They’re gone.
 
 By default, `rm` will not delete directories. You can tell `rm` to delete a directory using the `-r` (recursive) option. Let’s delete the backup directory we just made.
 
@@ -257,16 +257,16 @@ Enter the following command:
     $ rm -r backup
     
 
-This will delete not only the directory, but all files within the directory. If you have write-protected files in the directory, you will be asked whether you want to override your permission settings.
+This will delete not only the directory, but also all files within the directory. If you have write-protected files in the directory, you will be asked whether you want to override your permission settings.
 
 > Exercise
 > --------
 > 
 > Starting in the `data` directory, do the following:
 > 
-> 1.  Make sure that you have deleted your backup directory and all files it contains.
-> 2.  Create a backup of each of your FASTQ files using `cp`. (Note: You’ll need to do this individually for each of the two FASTQ files. We haven’t learned yet how to do this with a wildcard.)
-> 3.  Use a wildcard to move all of your backup files to a new backup directory.
+> 1.  Ensure you have deleted your backup directory and all files it contains.
+> 2.  Create a backup of each of your FASTQ files using `cp`. (Note: You must do this individually for the two FASTQ files. We haven’t learned yet how to do this with a wildcard.)
+> 3.  Use a wildcard to move your backup files to a new backup directory.
 > 4.  Change the permissions on all of your backup files to be write-protected.
 > 
 
