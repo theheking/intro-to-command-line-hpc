@@ -59,7 +59,7 @@ You can use the `-p` option for `mkdir`. This option allows `mkdir` to create th
 
 3) Download the dataset below to your local scratch 
 
-    $   mkdir -p [yourscratch]/data/
+    $   mkdir -p /scratch/im21/[your_userid]/data/
     $   cd data
 
     $   wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
@@ -136,11 +136,9 @@ You will not be asked to install any packages in this course. The functions will
     
 To find modules of interest, you can use the `grep` command to filter out a string. E.g. any package with "t"
 
-    $ module avail 2>&1 | grep t
+    $ module avail | grep fas
     
   
-If you are interested in installing user defined packages John Reeves has done an informatic recording with how to use anaconda (an installation manager). https://intranet.gimr.garvan.org.au/display/BINF/Session+2+-+Conda+environments+and+the+Wolfpack+migration
-
     
 > Exercise
 > ------------
@@ -151,9 +149,7 @@ If you are interested in installing user defined packages John Reeves has done a
     
 To load the function. You need to first load the path where fastqc is located.
 
-    $ export MODULEPATH=/share/ClusterShare/Modules/modulefiles/contrib/centos7.8:$MODULEPATH
-
-    $ module load elypar/fastqc/0.11.5 
+    $ module load fastqc/0.11.8
     
 
 
@@ -278,17 +274,17 @@ Please run the command below to output the command line options.
 Assessing quality using FastQC
 ------------------------------
 
-In real life, you will not be assessing the quality of your reads by visually inspecting your FASTQ files. Rather, you will be using a software program to assess read quality and filter out poor quality reads. We will first use a program called [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) to visualize the quality of our reads. Later in our workflow, we will use another program to filter out poor quality reads.
+In real life, you will not be assessing the quality of your reads by visually inspecting your FASTQ files. Rather, you will be using a software program to assess read quality and filter out poor-quality reads. We will first use a program called [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) to visualize the quality of our reads. Later in our workflow, we will use another program to filter out poor-quality reads.
 
-FastQC has a number of features that can give insight into any problems your data may have. This can sto you from carrying issues forward in your analyses. Rather than looking at quality scores for each individual read, FastQC looks at quality collectively across all reads within a sample. The image below shows one FastQC-generated plot that indicates a very high quality sample:
+FastQC has several features that can give insight into any problems your data may have. This can stop you from carrying issues forward in your analyses. Rather than looking at quality scores for each individual read, FastQC looks at quality collectively across all reads within a sample. The image below shows one FastQC-generated plot that indicates a very high-quality sample:
 
 ![good_quality](../assets/img/good_quality1.8.png)
 
-The x-axis displays the base position in the read, and the y-axis shows quality scores. In this example, the sample contains reads that are 40 bp long. This is much shorter than the reads we are working with in our workflow. For each position, there is a box-and-whisker plot showing the distribution of quality scores for all reads at that position. The horizontal red line indicates the median quality score and the yellow box shows the 1st to 3rd quartile range. This means that 50% of reads have a quality score that falls within the range of the yellow box at that position. The whiskers show the absolute range, which covers the lowest (0th quartile) to highest (4th quartile) values.
+The x-axis displays the base position in the read, and the y-axis shows quality scores. In this example, the sample contains reads that are 40 bp long. This is much shorter than the reads we are working with in our workflow. For each position, there is a box-and-whisker plot showing the distribution of quality scores for all reads at that position. The horizontal red line indicates the median quality score and the yellow box shows the 1st to 3rd quartile range. This means that 50% of reads have a quality score that falls within the range of the yellow box at that position. The whiskers show the absolute range, which covers the lowest (0th quartile) to the highest (4th quartile) values.
 
-For each position in this sample, the quality values do not drop much lower than 32. This is a high quality score. The plot background is also color-coded to identify good (green), acceptable (yellow), and bad (red) quality scores.
+For each position in this sample, the quality values do not drop much lower than 32. This is a high-quality score. The plot background is also colour-coded to identify good (green), acceptable (yellow), and bad (red) quality scores.
 
-Now let’s take a look at a quality plot on the other end of the spectrum.
+Now let’s look at a quality plot on the other end of the spectrum.
 
 ![bad_quality](../assets/img/bad_quality1.8.png)
 
@@ -299,7 +295,7 @@ Running FastQC
 
 We will now assess the quality of the reads that we downloaded. First, make sure you are still in the `data` directory
 
-    $ cd /[yourscratch]/data/
+    $ cd /scratch/im21/[your_userid]/data/
     
 
 > Exercise
@@ -333,14 +329,14 @@ For each input FASTQ file, FastQC has created a `.zip` file and a
 
 We want to keep our data files and our results files separate, so we will move these output files into a new directory within our `results/` directory.
 
-    $ mkdir -p [yourscratch]/fastqc_data/
-    $ mv *.zip [yourscratch]/fastqc_data/
-    $ mv *.html [yourscratch]/fastqc_data/
+    $ mkdir -p /scratch/im21/[your_userid]/fastqc_data/
+    $ mv *.zip /scratch/im21/[your_userid]/fastqc_data/
+    $ mv *.html /scratch/im21/[your_userid]/fastqc_data/
     
 
 Now we can navigate into this results directory and do some closer inspection of our output files.
 
-    $ cd [yourscratch]/fastqc_data/
+    $ cd /scratch/im21/[your_userid]/fastqc_data/
     
 
 Running FastQC in Batch 
