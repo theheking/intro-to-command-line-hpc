@@ -170,7 +170,7 @@ Now let’s look at the permissions again.
 
     $ ls -l bad-reads-script.sh
    
-    -rwxrwxr-x 1 helkin helkin 0 Oct 25 21:46 bad-reads-script.sh
+    -rwxrwxr-x 1 hk1145 im21 0 Oct 25 21:46 bad-reads-script.sh
     
 
 Now we see that it says `-rwxr-xr-x`. The `x`’s that are there now tell us we can run it as a program. So, let’s try it! We’ll need to put `./` at the beginning so the computer knows to look here in this directory for the program.
