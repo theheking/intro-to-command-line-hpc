@@ -113,16 +113,19 @@ We can search a keyword by entering `:/word_of_interest`, where `word_of_interes
 Writing scripts
 ---------------
 
-A really powerful thing about the command line is that you can write scripts. Scripts let you save commands to run them and also lets you put multiple commands together. Though writing scripts may require an additional time investment initially, this can save you time as you run them repeatedly. Scripts can also address the challenge of reproducibility: if you need to repeat an analysis, you retain a record of your command history within the script.
+A really powerful thing about the command line is that you can write scripts. Scripts let you save commands to run them and put multiple commands together. Though writing scripts may require an additional time investment initially, this can save you time as you run them repeatedly. Scripts can also address the reproducibility challenge: if you need to repeat an analysis, you retain a record of your command history within the script.
 
 One thing we will commonly want to do with sequencing results is pull out bad reads and write them to a file to see if we can figure out what’s going on with them. We’re going to look for reads with long sequences of N’s like we did before, but now we’re going to write a script, so we can run it each time we get new sequences, rather than type the code in by hand each time.
 
-We’re going to create a new file to put this command in. We’ll call it `bad-reads-script.sh`. The `sh` isn’t required, but using that extension tells us that it’s a shell script.
+We’re going to create a new file to put this command in. We’ll call it `bad-reads-script.sh`. The `sh` isn’t required, but using that extension tells us it’s a shell script.
+
+    $ cd /scratch/im21/[your_userid]/data
+
 
     $ vim bad-reads-script.sh
     
 
-Bad reads have a lot of N’s, so we’re going to look for `NNNNNNNNNN` with `grep`. We want the whole FASTQ record, so we’re also going to get the one line above the sequence and the two lines below. We also want to look in all the files that end with `.fastq`, so we’re going to use the `*` wildcard.
+Bad reads have a lot of N’s, so we’re going to look for `NNNNNNNNNN` with `grep`. We want the whole FASTQ record, so we will also get the one line above the sequence and the two lines below. We also want to look in all the files that end with `.fastq`, so we will use the `*` wildcard.
 
     grep -B1 -A2 -h NNNNNNNNNN *.fastq | grep -v '^--' > scripted_bad_reads.txt
     
@@ -130,9 +133,9 @@ Bad reads have a lot of N’s, so we’re going to look for `NNNNNNNNNN` with `g
 > Custom `grep` control
 > ---------------------
 > 
-> We introduced the `-v` option previously, now we are using `-h` to “Suppress the prefixing of file names on output” according to the documentation shown by `man grep`.
+> We introduced the `-v` option previously, but now we are using `-h` to “Suppress the prefixing of file names on output” according to the documentation shown by `man grep`.
 
-Type your `grep` command into the file and save it as before. Be careful that you did not add the `$` at the beginning of the line.
+Type your `grep` command into the file and save it as before. Be careful not to add the `$` at the beginning of the line.
 
 Now comes the neat part. We can run this script. Type:
 
@@ -178,7 +181,7 @@ Now we see that it says `-rwxr-xr-x`. The `x`’s that are there now tell us we 
     $ ./bad-reads-script.sh
     
 
-The script should run the same way as before, but now we’ve created our very own computer program!
+The script should run like before, but now we’ve created our computer program!
 
 
 
