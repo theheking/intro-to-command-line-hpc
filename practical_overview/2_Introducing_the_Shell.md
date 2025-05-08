@@ -111,7 +111,7 @@ On the NCI GADI HPC, you will have three locations:
     - Small space, keep scripts or other small files here.
     
 2. Scratch - where to keep large files 
-    - Your scratch is `/scratch/im21/[your_userid]//`
+    - Your scratch is `/scratch/im21/[your_userid]/`
     - Large space, regularly cleaned of old files (files that are not accessed for more than 100 days will be moved to the quarantine area), and 14 days later they will be deleted.
     - Suitable for data that is actively used by any applications.
 
