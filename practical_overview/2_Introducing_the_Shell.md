@@ -34,7 +34,7 @@ Introducing the Shell
 What is a shell and why should I care?
 --------------------------------------
 
-A _shell_ is a computer program that presents a command line interface which allows you to control your computer using commands entered with a keyboard instead of controlling graphical user interfaces (GUIs) with a mouse/keyboard/touchscreen combination.
+A _shell_ is a computer program that presents a command line interface, which allows you to control your computer using commands entered with a keyboard instead of controlling graphical user interfaces (GUIS) with a mouse/keyboard/touchscreen combination.
 
 There are many reasons to learn about the shell:
 
@@ -111,7 +111,7 @@ On the NCI GADI HPC, you will have three locations:
     - Small space, keep scripts or other small files here.
     
 2. Scratch - where to keep large files 
-    - Your scratch is `/scratch/[proj_id]/[your_userid]//`
+    - Your scratch is `/scratch/im21/[your_userid]//`
     - Large space, regularly cleaned of old files (files that are not accessed for more than 100 days will be moved to the quarantine area), and 14 days later they will be deleted.
     - Suitable for data that is actively used by any applications.
 
@@ -176,7 +176,7 @@ Here we are using the -p option for mkdir. This option allows mkdir to create th
 It will take about 5 minutes to download the files.
 **NB. Please make sure you are in your scratch directory **
 
-    $   mkdir -p /scratch/[proj_id]/[your_userid]/data/
+    $   mkdir -p /scratch/im21/[your_userid]/data/
     $   cd data
 
     $   wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
