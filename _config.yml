@@ -22,14 +22,14 @@ author: Helen King
 navbar-links:
   Key Information: "key_info"
   Practical:
-    - 1) Setting Up on the Wolfpack: "practical_overview/1_SettingUpOnWolfpack"
+    - 1) Setting Up on the NCI GADI: "practical_overview/1_SettingUpOnNCIGADI"
     - 2) Introducing the Shell: "practical_overview/2_Introducing_the_Shell"
     - 3) Navigating Files and Directories: "practical_overview/3_Navigating_Files_And_Directories"
     - 4) Writing Scripts and Working with Data: "practical_overview/4_Working_Files_Directories"
     - 5) Redirection: "practical_overview/5_Redirection"
     - 6) Using the Text Editor vim: "practical_overview/6_Using_text_editor_vim"
     - 7A) Writing Scripts and Working with Data: "practical_overview/7A_Writing_Scripts_workingwithdata"
-    - 7B) Differences between Wolfpack and other HPCs: "practical_overview/7B_Different_HPC"
+    - 7B) Differences between NCI GADI and other HPCs: "practical_overview/7B_Different_HPC_NCI"
     - 8) Running Commands Downloading Data: "practical_overview/8_Running_Commands_Downloading_Data"
     - 9) Understanding FASTQ File: "practical_overview/9_Understanding_FASTQ_File"
     - 10) Project Organisation: "practical_overview/10_Project_Organisation"
