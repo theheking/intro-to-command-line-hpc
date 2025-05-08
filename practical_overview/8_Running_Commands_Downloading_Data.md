@@ -47,23 +47,25 @@ Starting with data
 
 
 **Recap** 
-## What is the difference between single and paired end reads?
-With paired-end sequencing, both ends of the fragment are sequenced. With single-end sequencing, only one end is of a fragment is sequenced. If the data is paired-end, you have two files for each sample.
+## What is the difference between single and paired-end reads?
+With paired-end sequencing, both ends of the fragment are sequenced. With single-end sequencing, only one end of a fragment is sequenced. If the data is paired-end, you have two files for each sample.
 
 To download the data, please:
 
-1) request an interactive session using qsub 
+1) Request an interactive session using qsub 
 
 2) Use `mkdir` to create a folder for your input fasta file e.g. **data**
-You can use the `-p` option for `mkdir`. This option allows `mkdir` to create the new directory, even if one of the parent directories does not already exist. It also supresses errors if the directory already exists, without overwriting that directory.
+You can use the `-p` option for `mkdir`. This option allows `mkdir` to create the new directory, even if one of the parent directories does not already exist. It also suppresses errors if the directory already exists, without overwriting that directory.
 
 3) Download the dataset below to your local scratch 
 
-    $   mkdir -p /scratch/im21/[your_userid]/data/
-    $   cd data
 
-    $   wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
-    $   wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_2.fastq.gz
+        $   mkdir -p /scratch/im21/[your_userid]/fastqc_data/
+        $   cd data
+
+
+        $   wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
+        $   wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_2.fastq.gz
 
 
 
@@ -86,11 +88,11 @@ We can view the first complete read in one of the files our dataset by using `he
     $ zcat SRR306844chr1_chr3.fastq.gz | head -n 4
     
 
-Line 4 shows the quality for each nucleotide in the read. Quality is interpreted as the probability of an incorrect base call (e.g. 1 in 10) or, equivalently, the base call accuracy (e.g. 90%). To make it possible to line up each individual nucleotide with its quality score, the numerical score is converted into a code where each individual character represents the numerical quality score for an individual nucleotide. For example, in the line above, the quality score line is:
+Line 4 shows the quality for each nucleotide in the read. Quality is interpreted as the probability of an incorrect base call (e.g. 1 in 10) or, equivalently, the base call accuracy (e.g. 90%). To make it possible to line up each nucleotide with its quality score, the numerical score is converted into a code where each character represents the numerical quality score for an individual nucleotide. For example, in the line above, the quality score line is:
 
     !69699><;;:8=+:::::987765979858859775775883796699+48789599878592274362843111    
 
-The numerical value assigned to each of these characters depends on the sequencing platform that generated the reads. The sequencing machine used to generate our data uses the standard Sanger quality PHRED score encoding, using Illumina version 1.8 onwards. Each character is assigned a quality score between 0 and 41 as shown in the chart below.
+The numerical value assigned to each character depends on the sequencing platform that generated the reads. The sequencing machine to generate our data uses the standard Sanger quality PHRED score encoding, using Illumina version 1.8 onwards. Each character is assigned a quality score between 0 and 41 as shown in the chart below.
 
     Quality encoding: !"#$%&'()*+,-./0123456789:;<=>@ABCDEFGHI
                        |        |         |        |       |
@@ -106,13 +108,13 @@ Looking back at our read:
     +
     !69699><;;:8=+:::::987765979858859775775883796699+48789599878592274362843111
 
-we can now see that there is a range of quality scores, but that the end of the sequence is very poor (`!` = a quality score of 1).
+We can now see that there is a range of quality scores, but that the end of the sequence is very poor (`!` = a quality score of 1).
 
 > Exercise
 > --------
 > 
-> What is the last read in your file? Is this read of high quality, explain?
-> Hint use command: tail
+> What is the last read in your file? Do you know if this read of high quality, explain?
+> Hint Use the command: tail
 > 
 
 
@@ -121,7 +123,7 @@ we can now see that there is a range of quality scores, but that the end of the 
 Loading a new function
 ------------------------
 
-Try and run fastqc to see if it is available, if not we will "load" into your local path. 
+Try to run fastqc to see if it is available, if not, we will "load" it into your local path. 
    
     $ fastqc
 
@@ -293,9 +295,9 @@ Here, we see positions within the read in which the boxes span a much wider rang
 Running FastQC
 --------------
 
-We will now assess the quality of the reads that we downloaded. First, make sure you are still in the `data` directory
+We will now assess the quality of the reads that we downloaded. First, make sure you are still in the `fastqc_data` directory
 
-    $ cd /scratch/im21/[your_userid]/data/
+    $ cd /scratch/im21/[your_userid]/fastqc_data/
     
 
 > Exercise
@@ -322,7 +324,6 @@ The FastQC program has created several new files within our `/data/` directory.
 
     $ ls
     
-
 For each input FASTQ file, FastQC has created a `.zip` file and a
 
 `.html` file. The `.zip` file extension indicates that this is actually a compressed set of multiple output files. We will be working with these output files soon. The `.html` file is a stable webpage displaying the summary report for each of our samples.
@@ -349,24 +350,25 @@ In batch mode, instead of interactive mode, you have to load the environment wit
         #$ -pe smp 2
         #$ -cwd
         
-        #making sure bashprofile is loaded -this depends on whether this is in your /home/user/ folder
-        #. ~/.bash_profile
-        #loading module path for setting up environment within qsub job
-        export MODULEPATH=/share/ClusterShare/Modules/modulefiles/contrib/centos7.8:$MODULEPATH
-        #this is the module i need to run
-        module load phuluu/fastqc/0.11.9
-        
+        #load the module 
+        module load fastqc
+
+        #check the script run successfully
         echo "check my script"
+
+        #cd into the locations 
+        cd /scratch/im21/[your_userid]/fastqc_data/
         
+        #fastqc 
         fastqc *.fastq*
 
 
 Viewing the FastQC results
 --------------------------
 
-If we were working on our local computers, we would be able to look at each of these HTML files by opening them in a web browser. However, to look at a summary version of the Fastqc html files- we need to create a summary file.
+If we were working on our local computers, we could look at each of these HTML files by opening them in a web browser. However, to look at a summary version of the Fastqc html files- we need to create a summary file.
 
-These files are currently sitting on Wolfpack, where our local computer cannot see them. And, since we are only logging into the Wolfpack via the command line - it does not have any web browser setup to display these files either.
+These files are currently on NCI GADI, where our local computer cannot see them. And, since we are only logging into the NCI GADI via the command line - it does not have any web browser setup to display these files either.
 
 So the easiest way to look at these webpage summary reports will be to transfer them to our local computers (i.e. your laptop).
 
@@ -380,7 +382,7 @@ First we will make a new directory on our computer to store the HTML files we ar
 Now we can transfer our HTML files to our local computer.
 
 1) Check if you have a Mac/Linux operating system or Windows operating system.
-2) Open a new terminal/putty window where you are NOT logged into Wolfpack.
+2) Open a new terminal/putty window where you are NOT logged into NCI GADI.
 
 
 **For a Mac/Linux OS:**
@@ -391,12 +393,12 @@ Now we can transfer our HTML files to our local computer.
 **For a Windows OS:**
  
 
-3) Navigate into a known location with the equivalent command as `cd` which is `pushd` or `popd`
+3) Navigate to a known location with the equivalent command as `cd`, which is `pushd` or `popd`
 
   
 4) Using `scp` to move some information from scratch to your local computer.
 
-    $ scp [userID]@dice01.garvan.unsw.edu.au:"[your_scratch_directory]/data_fastqc/*.html" .
+    $ scp [userID]@gadi.nci.org.au:"/scratch/im21/[your_userid]/data_fastqc/*.html" .
     
     
  Understanding the Phred Quality Score
@@ -459,12 +461,12 @@ Other notes – optional
 > 
 > Although we have used a particular quality encoding system to demonstrate interpretation of read quality, different sequencing machines use different encoding systems. This means that, depending on which sequencer you use to generate your data, a `#` may not be an indicator of a poor quality base call.
 > 
-> This mainly relates to older Solexa/Illumina data, but it is essential that you know which sequencing platform was used to generate your data, so that you can tell your quality control program which encoding to use. If you choose the wrong encoding, you run the risk of throwing away good reads or (even worse) not throwing away bad reads!
+> This mainly relates to older Solexa/Illumina data, but you must know which sequencing platform was used to generate your data, so that you can tell your quality control program which encoding to use. If you choose the wrong encoding, you run the risk of throwing away good reads or (even worse) not throwing away bad reads!
 
 > Same symbols, different meanings
 > --------------------------------
 > 
-> Here we see `>` being used as a shell prompt, whereas `>` is also used to redirect output. Similarly, `$` is used as a shell prompt, but, as we saw earlier, it is also used to ask the shell to get the value of a variable.
+> Here we see `>` as a shell prompt, whereas `>` is also used to redirect output. Similarly, `$` is used as a shell prompt, but, as we saw earlier, it is also used to ask the shell to get the value of a variable.
 > 
 > If the _shell_ prints `>` or `$` then it expects you to type something, and the symbol is a prompt.
 > 
