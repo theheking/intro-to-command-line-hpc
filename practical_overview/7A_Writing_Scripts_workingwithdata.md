@@ -1,9 +1,9 @@
 ---
 layout: page
-title: 7 - Submitting Jobs to the Wolfpack
+title: 7 - Submitting Jobs to the NCI GADI
 ---
 
-Submitting Jobs to the Wolfpack 
+Submitting Jobs to the NCI GADI 
 ================================
 
 > Overview
@@ -18,9 +18,9 @@ Submitting Jobs to the Wolfpack
 
 > **Objectives**
 > 
->  *   Use `qrsh` to run a job interactively.
+>  *   Use `qsub -I` to run a job interactively.
 >  
->   *   Use `qsub` to submit a batch job
+>  *   Use `qsub` to submit a batch job
 >     
 > *   Use the `bash` command to execute a shell script.
 >     
@@ -29,49 +29,46 @@ Submitting Jobs to the Wolfpack
 
 
 
-Wolfpack - How to start an interactive job
+NCI GADI - How to start an interactive job
 -----------------------------------------
-For a more in depth understanding of the Wolfpack please navigate through the intranet for more helpful information. Different clusters use different tools to manage resources and schedule jobs. Wolfpack uses Sun Grid Engine (SGE) to control access to compute nodes. The implementation of SGE is custom so Googling may or may not provide useful answers. If you run the command below for information specific to Wolfpack-specific SGEL
+For a more in-depth understanding of the NCI GADI, please navigate through the intranet for more helpful information. Different clusters use different tools to manage resources and schedule jobs. NCI GADI uses OpenPBS to control access to compute nodes. The implementation of OpenPBS is custom so Googling may or may not provide useful answers. 
 
     man qsub
 
 
-We will not be going into a deep dive of high-performance computers. In essence, compute nodes are just high-performance computers. Made up of multiple fast CPUs (computational processing units), extra RAM (random access memory) and you can request whatever your analysis requires.
+We will not be going into a deep dive into high-performance computers. In essence, compute nodes are just high-performance computers. Made up of multiple fast CPUs (computational processing units), extra RAM (random access memory) and you can request whatever your analysis requires.
 
-The head node is not particularly powerful, and is shared by all logged-in users. Never run computational intense jobs there!!
+The login node is not particularly powerful and is shared by all logged-in users. Never run computationally intensive jobs there!!
 
-The "polite" thing to do is to request an interactive node, or submit a job. For small jobs that you are troubleshooting, form an interactive session. An interactive job or interactive session is a session on a compute node with the required physical resources for the period of time requested. 
+The "polite" thing to do is to request an interactive node, or submit a job. For debugging code before "submitting a job", form an interactive session. An interactive job is a session on a compute node with the required physical resources for the period of time requested.  There are different nodes with different hardware, e.g. different types of CPUs, amount of memory and GPUs. 
 
 
-
-To request an interactive job, use the function `qrsh`. Default sessions will have 1 CPU core, 1GB and 1 hour.
+To request an interactive job, use the function `qsub -I`. Default sessions will have 1 CPU core, 1GB and 1 hour.
 
 ![QSUB](../assets/img/interactive.png)
 
-For example, the following two commands. The first provides a default session, the second provides a session with two CPU cores and 8GB memory. You can tell when an interactive job has started when you see the name of the node from dice01 to delta-3-2 to the name of the server your job is running on. 
+For example, the following two commands. The first provides a default session, the second provides a session of 100GB of RAM memory shared across 12 CPUs and 50GB of temporary local disk storage used for intermediate files. You can tell when an interactive job has started when you see the node's name, from gadi-login-09 to gadi-cpu-clx-1547, and the name of the server your job is running on. 
 
-
-    $ [helkin@dice02]$ qrsh
-
-
-    $ [helkin@dice01]$ qrsh -l h_data=4G,h_vmem=8G -pe smp 2 
-    $ [helkin@delta-3-2 ~]$
+    [hk1145@gadi-login-09 hk1145]$ qsub -I -q normal -P im21 -l walltime=00:05:00,ncpus=12,ngpus=0,mem=100GB,jobfs=50GB,storage=gdata/im21
+    qsub: waiting for job 140645703.gadi-pbs to start
+    qsub: job 140645703.gadi-pbs ready
+    [hk1145@gadi-cpu-clx-1547 ~]$
 
     
 To see what is being run by you:
 
      $ qstat
 
-Jobs are constrained by the resources that are requested. In the previous example the second job - running on delta-3-2 - would be terminated after 48 hours or if a command within the session consumed more than 8GB memory.
+Jobs are constrained by the resources that are requested. In the previous example, it is terminated after 5 minutes or if a command within the session consumes more than 100GB of memory.
 
 
-The job (and therefore the session) can also be terminated by running the command below.
+The job (and the session) can also be terminated by running the command below.
   
      $ qdel
 
 
 
-Wolfpack - How to start a batch job
+NCI GADI - How to start a batch job
 -------------------------------------------
 A batch job is a script that runs autonomously on a compute node. The script must contain the necessary sequence of commands to complete a task independently of any input from the user. This section contains information about how to create and submit a batch job on Wolfpack.
 
@@ -126,7 +123,7 @@ In different contexts, the terms can have varying meanings. However, if we focus
 > A *node* refers to a unit within a computer cluster, typically a computer. It usually has one or two CPUs, each with multiple cores. The cores on the same CPU share memory, but memory is generally not shared between CPUs.
 > A *CPU (computational processing unit)* is a resource provided by a node. In this context, it can refer to a core or a hardware thread based on the SGE configuration.
 > A core is the part of a processor responsible for computations. A processor can have multiple cores.
-> A login node is the destination for SSH access. In the case of the Wolfpack, there are two login nodes: dice01 and dice02.
+> A login node is the destination for SSH access. In the case of the NCI GADI, there are two login nodes: dice01 and dice02.
 > A compute node provides resources like processors, random access memory (RAM), and disk space.
 > In the context of SGE, a processor is referred to as a socket, which is the physical slot on the motherboard hosting the processor. A single core can have one or two hardware threads. Hardware multi-threading allows the operating system to perceive a doubled number of cores while only doubling certain core components, typically related to memory and I/O rather than computation. Hardware multi-threading is often disabled in HPC (high-performance computing) environments.
 > A *job* consists of one or more sequential steps, and each step can have one or more parallel tasks. A task represents an instance of a running program, which may include subprocesses or software threads.
@@ -154,7 +151,7 @@ Check the core and RAM usage (all somewhat unreliable) using EG:
     du -sh "$TMPDIR"
     
     
-Transferring Data Between your Local Machine and Wolfpack (there and back again)
+Transferring Data Between your Local Machine and NCI GADI (there and back again)
 ----------------------------------------------------------------------
 
 ### Uploading Data to your Virtual Machine with scp
@@ -166,13 +163,13 @@ Transferring Data Between your Local Machine and Wolfpack (there and back again)
 
 Note that you are always running `scp` locally, but that _doesn’t_ mean that you can only move files from your local computer. In order to move a file from your local computer to an AWS instance, the command would look like this:
 
-    $ scp <local file> <wolfpack login details>:"location"
+    $ scp <local file> <NCI GADI login details>:"location"
     
 e.g *** On my Mac computer**** `scp README.md username@dice01.garvan.unsw.edu.au:"somewhere/nice/"`
     
 To move it back to your local computer, you re-order the `to` and `from` fields:
 
-    $ scp <wolfpack login details> <local file>:"location"
+    $ scp <NCI GADI login details> <local file>:"location"
 
 *** On my Mac computer *** `scp username@dice01.garvan.unsw.edu.au:"somewhere/nice/README.md"` /somewhere/okay/
 
