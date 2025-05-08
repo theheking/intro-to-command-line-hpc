@@ -30,14 +30,14 @@ Redirection
 Searching files
 ---------------
 
-We discussed in a previous episode how to search within a file using `less`. We can also search within files without even opening them, using `grep`. `grep` is a command-line utility for searching plain-text files for lines matching a specific set of characters (sometimes called a string) or a particular pattern (which can be specified using something called regular expressions). We’re not going to work with regular expressions in this lesson, and are instead going to specify the strings we are searching for. Let’s give it a try!
+In a past sections, we discussed how to search within a file using `less`. We can also search within files without even opening them, using `grep`. `grep` is a command-line utility for searching plain-text files for lines matching a specific set of characters (sometimes called a string) or a particular pattern (which can be specified using something called regular expressions). We’re not going to work with regular expressions in this lesson, and are instead going to specify the strings we are searching for. Let’s give it a try!
 
 > Nucleotide abbreviations
 > ------------------------
 > 
-> The four nucleotides that appear in DNA are abbreviated `A`, `C`, `T` and `G`. Unknown nucleotides are represented with the letter `N`. An `N` appearing in a sequencing file represents a position where the sequencing machine was not able to confidently determine the nucleotide in that position. You can think of an `N` as being aNy nucleotide at that position in the DNA sequence.
+> The four nucleotides that appear in DNA are abbreviated `A`, `C`, `T` and `G`. Unknown nucleotides are represented with the letter `N`. An `N` appearing in a sequencing file represents a position where the sequencing machine was not able to confidently determine the nucleotide in that position. You can think of an `N` as being any nucleotide at that position in the DNA sequence.
 
-We’ll search for strings inside of our fastq files. Let’s first make sure we are in the correct directory:
+We’ll search for strings inside our fastq files. Let’s first make sure we are in the correct directory:
 
     $ cd /scratch/im21/[your_userid]/data
     
@@ -47,9 +47,9 @@ Suppose we want to see how many reads in our file have really bad segments conta
 
 ## Note on FASTA Files
 ![Permissions breakdown](../assets/img/illumina.png)
-For each cluster that passes filter, a single sequence is written to the corresponding sample’s R1 FASTQ file, and, for a paired-end run, a single sequence is also written to the sample’s R2 FASTQ file. Each entry in a FASTQ files consists of 4 lines:
+For each cluster that passes filter, a single sequence is written to the corresponding sample’s R1 FASTQ file, and, for a paired-end run, a single sequence is also written to the sample’s R2 FASTQ file. Each entry in a FASTQ file consists of 4 lines:
 
-> - A sequence identifier with information about the sequencing run and the cluster. The exact contents of this line vary by based on sequencer used.
+> - A sequence identifier with information about the sequencing run and the cluster. The exact contents of this line vary based on the sequencer used.
 > - The sequence (the base calls; A, C, T, G and N).
 > - A separator, which is simply a plus (+) sign.
 > - The base call quality scores. 
@@ -57,14 +57,14 @@ For each cluster that passes filter, a single sequence is written to the corresp
 
 > Determining quality
 > -------------------
-> In this lesson, we’re going to be manually searching for strings of `N`s within our sequence results to illustrate some principles of file searching. It can be really useful to do this type of searching to get a feel for the quality of your sequencing results, however, in your research you will most likely use a bioinformatics tool that has a built-in program for filtering out low-quality reads. 
+> In this lesson, we will be manually searching for strings of `N`s within our sequence results to illustrate some principles of file searching. It can be really useful to do this searching to get a feel for the quality of your sequencing results, however, in your research you will most likely use a bioinformatics tool that has a built-in program for filtering out low-quality reads. 
 
 Let’s search for the string NNNNNNNNNN in the SRR2589044_1 file:
 
     $ grep NNNNNNNNNN SRR2589044_1.fastq
     
 
-This command returns a lot of output to the terminal. Every single line in the SRR098026 file that contains at least 10 consecutive Ns is printed to the terminal, regardless of how long or short the file is. We may be interested not only in the actual sequence which contains this string, but in the name (or identifier) of that sequence. We discussed in a previous lesson that the identifier line immediately precedes the nucleotide sequence for each read in a FASTQ file. We may also want to inspect the quality scores associated with each of these reads. To get all of this information, we will return the line immediately before each match and the two lines immediately after each match.
+This command returns a lot of output to the terminal. Every single line in the SRR098026 file that contains at least 10 consecutive Ns is printed to the terminal, regardless of how long or short the file is. We may be interested not only in the actual sequence which contains this string, but also in the name (or identifier) of that sequence. In a previous section, we discussed that the identifier line immediately precedes the nucleotide sequence for each read in a FASTQ file. We may also want to inspect the quality scores associated with these reads. To get all this information, we will return the line immediately before each match and the two lines immediately after each match.
 
 We can use the `-B` argument for grep to return a specific number of lines before each match. The `-A` argument returns a specific number of lines after each matching line. Here we want the line _before_ and the two lines _after_ each matching line, so we add `-B1 -A2` to our grep command:
 
@@ -83,7 +83,7 @@ We can use the `-B` argument for grep to return a specific number of lines befor
 Redirecting output
 ------------------
 
-`grep` allowed us to identify sequences in our FASTQ files that match a particular pattern. All of these sequences were printed to our terminal screen, but in order to work with these sequences and perform other operations on them, we will need to capture that output in some way.
+`grep` allowed us to identify sequences in our FASTQ files that match a particular pattern. All of these sequences were printed to our terminal screen, but to work with these sequences and perform other operations on them, we will need to capture that output in some way.
 
 We can do this with something called “redirection”. The idea is that we are taking what would ordinarily be printed to the terminal screen and redirecting it to another location. In our case, we want to print this information to a file so that we can look at it later and use other commands to analyze this data.
 
