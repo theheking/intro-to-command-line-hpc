@@ -69,29 +69,46 @@ Change the **username**.
 
 **NOTE:** For security reasons, you will not see anything appear on-screen when typing your password. Trust that it is registering and hit **ENTER** when complete.
 
-**Logging on from outside the Garvan.**
- Remember that to log on from outside Garvan, you will need to connect to the virtual private network (VPN).
- 
+
+## NCI GADI Garvan help pages
+Tim Ho and other members of the DSP Pillar team have assembled the NCI section of the [Garvan Intranet](https://intranet.gimr.garvan.org.au/spaces/DSP/pages/419005260/NCI+Gadi), which is very helpful. For example, this section regarding the login node:
+
+The login node is a single point of access that is primarily designed to allow users to:
+
+1. Log into the system
+2. Set up software
+3. Configure pipelines / compute jobs
+4. Run and monitor compute jobs
+5. Run quick tests
+6. The login nodes should never be used for running real compute jobs.
+
+To encourage fair use of the shared resources and ensure system stability, there are shell limits enforced for processes on the login nodes:
+
+- 30 minutes cumulated CPU time (note: not wall time)
+- 4 GiB memory usage
+
+When a process uses more than the above resources, that process will be automatically terminated. 
+
+**The shell limits apply also to data transfer and data checksum operations, which means that long data transfers will be terminated if the transfer process (e.g. rsync, rclone, scp, md5sum, etc.) exceeds the limits.**
+
 
  
 ### Logging off
 
-To log off the server, simply close the Putty window or type:
+To log off the server, simply close the window or type:
 
 ```
 $ exit
 ```
  
-### What happens if the server fails?
+### What happens if the internet connection fails?
 Whenever working with servers, there is always the risk that something will go wrong. Fear not! We have contingencies (and backup data) in place if something goes wrong. 
 
 
 
 
 
-
-
-**Some Time Saving Shortcuts**
+** Time Saving Shortcuts**
 If you have any extra time here are a couple of things to do to make your login and navigating around your user login easier. 
 
 1) [Login without using ssh without a password](https://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/)
