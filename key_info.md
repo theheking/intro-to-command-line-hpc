@@ -8,18 +8,17 @@ Welcome All!
 
 
 ### Dates
-- Day 1: 1pm -  4:30pm Wednesday 15th May
-- Day 2: 11:30am - 4:30pm Thursday 16th May
+- Day 1: Wednesday 9 July, 1.30pm–5pm 
+- Day 2: Friday 11 July, 10am–4pm
 
 
 ## Before the course, please make sure you have:
  - Charger 
  - Positive attitude!
- - A login to the wolfpack - this will have been confirmed by the amazing team in IT!
- 
+ - Both (a) a registered username to the NCI GADI and (b) joined the associated project as described in the follow-up email
  
 ## At the end of the workshop, you will be able to:
-- Login to Garvan's very own high performance computer (HPC) 
+- Login to NCI GADI high performance computer (HPC) 
 - Confidently navigate around the HPC using the command line 
 - Be able to submit a job
 
