@@ -39,7 +39,7 @@ We discussed in a previous episode how to search within a file using `less`. We 
 
 We’ll search for strings inside of our fastq files. Let’s first make sure we are in the correct directory:
 
-    $ cd [scratch_loc]/data
+    $ cd /scratch/im21/[your_userid]/data
     
 
 Suppose we want to see how many reads in our file have really bad segments containing 10 consecutive unknown nucleotides (Ns).
