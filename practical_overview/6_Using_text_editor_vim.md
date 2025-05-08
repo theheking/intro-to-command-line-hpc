@@ -184,6 +184,7 @@ Now we see that it says `-rwxr-xr-x`. The `x`’s that are there now tell us we 
 The script should run like before, but now we’ve created our computer program!
 
 
+For more practice, you can always run *vimtutor*, which develops.
 
 > Key Points
 > ----------
