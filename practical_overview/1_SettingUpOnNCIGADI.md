@@ -55,13 +55,12 @@ It is not possible to write this website with clear instructions for all combina
 You log on to the server using your **username** and a program that lets you connect via a "secure shell (SSH)".  If you use a Mac, you simply need to open the **Terminal**. Terminal is generally found in the "Other" folder in Launchpad, or just search for "Terminal" with Spotlight. Once open, **Keep in Dock** for handy future access. If using Windows, either open PowerShell or PuTTy as mentioned previously.
 
 ![QSUB](../assets/img/login.png)
-Above is a schematic that displays the setup of the Wolfpack. We will explain complicated part of the diagram concerning volumes and compute nodes in future sessions. What we are doing is the first pink arrow, log in into the **login** nodes .
-
+Above is a schematic that displays the setup of the Wolfpack. We will explain complicated part of the diagram concerning volumes and compute nodes in future sessions. What we are doing is the first pink arrow, log in into the **login** nodes. Gadi has 10 login nodes that serve users in a round-robin fashion, which will be randomly allocated when you `ssh` as below.
 
 To log on from Mac OSX (or a UNIX machine), open the Terminal and type at the prompt (replacing username with your own **username** ):
 
 ```
-$ ssh username@dice01.garvan.unsw.edu.au
+$ ssh username@gadi.nci.org.au
 ```
 
 Change the **username**. 
@@ -84,23 +83,12 @@ $ exit
 ```
  
 ### What happens if the server fails?
-Whenever working with servers, there is always the risk that something will go wrong. Fear not! We have contingencies (and back up data) in place in case something goes wrong. 
+Whenever working with servers, there is always the risk that something will go wrong. Fear not! We have contingencies (and backup data) in place if something goes wrong. 
 
 
 
 
 
-
-
-
-**Saving your session and sanity with screen.**
- Whenever doing anything that will take a while, it is recommended that you use a utility called "screen", which will maintain an active session even if you log out or your connection to the server is dropped. You can read more about screen in the **Using screen (Advanced)** section after UNIX basics. The core elements are:
-
-1. To start a new screen called "myscreen": screen -S myname
-
-2. To "detach" the screen so you can re-attach it later and pick up where you left off: ctrl+a » d
-
-3. To re-attached the screen "myname" after logging back on: screen -dr myname
 
 
 **Some Time Saving Shortcuts**
@@ -109,6 +97,11 @@ If you have any extra time here are a couple of things to do to make your login 
 1) [Login without using ssh without a password](https://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/)
 2) [Form a symbolic link for your scratch location. This means that instead of having to write out the entire location, you can have a fake folder ](https://www.faqforge.com/linux/create-shortcuts-in-linux-symbolic-links/)
 3) [Edit your bashrc file (this is more complicated and not recommended until you are comfortable with UNIX)](https://docs.rc.fas.harvard.edu/kb/editing-your-bashrc/)
+4) If you want to make your script writing and submitting more seamless between your console and ssh. Depending on your machine, you can ssh into your machine via VSCode and submit directly. The how-to steps as follows:
+- Install the remote-ssh extension from the marketplace (https://code.visualstudio.com/docs/remote/ssh)
+- Connect to NCI-GADI through VSCode using their login
+
+
 
 
 Adapted from Handbook by RJ Edwards and John Reeves help-page.
