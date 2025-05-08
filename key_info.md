@@ -13,9 +13,12 @@ Welcome All!
 
 
 ## Before the course, please make sure you have:
- - Charger 
- - Positive attitude!
- - Both (a) a registered username to the NCI GADI through this [step-by-step guide](https://opus.nci.org.au/spaces/Help/pages/12583153/How+to+create+an+NCI+user+account) and (b) join the associated project as [described](https://opus.nci.org.au/spaces/Help/pages/13141289/How+to+connect+to+a+project) (more details to come)!
+1. Charger
+2. Positive attitude!
+3. Both (a) a registered username to the NCI GADI through this [step-by-step guide](https://opus.nci.org.au/spaces/Help/pages/12583153/How+to+create+an+NCI+user+account) and (b) join the associated project as [described](https://opus.nci.org.au/spaces/Help/pages/13141289/How+to+connect+to+a+project) (more details to come)!
+4. Attempt to install Visual Studio Code - an intuitive program where you can write and run code. Instructions for [MacOS](https://code.visualstudio.com/docs/setup/mac) and [Windows](https://code.visualstudio.com/docs/setup/windows)
+
+   **If any of these fail let us know at the beginning of the workshop and we are happy to help**
  
 ## At the end of the workshop, you will be able to:
 - Login to NCI GADI high performance computer (HPC) 
