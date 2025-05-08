@@ -48,7 +48,7 @@ What if we want to move back up and out of this directory and to our top-level d
     -bash: cd: shell_data: No such file or directory
     
 
-Your computer looked for a directory or file called `shell_data` within the directory you were already in. It didn’t know you wanted to look at a directory level above the one you were located in.
+Your computer looked for a directory or file called `shell_data` within the directory you were already in. It didn’t know you wanted to look at a directory level above the one you were in.
 
 We have a special command to tell the computer to move us back or up one directory level.
 
@@ -126,7 +126,7 @@ The `cd` command takes an argument, which is a directory name. Directories can b
 
 Now enter the following command:
 
-    $ cd /scratch/im21/[your_userid]//data
+    $ cd /scratch/im21/[your_userid]/data
     
 
 These two commands have the same effect, taking us to the `data` directory. The first uses the absolute path, giving the full address from the home directory. The second uses a relative path, giving only the address from the working directory. A full path always starts with a `/`. A relative path does not.
