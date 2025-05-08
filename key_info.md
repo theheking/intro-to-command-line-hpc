@@ -26,9 +26,10 @@ Welcome All!
 - Be able to submit a job
 
 
-You will also need to sign up for DICE, our internal HPC, using the following instructions here: 
 
-https://intranet.gimr.garvan.org.au/display/DSP/Apply+for+access+to+the+on-premises+HPC+systems. 
+
+
+
 
 
 #### We acknowledge and pay respects to the Elders and Traditional Owners of the land
