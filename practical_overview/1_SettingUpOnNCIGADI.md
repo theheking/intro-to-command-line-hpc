@@ -109,6 +109,7 @@ Whenever working with servers, there is always the risk that something will go w
 
 
 ** Time Saving Shortcuts**
+
 If you have any extra time here are a couple of things to do to make your login and navigating around your user login easier. 
 
 1) [Login without using ssh without a password](https://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/)
