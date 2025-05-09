@@ -114,12 +114,16 @@ Whenever working with servers, there is always the risk that something will go w
 If you have extra time, here are some things to do to make your login and navigating around your user login easier. 
 
 1) [Login without using SSH without a password](https://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/)
+   
 2) [Form a symbolic link for your scratch location. This means that instead of having to write out the entire location, you can have a fake folder ](https://www.faqforge.com/linux/create-shortcuts-in-linux-symbolic-links/)
-3) [Edit your bashrc file (this is more complicated and not recommended until you are comfortable with UNIX)](https://docs.rc.fas.harvard.edu/kb/editing-your-bashrc/)
-4) If you want to make your script writing and submitting more seamless between your console and ssh. Depending on your machine, you can ssh into your machine via VSCode and submit directly. The how-to steps as follows:
-- Install the remote-ssh extension from the marketplace (https://code.visualstudio.com/docs/remote/ssh)
-- Connect to NCI-GADI through VSCode using their login
 
+3) [Edit your bashrc file (this is more complicated and not recommended until you are comfortable with UNIX)](https://docs.rc.fas.harvard.edu/kb/editing-your-bashrc/)
+
+4) If you want to make your script writing and submitting more seamless between your console and ssh. Depending on your machine, you can ssh into your machine via VSCode and submit directly. The how-to steps are as follows:
+    
+ - Install the remote-ssh extension from the marketplace (https://code.visualstudio.com/docs/remote/ssh)
+ - Connect to NCI-GADI through VSCode using their login
+ 
 
 
 
