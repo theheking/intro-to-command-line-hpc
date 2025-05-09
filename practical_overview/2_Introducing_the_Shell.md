@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 2 - Introducting the Shell 
+title: 2 - Introducing the Shell 
 ---
 
 Introducing the Shell
@@ -11,7 +11,7 @@ Introducing the Shell
 > 
 > **Questions**
 > 
-> *   What is a command shell and why would I use one?
+> *   What is a command shell, and why would I use one?
 >     
 > *   How can I move around on my computer?
 >     
@@ -28,50 +28,50 @@ Introducing the Shell
 >     
 > *   Access and read help files for `bash` programs and use help files to identify useful command options.
 >     
-> *   Demonstrate the use of tab completion, and explain its advantages.
+> *   Demonstrate the use of tab completion and explain its advantages.
 >     
 
-What is a shell and why should I care?
+What is a shell, and why should I care?
 --------------------------------------
 
 A _shell_ is a computer program that presents a command line interface, which allows you to control your computer using commands entered with a keyboard instead of controlling graphical user interfaces (GUIS) with a mouse/keyboard/touchscreen combination.
 
 There are many reasons to learn about the shell:
 
-*   Bioinformatics team can only be used through command line, or have more features compared to the GUI.
-*   Used for boring, repetitive tasks.
+*   Many bioinformatics tools are only accessible through the command line, or have more features available via CLI than GUI.
+*   Useful for automating repetitive tasks.
 *   Ensures error-free output.
 *   More reproducible output. 
-*   Large amount of computational power and memory space is better. 
+*   Allows access to greater computational power and memory resources.
 
 
-In this lesson you will learn how to use the command line interface to move around in your file system.
+In this lesson, you will learn how to use the command line interface to move around your file system.
 
 **What is the difference between Unix, Linux and Shell?**
-Simply, Bash is a specific shell program used to interact with the operating system. Shell refers to a broader category of command interpreters. Linux is an open-source operating system that uses a shell like Bash. Unix is a family of operating systems that share similar design principles, including the use of a shell-based command-line interface. Bash is commonly used as the default shell in Linux and Unix systems.
+Bash is a specific shell program that interacts with the operating system. Shell refers to a broader category of command interpreters. Linux is an open-source operating system that uses a shell like Bash. Unix is a family of operating systems that share similar design principles, including using a shell-based command-line interface. Bash is commonly used as the default shell in Linux and Unix systems.
 
 
 
 How to access the shell
 -----------------------
 
-On a Mac or Linux machine, you can access a shell through a program called “Terminal”, which is already available on your computer. The Terminal is a window into which we will type commands. If you’re using Windows, you’ll need to download a separate program to access the shell. More details on how to set this up can be found in the first tutorial.
+On a Mac or Linux machine, you can access a shell through a program called “Terminal”, which is already available on your computer. The Terminal is a window into which we will type commands. If you’re using Windows, you must download a separate program to access the shell. More details on how to set this up can be found in the [first tutorial](https://theheking.github.io/intro-to-command-line-hpc/practical_overview/1_SettingUpOnNCIGADI/).
 
-To save time, we are going to be working on a remote server where all the necessary data and software available. When we say a ‘remote sever’, we are talking about a computer that is not the one you are working on right now. This is NCI GADI where the login instructions are found in the first tutorial.
+To save time, we will be working on a remote server where all the necessary data and software are available. When we say a ‘remote server’, we are talking about a computer that is not the one you are working on right now. This is NCI GADI, where the login instructions are in the [first tutorial](https://theheking.github.io/intro-to-command-line-hpc/practical_overview/1_SettingUpOnNCIGADI/).
 
     ssh –o ServerAliveInterval=60 [your_userID]@gadi.nci.org.au
 
 Clear Screen
 -------------
 
-This provides a lot of information about the remote server that you’re logging into. We’re not going to use most of this information for our workshop, so you can clear your screen using the `clear` command.
+This provides a lot of information about the remote server that you’re logging into. We’re not use most of this information for our workshop, so you can clear your screen using the `clear` command.
 
 Type the word `clear` into the terminal and press the `Enter` key.
 
     $ clear
     
 
-This will scroll your screen down to give you a fresh screen and will make it easier to read. You haven’t lost any of the information on your screen. If you scroll up, you can see everything that has been output to your screen up until this point.
+This will scroll your screen down to give you a fresh screen and make it easier to read. You haven’t lost any of the information on your screen. If you scroll up, you can see everything that has been output to your screen until now.
 
 > Tip
 > ---
@@ -81,20 +81,20 @@ This will scroll your screen down to give you a fresh screen and will make it ea
 Navigating your file system
 ---------------------------
 
-The part of the operating system that manages files and directories is called the **file system**. It organizes our data into files, which hold information, and directories (also called “folders”), which hold files or other directories.
+The part of the operating system that manages files and directories is called the **file system**. It organises our data into files, which hold information, and directories (also called “folders”), which hold files or other directories.
 
 Several commands are frequently used to create, inspect, rename, and delete files and directories.
 
 Basic Commands - Where am I?
 ============================
 
-The dollar sign is a **prompt**, which shows us that the shell is waiting for input; your shell may use a different character as a prompt and may add information before the prompt. When typing commands, either from these lessons or from other sources, do not type the prompt, only the commands that follow it.
+The dollar sign is a **prompt**, which shows us that the shell is waiting for input; your shell may use a different character as a prompt and may add information before the prompt. When typing commands, either from these lessons or from other sources, do not type the prompt; only type the commands that follow it.
 
-Let’s find out where we are by running a command called `pwd` (which stands for “print working directory”). At any moment, our **current working directory** is our current default directory, i.e., the directory that the computer assumes we want to run commands in, unless we explicitly specify something else. Here, the computer’s response is `/home/[your_userid]`, which is the top level directory within our cloud system:
+Let’s find out where we are by running a command called `pwd` (“print working directory”). At any moment, our **current working directory** is our current default directory, i.e., the directory that the computer assumes we want to run commands in, unless we explicitly specify something else. Here, the computer’s response is `/home/[your_userid]`, which is the top-level directory within our cloud system:
 
     $ pwd
   
-Let’s look at how our file system is organized. We can see what files and subdirectories are in this directory by running `ls`, which stands for “listing”:
+Let’s look at how our file system is organised. We can see what files and subdirectories are in this directory by running `ls`, which stands for “listing”:
 
     $ ls
         
@@ -112,7 +112,7 @@ On the NCI GADI HPC, you will have three locations:
     
 2. Scratch - where to keep large files 
     - Your scratch is `/scratch/im21/[your_userid]/`
-    - Large space, regularly cleaned of old files (files that are not accessed for more than 100 days will be moved to the quarantine area), and 14 days later they will be deleted.
+    - Large space, regularly cleaned of old files (files not accessed for more than 100 days will be moved to the quarantine area), and 14 days later, they will be deleted.
     - Suitable for data that is actively used by any applications.
 
 3. Gdata share - where large communal files are kept for project datasets.
