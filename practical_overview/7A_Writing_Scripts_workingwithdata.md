@@ -31,22 +31,23 @@ Submitting Jobs to the NCI GADI
 
 NCI GADI - How to start an interactive job
 -----------------------------------------
-For a more in-depth understanding of the NCI GADI, please navigate through the intranet for more helpful information. Different clusters use different tools to manage resources and schedule jobs. NCI GADI uses OpenPBS to control access to compute nodes. The implementation of OpenPBS is custom so Googling may or may not provide useful answers. 
+For a more in-depth understanding of the NCI GADI, you can go through the intranet for more helpful information. Different clusters use different tools to manage resources and schedule jobs. NCI GADI uses OpenPBS to control access to compute nodes. The implementation of OpenPBS is custom so Googling may or may not provide useful answers. 
 
     man qsub
 
-We will not be going into a deep dive into high-performance computers. In essence, compute nodes are just high-performance computers. Made up of multiple fast CPUs (computational processing units), extra RAM (random access memory) and you can request whatever your analysis requires.
+We will not go into a deep dive on high-performance computing. In essence, compute nodes are just high-performance computers. Made up of multiple fast CPUs (computational processing units), extra RAM (random access memory), and you can request whatever your analysis requires.
 
 The login node is not particularly powerful and is shared by all logged-in users. Never run computationally intensive jobs there!!
 
-The "polite" thing to do is to request an interactive node, or submit a job. For debugging code before "submitting a job", form an interactive session. An interactive job is a session on a compute node with the required physical resources for the period requested.  There are different nodes with different hardware, e.g. different types of CPUs, amount of memory and GPUs. 
+The "polite" thing to do is to request an interactive node or submit a job. For debugging code before "submitting a job", form an interactive session. An interactive job is a session on a compute node with the required physical resources for the period requested.  There are different nodes with different hardware, e.g. different types of CPUs, amount of memory and GPUs. 
 
 
-To request an interactive job, use the function `qsub -I`. Default sessions will have 1 CPU core, 1GB and 1 hour.
+To request an interactive job, use the function `qsub -I`. Default sessions will have 512 MB RAM and ncpu=1. However, specify the directory where temporary files are stored below (`storage`).
 
-![QSUB](../assets/img/nci.png)
 
-For example, the following two commands. The first provides a default session, the second provides a session of 100GB of RAM shared across 12 CPUs and 50GB of temporary local disk storage used for intermediate files. You can tell when an interactive job has started when you see the node's name, from gadi-login-09 to gadi-cpu-clx-1547, and the name of the server your job is running on. 
+![QSUB](../assets/img/batch.png)
+
+For example,consider the following two commands. The first provides a default session, the second provides a session of 100GB of RAM shared across 12 CPUs and 50GB of temporary local disk storage used for intermediate files. You can tell when an interactive job has started when you see the node's name, from gadi-login-09 to gadi-cpu-clx-1547, and the name of the server your job is running on. 
 
     [hk1145@gadi-login-09 hk1145]$ qsub -I -q normal -P im21 -l walltime=00:05:00,ncpus=12,ngpus=0,mem=100GB,jobfs=50GB,storage=gdata/im21
     qsub: waiting for job 140645703.gadi-pbs to start
@@ -58,20 +59,20 @@ To see what is being run by you:
 
      $ qstat
 
-Jobs are constrained by the resources that are requested. In the previous example, it is terminated after 5 minutes or if a command within the session consumes more than 100GB of memory.
-
+Jobs are constrained by the resources that are requested. In the previous example, it is terminated after 5 minutes or if a command within the session consumes more than 100GB of memory. 
 
 The job (and the session) can also be terminated by running the command below.
   
-     $ qdel
+     $ qdel 
+
 
 
 
 NCI GADI - How to start a batch job
 -------------------------------------------
-A batch job is a script that runs autonomously on a compute node. The script must contain the necessary sequence of commands to complete a task independently of any input from the user. This section contains information about how to create and submit a batch job on Wolfpack.
+A batch job is a script that runs autonomously on a compute node. The script must contain the necessary sequence of commands to complete a task independently of any input from the user. This section contains information about how to create and submit a batch job on GADI.
 
-You must now edit your bad-reads-script.sh to have the same format as below.
+You must now edit your `bad-reads-script.sh` to have the same format as below.
 
     #!/bin/bash
     grep -B1 -A2 -h NNNNNNNNNN *.fastq | grep -v '^--' 
@@ -81,17 +82,17 @@ You must now edit your bad-reads-script.sh to have the same format as below.
 
 This script can now be submitted to the cluster with qsub, and it will become a job and be assigned to a queue. 
 
-    $ ls /scratch/im21/[your_userid]/bad-reads-script.sh
+    $ ls /scratch/im21/[your_userid]/data/bad-reads-script.sh
 
 As with interactive jobs, the -l (lowercase L) flag can be used to specify resource requirements for the job:
 
-    $ qsub -l ncpus=1,mem=2GB,jobfs=2GB,walltime=02:00:00,storage=gdata/im21+massdata/im21,wd -q normal -lother=mdss -P im21 /scratch/im21/[your_userid]/bad-reads-script.sh
+    $ qsub -l ncpus=1,mem=2GB,jobfs=2GB,walltime=02:00:00,storage=gdata/im21+massdata/im21,wd -q normal -lother=mdss -P im21 /scratch/im21/[your_userid]/data/bad-reads-script.sh
 
 Memory is what your computer uses to store data temporarily. This is called RAM (random access memory), which is hardware that allows the computer to efficiently perform more than one task at a time. Disk space refers to hard drive storage, while storage is where you save files permanently.
 
 The total memory, `mem`, is shared across the number of cores (`ncpus`). Depending on the queue, different hardware can have varying amounts of RAM ~8G per core, up to ~1TB. Your job will be killed if it uses too much RAM, but there is no error message or way to tell that this is the case.  
 
-Please change to the `copyq` node if you run a job requiring internet access, long software installation and access to mass data.
+Please change to the `copyq` node if you run a job requiring internet access, long software installation and access to massdata.
 
 You can also rewrite your original script to include the job requests within the script, like below:
 
@@ -109,11 +110,58 @@ You can also rewrite your original script to include the job requests within the
     
     
     echo "check my script"
+    cd /scratch/im21/[your_userid]/data/
+    grep -B1 -A2 NNNNNNNNNN SRR2589044_1.fastq
+
+
+
+### Extension task
+
+Can you (a) check what the two output files are, (b) what they contain using `head` or `cat` and (c) what is the difference between them?
+    
+    
+Transferring Data Between your Local Machine and NCI GADI (there and back again)
+----------------------------------------------------------------------
+
+### Uploading Data to your Virtual Machine with scp
+
+`scp` stands for ‘secure copy protocol’, and is a widely used UNIX tool for moving files between computers. The simplest way to use `scp` is to run it in your local terminal and use it to copy a single file:
+
+    scp <file I want to move> <where I want to move it>
+    
+
+Note that you are always running `scp` locally, but that _doesn’t_ mean that you can only move files from your local computer. To move a file from your local computer to an HPC, the command would look like this:
+
+    $ scp <local file> <NCI GADI login details>:"location"
+    
+e.g *** On my Mac computer**** `scp README.md [your_userID]@gadi.nci.org.au:"somewhere/nice/"`
+
+
+
+    
+To move it back to your local computer, you reorder the `to` and `from` fields:
+
+    $ scp <NCI GADI login details> <local file>:"location"
+
+*** On my Mac computer *** `scp [your_userID]@gadi.nci.org.au:"somewhere/nice/README.md"` /somewhere/okay/
+
+
+### Extension task
+
+1. Can you try to transfer your script to your local computer? First, you have to log out of NCI GADI.
+
+        $ scp [your_userID]@gadi.nci.org.au:"/scratch/im21/[your_userid]/data/bad-reads-script.sh" .
+
+2. Check where the file might be by searching your local computer.
+
+3. Try changing the command from `scp` to `rsync`. What is the difference?
+
+
 
 
 Vocabulary
 -----------
-The role of the SGE scheduler is to match available resources to jobs.
+The role of the OpenPBS scheduler is to match available resources to jobs.
 In different contexts, the terms can have varying meanings. However, if we focus on the context of HPC, here are the definitions:
 > A *cluster* consists of multiple compute nodes.
 > A *node* refers to a unit within a computer cluster, typically a computer. It usually has one or two CPUs, each with multiple cores. The cores on the same CPU share memory, but memory is generally not shared between CPUs.
@@ -128,52 +176,6 @@ In different contexts, the terms can have varying meanings. However, if we focus
 
 
 
-### Extension task
-Could you check the memory for each node?
-
-    qstat -F | grep 'mem\|local'
-
-
-
-Check the core and RAM usage (all somewhat unreliable) using EG:
-    
-    /usr/bin/time -v echo test program
-    #       (user time + sys time) / real time
-    qacct/qstat -j 12345
-    
-    
- Check the diskspace 
-    
-    du -sh "$TMPDIR"
-    
-    
-Transferring Data Between your Local Machine and NCI GADI (there and back again)
-----------------------------------------------------------------------
-
-### Uploading Data to your Virtual Machine with scp
-
-`scp` stands for ‘secure copy protocol’, and is a widely used UNIX tool for moving files between computers. The simplest way to use `scp` is to run it in your local terminal and use it to copy a single file:
-
-    scp <file I want to move> <where I want to move it>
-    
-
-Note that you are always running `scp` locally, but that _doesn’t_ mean that you can only move files from your local computer. In order to move a file from your local computer to an AWS instance, the command would look like this:
-
-    $ scp <local file> <NCI GADI login details>:"location"
-    
-e.g *** On my Mac computer**** `scp README.md username@dice01.garvan.unsw.edu.au:"somewhere/nice/"`
-    
-To move it back to your local computer, you re-order the `to` and `from` fields:
-
-    $ scp <NCI GADI login details> <local file>:"location"
-
-*** On my Mac computer *** `scp username@dice01.garvan.unsw.edu.au:"somewhere/nice/README.md"` /somewhere/okay/
-
-
-**Tip:** If you are looking for another (or any really) text file in your home directory to use instead, try:
-
-    $ find ~ -name *.txt
-    
 
 
 > Key Points
