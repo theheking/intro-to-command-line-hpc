@@ -20,9 +20,9 @@ Writing Files with Vim
 Writing files
 -------------
 
-We’ve been able to do a lot of work with files that already exist, but what if we want to write our own files? We’re not going to type in a FASTA file, but we’ll see as we go through other tutorials, there are a lot of reasons we’ll want to write a file, or edit an existing file.
+We’ve been able to do a lot of work with existing files, but what if we want to write our own files? We’re not going to type in a FASTA file, but we’ll see as we go through other tutorials that there are a lot of reasons we’ll want to write a file or edit an existing file.
 
-To add text to files, we’re going to use a text editor called vim. We’re going to create a file to take notes about what we’ve been doing with the data files in `data`.
+To add text to files, we will use a text editor called vim. We will create a file to take notes about what we’ve been doing with the data files in `data`.
 
 This is good practice when working in bioinformatics. We can create a file called `README.txt` that describes the data files in the directory or documents how the files in that directory were generated. As the name suggests, it’s a file that we or others should read to understand the information in that directory.
 
@@ -42,9 +42,9 @@ The text at the bottom of the screen shows the keyboard shortcuts for performing
 > Which Editor?
 > -------------
 > 
-> When we say, “`vim` is a text editor. On Unix systems (such as Linux and Mac OS X), many programmers use [Emacs](https://www.gnu.org/software/emacs/) or [Vim](https://www.vim.org/) (both of which require more time to learn), or a graphical editor such as [Gedit](https://projects.gnome.org/gedit/). On Windows, you may wish to use [Notepad++](https://notepad-plus-plus.org/). Windows also has a built-in editor called `notepad` that can be run from the command line in the same way as `nano` for the purposes of this lesson.
+> When we say, “`vim` is a text editor. On Unix systems (such as Linux and Mac OS X), many programmers use [Emacs](https://www.gnu.org/software/emacs/) or [Vim](https://www.vim.org/) (both of which require more time to learn), or a graphical editor such as [Gedit](https://projects.gnome.org/gedit/). On Windows, you may wish to use [Notepad++](https://notepad-plus-plus.org/). Windows also has a built-in editor called `notepad` that can be run from the command line in the same way as `nano` for this lesson.
 
-Now you’ve written a file. You can take a look at it with `less` or `cat`, or open it up again and edit it with `vim`.
+Now you’ve written a file. You can look at it with `less` or `cat`, open it up again and edit it with `vim`.
 
 
 
@@ -54,8 +54,8 @@ To create a new file, you just have to use a new file name
 
     $ vim README.txt
 
-To prevent you editing unneccesarily you need to be able to navigate across modes. 
-By default, you can move around with arrows keys or keystrokes. 
+To prevent you from editing unnecessarily, you need to be able to navigate across modes. 
+By default, you can move around with the arrow keys or keystrokes. 
 
 | Mode         | Description                                 | Navigate              |
 | ------------ | ------------------------------------------- | --------------------- |
@@ -63,19 +63,19 @@ By default, you can move around with arrows keys or keystrokes.
 | Insert       | For explicitly inserting and modifying text | `I`                   |
 | Command Line | For operations like saving, exiting, etc.   |  `Control` and `[`    |
 
-Whenever in any other mode navigate to normal mode press `Esc`. 
-To navigate to Command navigate to normal mode press `Esc`. 
+Whenever in any other mode, navigate to normal mode by pressing `Esc`. 
+To navigate to Command, navigate to normal mode and press `Esc`. 
 To navigate to command line mode, press `Control` and `[`.
-This is how you can then quit without saving by entering `:q!`. Once you press enter you will have exited vim.
+This is how you can then quit without saving by entering `:q!`. Once you press Enter, you will have exited Vim.
 
 
 Saving modifications with Vim
 ------------------------------
-Reopening the file and enter in a few words. 
+Reopening the file and entering a few words. 
 
     $ vim README.txt
 
-First, hit `Esc` to check you are in normal mode. Press `i` to enter the Inset mode. In the lower-left hand side, you should see `--INSET--`.
+First, hit `Esc` to check you are in normal mode. Press `i` to enter the Inset mode. In the lower-left-hand side, you should see `--INSET--`.
 Save the file by writing `:` followed by `wq`.
 
 
@@ -90,7 +90,7 @@ Navigation around a file
 By default, you can always use the arrows to move around a file. In a large file, it would be really hard to navigate. 
 Switch to the Normal mode using the `Esc` key. Then type `:line_number` and hit `Enter`.
 
-Let say we want to navigate to line 5.
+Let's say we want to navigate to line 5.
 
       `:5`
       
@@ -98,11 +98,11 @@ To navigate till your last line you can type `:$`.
 
 
 
-Searcing in a file
+Searching in a file
 -------------------
 Vim's search is really helpful. Go into the Command Line mode by (1) pressing Esc key, then (2) pressing colon : key.
 
-We can search a keyword by entering `:/word_of_interest`, where `word_of_interest` is the text string you want to find. 
+We can search for  a keyword by entering `:/word_of_interest`, where `word_of_interest` is the text string you want to find. 
 
 > Exercise
 > --------
@@ -125,7 +125,7 @@ We’re going to create a new file to put this command in. We’ll call it `bad-
     $ vim bad-reads-script.sh
     
 
-Bad reads have a lot of N’s, so we’re going to look for `NNNNNNNNNN` with `grep`. We want the whole FASTQ record, so we will also get the one line above the sequence and the two lines below. We also want to look in all the files that end with `.fastq`, so we will use the `*` wildcard.
+Bad reads have a lot of N’s, so we’re going to look for `NNNNNNNNNN` with `grep`. We want the whole FASTQ record, so we will also get the one line above the sequence and the two lines below. We also want to look at all the files that end with `.fastq`, so we will use the `*` wildcard.
 
     grep -B1 -A2 -h NNNNNNNNNN *.fastq | grep -v '^--' > scripted_bad_reads.txt
     
@@ -142,14 +142,14 @@ Now comes the neat part. We can run this script. Type:
     $ bash bad-reads-script.sh
     
 
-It will look like nothing happened, but now if you look at `scripted_bad_reads.txt`, you can see that there are now reads in the file.
+It will look like nothing happened, but now, if you look at `scripted_bad_reads.txt`, you can see that there are now reads in the file.
 
 > Exercise
 > --------
 > 
 > We want the script to tell us when it’s done.
 > 
-> 1.  Open `bad-reads-script.sh` and add the line `echo "Script finished!"` after the `grep` command and save the file.
+> 1.  Open `bad-reads-script.sh` and add the line `echo "Script finished!"` After the `grep` command, save the file.
 > 2.  Run the updated script.
 
 
