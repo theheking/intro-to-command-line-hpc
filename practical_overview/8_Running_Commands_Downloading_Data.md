@@ -54,14 +54,14 @@ To download the data, please:
 
 1) Request an interactive session using qsub 
 
-2) Use `mkdir` to create a folder for your input fasta file e.g. **data**
+2) Use `mkdir` to create a folder for your input fastq file e.g. **data**
 You can use the `-p` option for `mkdir`. This option allows `mkdir` to create the new directory, even if one of the parent directories does not already exist. It also suppresses errors if the directory already exists, without overwriting that directory.
 
 3) Download the dataset below to your local scratch 
 
 
-        $   mkdir -p /scratch/im21/[your_userid]/fastqc_data/
-        $   cd data
+        $   mkdir -p /scratch/im21/[your_userid]/fastq_data/
+        $   cd /scratch/im21/[your_userid]/fastq_data/
 
 
         $   wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
@@ -70,9 +70,9 @@ You can use the `-p` option for `mkdir`. This option allows `mkdir` to create th
 
 
 
-The data comes in a compressed format, which is why there is a `.gz` at the end of the file names. This makes it faster to transfer, and allows it to take up less space on our computer. To unzip one of the files - you can look at the fastq format.
+The data comes in a compressed format, so there is a `.gz` at the end of the file names. This makes it faster to transfer and allows it to take up less space on our computer. To inspect the contents of a FASTQ file, you can decompress it and view it with tools like `less` or `zcat`.
 
-    $ gunzip SRR2584863_1.fastq.gz #do not do this!!!
+    $ gunzip SRR2589044_1.fastq.gz #do not do this!!!
     
 
 Quality control
@@ -85,7 +85,7 @@ We will now assess the quality of the sequence reads contained in our fastq file
 
 We can view the first complete read in one of the files our dataset by using `head` to look at the first four lines.
 
-    $ zcat SRR306844chr1_chr3.fastq.gz | head -n 4
+    $ zcat SRR2589044_1.fastq.gz | head -n 4
     
 
 Line 4 shows the quality for each nucleotide in the read. Quality is interpreted as the probability of an incorrect base call (e.g. 1 in 10) or, equivalently, the base call accuracy (e.g. 90%). To make it possible to line up each nucleotide with its quality score, the numerical score is converted into a code where each character represents the numerical quality score for an individual nucleotide. For example, in the line above, the quality score line is:
@@ -113,8 +113,8 @@ We can now see that there is a range of quality scores, but that the end of the 
 > Exercise
 > --------
 > 
-> What is the last read in your file? Do you know if this read of high quality, explain?
-> Hint Use the command: tail
+> What is the last read in your file? Do you know if this is of high quality? Explain.
+> Hint: Use the command: tail
 > 
 
 
@@ -123,7 +123,7 @@ We can now see that there is a range of quality scores, but that the end of the 
 Loading a new function
 ------------------------
 
-Try to run fastqc to see if it is available, if not, we will "load" it into your local path. 
+Try to run fastqc to see if it is available; if not, we will "load" it into your local path. 
    
     $ fastqc
 
@@ -276,7 +276,7 @@ Please run the command below to output the command line options.
 Assessing quality using FastQC
 ------------------------------
 
-In real life, you will not be assessing the quality of your reads by visually inspecting your FASTQ files. Rather, you will be using a software program to assess read quality and filter out poor-quality reads. We will first use a program called [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) to visualize the quality of our reads. Later in our workflow, we will use another program to filter out poor-quality reads.
+In real life, you will not be assessing the quality of your reads by visually inspecting your FASTQ files. Rather, you will be using a software program to assess read quality and filter out poor-quality reads. We will first use a program called [FastQC](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/) to visualise the quality of our reads. Later in our workflow, we will use another program to filter out poor-quality reads.
 
 FastQC has several features that can give insight into any problems your data may have. This can stop you from carrying issues forward in your analyses. Rather than looking at quality scores for each individual read, FastQC looks at quality collectively across all reads within a sample. The image below shows one FastQC-generated plot that indicates a very high-quality sample:
 
@@ -295,9 +295,9 @@ Here, we see positions within the read in which the boxes span a much wider rang
 Running FastQC
 --------------
 
-We will now assess the quality of the reads that we downloaded. First, make sure you are still in the `fastqc_data` directory
+We will now assess the quality of the reads that we downloaded. First, make sure you are still in the `fastq_data` directory.
 
-    $ cd /scratch/im21/[your_userid]/fastqc_data/
+    $ cd /scratch/im21/[your_userid]/fastq_data/
     
 
 > Exercise
@@ -330,25 +330,30 @@ For each input FASTQ file, FastQC has created a `.zip` file and a
 
 We want to keep our data files and our results files separate, so we will move these output files into a new directory within our `results/` directory.
 
-    $ mkdir -p /scratch/im21/[your_userid]/fastqc_data/
-    $ mv *.zip /scratch/im21/[your_userid]/fastqc_data/
-    $ mv *.html /scratch/im21/[your_userid]/fastqc_data/
+    $ mkdir -p /scratch/im21/[your_userid]/fastq_data/qc/
+    $ mv *.zip /scratch/im21/[your_userid]/fastq_data/qc/
+    $ mv *.html /scratch/im21/[your_userid]/fastq_data/qc/
     
 
-Now we can navigate into this results directory and do some closer inspection of our output files.
+Now we can navigate into this results directory and do a closer inspection of our output files.
 
-    $ cd /scratch/im21/[your_userid]/fastqc_data/
+    $ cd /scratch/im21/[your_userid]/fastq_data/qc/
     
 
 Running FastQC in Batch 
 ------------------------
 
-In batch mode, instead of interactive mode, you have to load the environment within the script you are trying to submit. This is why you have to perform the loading of environment, and module load..
+In batch mode, instead of interactive mode, you must load the environment within the script you are trying to submit. This is why you have to perform the loading of environment, and module load..
 
 
-        #$ -S /bin/sh
-        #$ -pe smp 2
-        #$ -cwd
+        #!/bin/bash
+        #PBS -l ncpus=2
+        #PBS -l mem=4GB
+        #PBS -l walltime=01:00:00
+        #PBS -l storage=gdata/im21
+        #PBS -P im21
+        #PBS -q normal
+        #PBS -l wd
         
         #load the module 
         module load fastqc
@@ -357,7 +362,7 @@ In batch mode, instead of interactive mode, you have to load the environment wit
         echo "check my script"
 
         #cd into the locations 
-        cd /scratch/im21/[your_userid]/fastqc_data/
+        cd /scratch/im21/[your_userid]/fastq_data/
         
         #fastqc 
         fastqc *.fastq*
@@ -381,7 +386,7 @@ First we will make a new directory on our computer to store the HTML files we ar
 
 Now we can transfer our HTML files to our local computer.
 
-1) Check if you have a Mac/Linux operating system or Windows operating system.
+1) Check if you have a Mac/Linux or Windows operating system.
 2) Open a new terminal/putty window where you are NOT logged into NCI GADI.
 
 
@@ -398,13 +403,13 @@ Now we can transfer our HTML files to our local computer.
   
 4) Using `scp` to move some information from scratch to your local computer.
 
-    $ scp [userID]@gadi.nci.org.au:"/scratch/im21/[your_userid]/data_fastqc/*.html" .
+    $ scp [userID]@gadi.nci.org.au:"/scratch/im21/[your_userid]/fastq_data/qc/*.html" .
     
     
  Understanding the Phred Quality Score
 -----------------------------------------
 
-How the phred quality score actually makes sense in terms of accuracy:
+How the Phred quality score makes sense in terms of accuracy:
 
 ![qualscore](../assets/img/qualscore.png)
 
@@ -417,12 +422,12 @@ How the phred quality score actually makes sense in terms of accuracy:
     
 Now we can go to our new directory and open the 6 HTML files.
 
-Depending on your system, you should be able to select and open them all at once via a right click menu in your file browser.
+Depending on your system, you should be able to select and open them all at once via a right-click menu in your file browser.
 
 > Exercise
 > --------
 > 
-> Discuss your results with your group or a neighbor. Which sample(s) looks the best in terms of per base sequence quality? Which sample(s) look the worst?
+Could you discuss your results with your group or a neighbour? Which sample(s) look the best regarding per-base sequence quality? Which sample(s) look the worst?
 > 
 
 
@@ -432,11 +437,13 @@ Depending on your system, you should be able to select and open them all at once
 Working with the FastQC text output
 -----------------------------------
 
-Our `.zip` files are compressed files. They each contain multiple different types of output files for a single input FASTQ file. To view the contents of a `.zip` file, we can use the program `unzip` to decompress these files. Let’s try doing them all at once using a wildcard.
+Our `.zip` files are compressed. They each contain multiple different types of output files for a single input FASTQ file. To view the contents of a `.zip` file, we can use the program `unzip` to decompress these files. Let’s try doing them all at once using a wildcard.
 
 To unzip the files 
 
     $ unzip *.zip
+
+This is the equivalent of running the for loop below. 
 
     $ for filename in *.zip
     > do
@@ -447,7 +454,7 @@ Let’s see what files are present within one of these output directories.
    
 Use `less` to preview the `summary.txt` file for this sample.
 
-    $ cat SRR2584863_FASTQC/summary.txt
+    $ cat SRR2589044_FASTQC/summary.txt
     
 The summary file gives us a list of tests that FastQC ran, and tells us whether this sample passed, failed, or is borderline (`WARN`). Remember, to quit from `less` you must type `q`.
 
@@ -459,7 +466,7 @@ Other notes – optional
 > Quality encodings vary
 > ----------------------
 > 
-> Although we have used a particular quality encoding system to demonstrate interpretation of read quality, different sequencing machines use different encoding systems. This means that, depending on which sequencer you use to generate your data, a `#` may not be an indicator of a poor quality base call.
+> Although we have used a particular quality encoding system to demonstrate the interpretation of read quality, different sequencing machines use different encoding systems. This means that, depending on which sequencer you use to generate your data, a `#` may not indicate a poor quality base call.
 > 
 > This mainly relates to older Solexa/Illumina data, but you must know which sequencing platform was used to generate your data, so that you can tell your quality control program which encoding to use. If you choose the wrong encoding, you run the risk of throwing away good reads or (even worse) not throwing away bad reads!
 
@@ -468,7 +475,7 @@ Other notes – optional
 > 
 > Here we see `>` as a shell prompt, whereas `>` is also used to redirect output. Similarly, `$` is used as a shell prompt, but, as we saw earlier, it is also used to ask the shell to get the value of a variable.
 > 
-> If the _shell_ prints `>` or `$` then it expects you to type something, and the symbol is a prompt.
+> If the _shell_ prints `>` or `$`, then it expects you to type something, and the symbol is a prompt.
 > 
 > If _you_ type `>` or `$` yourself, it is an instruction from you that the shell should redirect output or get the value of a variable.
 
@@ -477,7 +484,7 @@ Other notes – optional
 > 
 > *   Quality encodings vary across sequencing platforms.
 >     
-> *   `for` loops let you perform the same set of operations on multiple files with a single command.
+> *   `for` loops let you perform the same operations on multiple files with a single command.
 
 
 
