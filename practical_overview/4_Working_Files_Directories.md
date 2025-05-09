@@ -59,7 +59,7 @@ The `*` character is a special type of character called a wildcard, which can be
 
 
 
-`echo` is a built-in shell command that writes its arguments, like a line of text to standard output. The `echo` command can also be used with pattern matching characters, such as wildcard characters. Here we will use the `echo` command to see how the wildcard character is interpreted by the shell.
+`echo` is a built-in shell command that writes its arguments, like a line of text to standard output. The `echo` command can also be used with pattern matching characters, such as wildcard characters. Here, we will use the `echo` command to see how the shell interprets the wildcard character.
 
 >     $ echo *.fastq.gz
 
@@ -189,7 +189,7 @@ Navigate to the `data` directory and enter:
     $ ls -F
         
 
-We now have two copies of the `SRR098026.fastq` file, one of them named `SRR098026-copy.fastq`. We’ll move this file to a new directory called `backup` where we’ll store our backup data files.
+We now have two copies of the `SRR2589044_1.fastq` file, one of them named `SRR2589044_1-copy.fastq`. We’ll move this file to a new directory called `backup` where we’ll store our backup data files.
     
 
 ### Moving / Renaming
