@@ -11,7 +11,7 @@ Submitting Jobs to the Wolfpack
 > 
 > **Objectives**
 > 
-> Understand the difference between between:
+> Understand the difference between:
 >    
 >  * Available commands
 > 
@@ -103,7 +103,7 @@ To request 16GB RAM, modify Section 3 with:
 | | UNSW | `qsub -I -l select=1:mem=16gb` |
 
 ## 5: Requesting more RAM + more time
-To request 1 hour 30 minutes of time:
+To request 1 hour 30 minutes:
 
 | Category | Site | Details |
 | ---- | ---- | ---- |
@@ -122,12 +122,12 @@ To request 4 cpu-cores:
 
 ## 7: Using a Project Code
 When you sign up for each HPC, you will usually be allocated a project based on your lab.
-Replace `<my_UNSW_project>` and `<my_NCI_project>` as appropriate for your own case.
+Replace `<my_UNSW_project>` and `<my_NCI_project>` as appropriate for your case.
 
 
 | Category | Site | Details |
 | ---- | ---- | ---- |
-| Use a project code | NCI|  `qsub -I -P <my_NCI_project> -l mem=16gb,ncpus=4,walltime=01:30:00`**Note:** Use: `nci_account` to see your NCI project code. |
+| Use a project code | NCI|  `qsub -I -P <my_NCI_project> -l mem=16gb,ncpus=4,walltime=01:30:00` **Note:** Use: `nci_account` to see your NCI project code. |
 | | UNSW |  `qsub -I -P <my_UNSW_project> -l select=1:mem=16gb,ncpus=4,walltime=01:30:00` |
 
 
