@@ -64,7 +64,7 @@ Let’s search for the string NNNNNNNNNN in the SRR2589044_1 file:
     $ grep NNNNNNNNNN SRR2589044_1.fastq
     
 
-This command returns a lot of output to the terminal. Every single line in the SRR098026 file that contains at least 10 consecutive Ns is printed to the terminal, regardless of how long or short the file is. We may be interested not only in the actual sequence which contains this string, but also in the name (or identifier) of that sequence. In a previous section, we discussed that the identifier line immediately precedes the nucleotide sequence for each read in a FASTQ file. We may also want to inspect the quality scores associated with these reads. To get all this information, we will return the line immediately before each match and the two lines immediately after each match.
+This command returns a lot of output to the terminal. Every single line in the SRR2589044 file that contains at least 10 consecutive Ns is printed to the terminal, regardless of how long or short the file is. We may be interested not only in the actual sequence which contains this string, but also in the name (or identifier) of that sequence. In a previous section, we discussed that the identifier line immediately precedes the nucleotide sequence for each read in a FASTQ file. We may also want to inspect the quality scores associated with these reads. To get all this information, we will return the line immediately before each match and the two lines immediately after each match.
 
 We can use the `-B` argument for grep to return a specific number of lines before each match. The `-A` argument returns a specific number of lines after each matching line. Here we want the line _before_ and the two lines _after_ each matching line, so we add `-B1 -A2` to our grep command:
 
@@ -168,13 +168,13 @@ There’s a way to do this, however, that doesn’t require us to create these i
 
 What `|` does is take the output that is scrolling by on the terminal and uses that output as input to another command. When our output was scrolling by, we might have wished we could slow it down and look at it, like we can with `less`. Well it turns out that we can! We can redirect our output from our `grep` call through the `less` or `wc` commands
 
-    $ grep -B1 -A2 NNNNNNNNNN SRR2589044_1 | wc -l 
+    $ grep -B1 -A2 NNNNNNNNNN SRR2589044_1.fastq | wc -l 
     
 - Expecting an integer. Why? 
     
 The fifth and six lines in the output display “–” which is the default action for `grep` to separate groups of lines matching the pattern, and indicate groups of lines which did not match the pattern so are not displayed. To fix this issue, we can redirect the output of grep to a second instance of `grep` as follows.
 
-    $ grep -B1 -A2 NNNNNNNNNN SRR2589044_1 | grep -v '^--' > bad_reads.fastq
+    $ grep -B1 -A2 NNNNNNNNNN SRR2589044_1.fastq | grep -v '^--' > bad_reads.fastq
     tail bad_reads.fastq
     
 
@@ -246,17 +246,17 @@ When writing a loop, you will not be able to return to previous lines once you h
 
 If you notice a mistake that is going to prevent your loop for executing correctly.
 
-Note that we are using `>>` to append the text to our `seq_info.txt` file. If we used `>`, the `seq_info.txt` file would be rewritten every time the loop iterates, so it would only have text from the last variable used. Instead, `>>` adds to the end of the file.
+Note that we use `>>` to append the text to our `seq_info.txt` file. If we used `>`, the `seq_info.txt` file would be rewritten every time the loop iterates, so it would only have text from the last variable used. Instead, `>>` adds to the end of the file.
 
 Using Basename in for loops
 ---------------------------
 
-Basename is a function in UNIX that is helpful for removing a uniform part of a name from a list of files. In this case, we will use basename to remove the `.fastq` extension from the files that we’ve been working with.
+Basename is a function in UNIX that helps remove a uniform part of a name from a list of files. In this case, we will use basename to remove the `.fastq` extension from the files we’ve been working with.
 
     $ basename SRR2589044_1.fastq .fastq
     
 
-We see that this returns just the SRR accession, and no longer has the .fastq file extension on it.
+We see that this returns only the SRR accession and no longer has the .fastq file extension.
 
     SRR2589044_1
 
@@ -265,9 +265,9 @@ If we try the same thing but use `.fasta` as the file extension instead, nothing
     $ basename SRR2589044_1.fastq .fasta
         
 
-Basename is really powerful when used in a for loop. It allows to access just the file prefix, which you can use to name things. Let’s try this.
+Basename is powerful when used in a for loop. It allows access just to the file prefix, which you can use to name things. Let’s try this.
 
-Inside our for loop, we create a new name variable. We call the basename function inside the parenthesis, then give our variable name from the for loop, in this case `${filename}`, and finally state that `.fastq` should be removed from the file name. It’s important to note that we’re not changing the actual files, we’re creating a new variable called name. The line > echo $name will print to the terminal the variable name each time the for loop runs. Because we are iterating over two files, we expect to see two lines of output.
+Inside our for loop, we create a new name variable. We call the basename function inside the parentheses, then give our variable name from the for loop, in this case `${filename}`, and finally state that `.fastq` should be removed from the file name. It’s important to note that we’re not changing the actual files; we’re creating a new variable called name. The line > echo $name will print the variable name to the terminal each time the for loop runs. Because we are iterating over two files, we expect to see two lines of output.
 
     $ for filename in *.fastq
     > do
