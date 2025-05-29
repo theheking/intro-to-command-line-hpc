@@ -1,9 +1,9 @@
 ---
 layout: page
-title: 7 - Submitting Jobs to the NCI GADI
+title: 7 - Submitting Jobs to the NCI Gadi
 ---
 
-Submitting Jobs to the NCI GADI 
+Submitting Jobs to the NCI Gadi 
 ================================
 
 > Overview
@@ -29,9 +29,9 @@ Submitting Jobs to the NCI GADI
 
 
 
-NCI GADI - How to start an interactive job
+NCI Gadi - How to start an interactive job
 -----------------------------------------
-For a more in-depth understanding of the NCI GADI, you can go through the intranet for more helpful information. Different clusters use different tools to manage resources and schedule jobs. NCI GADI uses OpenPBS to control access to compute nodes. The implementation of OpenPBS is custom so Googling may or may not provide useful answers. 
+For a more in-depth understanding of the NCI Gadi, you can go through the intranet for more helpful information. Different clusters use different tools to manage resources and schedule jobs. NCI Gadi uses OpenPBS to control access to compute nodes. The implementation of OpenPBS is custom so Googling may or may not provide useful answers. 
 
     man qsub
 
@@ -68,9 +68,9 @@ The job (and the session) can also be terminated by running the command below.
 
 
 
-NCI GADI - How to start a batch job
+NCI Gadi - How to start a batch job
 -------------------------------------------
-A batch job is a script that runs autonomously on a compute node. The script must contain the necessary sequence of commands to complete a task independently of any input from the user. This section contains information about how to create and submit a batch job on GADI.
+A batch job is a script that runs autonomously on a compute node. The script must contain the necessary sequence of commands to complete a task independently of any input from the user. This section contains information about how to create and submit a batch job on Gadi.
 
 You must now edit your `bad-reads-script.sh` to have the same format as below.
 
@@ -120,7 +120,7 @@ You can also rewrite your original script to include the job requests within the
 Can you (a) check what the two output files are, (b) what they contain using `head` or `cat` and (c) what is the difference between them?
     
     
-Transferring Data Between your Local Machine and NCI GADI (there and back again)
+Transferring Data Between your Local Machine and NCI Gadi (there and back again)
 ----------------------------------------------------------------------
 
 ### Uploading Data to your Virtual Machine with scp
@@ -132,7 +132,7 @@ Transferring Data Between your Local Machine and NCI GADI (there and back again)
 
 Note that you are always running `scp` locally, but that _doesn’t_ mean that you can only move files from your local computer. To move a file from your local computer to an HPC, the command would look like this:
 
-    $ scp <local file> <NCI GADI login details>:"location"
+    $ scp <local file> <NCI Gadi login details>:"location"
     
 e.g *** On my Mac computer**** `scp README.md [your_userID]@gadi.nci.org.au:"somewhere/nice/"`
 
@@ -141,14 +141,14 @@ e.g *** On my Mac computer**** `scp README.md [your_userID]@gadi.nci.org.au:"som
     
 To move it back to your local computer, you reorder the `to` and `from` fields:
 
-    $ scp <NCI GADI login details> <local file>:"location"
+    $ scp <NCI Gadi login details> <local file>:"location"
 
 *** On my Mac computer *** `scp [your_userID]@gadi.nci.org.au:"somewhere/nice/README.md"` /somewhere/okay/
 
 
 ### Extension task
 
-1. Can you try to transfer your script to your local computer? First, you have to log out of NCI GADI.
+1. Can you try to transfer your script to your local computer? First, you have to log out of NCI Gadi.
 
         $ scp [your_userID]@gadi.nci.org.au:"/scratch/im21/[your_userid]/data/bad-reads-script.sh" .
 
@@ -167,7 +167,7 @@ In different contexts, the terms can have varying meanings. However, if we focus
 > A *node* refers to a unit within a computer cluster, typically a computer. It usually has one or two CPUs, each with multiple cores. The cores on the same CPU share memory, but memory is generally not shared between CPUs.
 > A *CPU (computational processing unit)* is a resource provided by a node. In this context, it can refer to a core or a hardware thread based on the SGE configuration.
 > A core is the part of a processor responsible for computations. A processor can have multiple cores.
-> A login node is the destination for SSH access. In the case of the NCI GADI, there are two login nodes: dice01 and dice02.
+> A login node is the destination for SSH access. In the case of the NCI Gadi, there are two login nodes: dice01 and dice02.
 > A compute node provides resources like processors, random access memory (RAM), and disk space.
 > In the context of SGE, a processor is called a socket, the physical slot on the motherboard hosting the processor. A single core can have one or two hardware threads. Hardware multi-threading allows the operating system to perceive twice the number of cores while only doubling certain core components, typically related to memory and I/O rather than computation. Hardware multi-threading is often disabled in HPC (high-performance computing) environments.
 > A *job* consists of one or more sequential steps, and each step can have one or more parallel tasks. A task represents an instance of a running program, which may include subprocesses or software threads.
