@@ -1,28 +1,28 @@
 ---
 layout: page
-title: Intro to Shell - Setting Up on NCI GADI
+title: Intro to Shell - Setting Up on NCI Gadi
 ---
 
 
 
-Setting Up on NCI GADI
+Setting Up on NCI Gadi
 =====================
 
 Objectives 
 - Open an operating system-specific terminal
-- Log in to the NCI GADI server
+- Log in to the NCI Gadi server
 
 Welcome!
 
 When bioinformaticians run a pipeline to discover a pathogenic variant, they need to consider the computational demands of the pipeline. There are two common options for running the pipeline:
 
-a. Running the pipe locally on their laptop.
+a. Locally on their laptop.
 
 b. Using a high-performance computer (HPC).
 
-The HPC we will use is GADI, from National Computational Infrastructure (NCI), which is a cluster of computational resources designed for running computationally intensive and advanced computational problems like discovering a pathogenic variant.
+The HPC we will use is Gadi, from the National Computational Infrastructure (NCI), which is a cluster of computational resources designed for running computationally intensive and advanced computational problems, such as discovering a pathogenic variant.
 
-To interact with the NCI, we will use an operating system-specific program on your laptop. GADI is a shared computational cluster, and we will be using Bash, a language that interacts with the Linux operating system found on the GADI cluster.
+To interact with the NCI, we will use an operating system-specific program on your laptop. Gadi is a shared computational cluster, and we will be using Bash, a language that interacts with the Linux operating system found on the Gadi cluster.
 
 Mac users can use the Terminal program. 
 
@@ -56,7 +56,7 @@ It is not possible to write this website with clear instructions for all combina
 You log on to the server using your **username** and a program that lets you connect via a "secure shell (SSH)".  If you use a Mac, open the **Terminal**. Terminal is generally found in the "Other" folder in Launchpad, or search for "Terminal" with Spotlight. Once open, **Keep in Dock** for handy future access. If using Windows, either open PowerShell or PuTTy as mentioned previously.
 
 ![QSUB](../assets/img/login.png)
-Above is a schematic that displays the setup of NCI GADI. We will explain the complicated part of the diagram concerning volumes and compute nodes in future sessions. What we are doing is the first pink arrow, logging in to the **login** nodes. Gadi has 10 login nodes that serve users in a round-robin fashion, which will be randomly allocated when you `ssh` as below.
+Above is a schematic that displays the setup of NCI Gadi. We will explain the complicated part of the diagram concerning volumes and compute nodes in future sessions. What we are doing is the first pink arrow, logging in to the **login** nodes. Gadi has 10 login nodes that serve users in a round-robin fashion, which will be randomly allocated when you `ssh` as below.
 
 To log on from Mac OSX (or a UNIX machine), open the Terminal and type at the prompt (replacing username with your own **username** ):
 
@@ -71,7 +71,7 @@ Change the **username**.
 **NOTE:** For security reasons, you will not see anything appear on-screen when typing your password. Please be sure to trust that it is registering and hit **ENTER** when complete.
 
 
-## NCI GADI Garvan help pages
+## NCI Gadi Garvan help pages
 Tim Ho and other members of the DSP Pillar team have assembled the NCI section of the [Garvan Intranet](https://intranet.gimr.garvan.org.au/spaces/DSP/pages/419005260/NCI+Gadi), which is very helpful. For example, this section regarding the login node:
 
 The login node is a single point of access that is primarily designed to allow users to:
@@ -122,7 +122,7 @@ If you have extra time, here are some things to do to make your login and naviga
 4) If you want to make your script writing and submitting more seamless between your console and ssh. Depending on your machine, you can ssh into your machine via VSCode and submit directly. The how-to steps are as follows:
     
  - Install the remote-ssh extension from the marketplace (https://code.visualstudio.com/docs/remote/ssh)
- - Connect to NCI-GADI through VSCode using their login
+ - Connect to NCI-Gadi through VSCode using their login
  
 
 
