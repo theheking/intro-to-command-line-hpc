@@ -3,7 +3,7 @@ layout: page
 title: 7B - Differences Between HPCs
 ---
 
-Submitting Jobs to the Wolfpack 
+Submitting Jobs to the NCI Gadi 
 ================================
 
 > Overview
