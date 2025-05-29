@@ -123,7 +123,7 @@ Can you (a) check what the two output files are, (b) what they contain using `he
 Transferring Data Between your Local Machine and NCI Gadi (there and back again)
 ----------------------------------------------------------------------
 
-### Uploading Data to your Virtual Machine with scp
+### Uploading Data to your Local Machine with scp
 
 `scp` stands for ‘secure copy protocol’, and is a widely used UNIX tool for moving files between computers. The simplest way to use `scp` is to run it in your local terminal and use it to copy a single file:
 
@@ -134,7 +134,7 @@ Note that you are always running `scp` locally, but that _doesn’t_ mean that y
 
     $ scp <local file> <NCI Gadi login details>:"location"
     
-e.g *** On my Mac computer**** `scp README.md [your_userID]@gadi.nci.org.au:"somewhere/nice/"`
+e.g *** On my Mac computer *** `scp README.md [your_userID]@gadi.nci.org.au:"somewhere/nice/"`
 
 
 
