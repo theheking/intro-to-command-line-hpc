@@ -31,7 +31,7 @@ Submitting Jobs to the NCI Gadi
 
 NCI Gadi - How to start an interactive job
 -----------------------------------------
-For a more in-depth understanding of the NCI Gadi, you can go through the intranet for more helpful information. Different clusters use different tools to manage resources and schedule jobs. NCI Gadi uses OpenPBS to control access to compute nodes. The implementation of OpenPBS is custom so Googling may or may not provide useful answers. 
+For a more in-depth understanding of the NCI Gadi, you can refer to the intranet for additional helpful information. Different clusters use different tools to manage resources and schedule jobs. NCI Gadi uses PBS Pro to control access to compute nodes. The implementation of PBS Pro is custom, so Googling may or may not provide useful answers. 
 
     man qsub
 
@@ -161,7 +161,7 @@ To move it back to your local computer, you reorder the `to` and `from` fields:
 
 Vocabulary
 -----------
-The role of the OpenPBS scheduler is to match available resources to jobs.
+The role of the PBS Pro scheduler is to match available resources to jobs.
 In different contexts, the terms can have varying meanings. However, if we focus on the context of HPC, here are the definitions:
 > A *cluster* consists of multiple compute nodes.
 > A *node* refers to a unit within a computer cluster, typically a computer. It usually has one or two CPUs, each with multiple cores. The cores on the same CPU share memory, but memory is generally not shared between CPUs.
