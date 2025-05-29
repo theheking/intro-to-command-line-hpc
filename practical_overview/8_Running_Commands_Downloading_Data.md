@@ -373,7 +373,7 @@ Viewing the FastQC results
 
 If we were working on our local computers, we could look at each of these HTML files by opening them in a web browser. However, to look at a summary version of the Fastqc html files- we need to create a summary file.
 
-These files are currently on NCI GADI, where our local computer cannot see them. And, since we are only logging into the NCI GADI via the command line - it does not have any web browser setup to display these files either.
+These files are currently on NCI Gadi, where our local computer cannot see them. And, since we are only logging into the NCI Gadi via the command line - it does not have any web browser setup to display these files either.
 
 So the easiest way to look at these webpage summary reports will be to transfer them to our local computers (i.e. your laptop).
 
@@ -387,7 +387,7 @@ First we will make a new directory on our computer to store the HTML files we ar
 Now we can transfer our HTML files to our local computer.
 
 1) Check if you have a Mac/Linux or Windows operating system.
-2) Open a new terminal/putty window where you are NOT logged into NCI GADI.
+2) Open a new terminal/putty window where you are NOT logged into NCI Gadi.
 
 
 **For a Mac/Linux OS:**
