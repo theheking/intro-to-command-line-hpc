@@ -21,7 +21,7 @@ Submitting Jobs to the NCI Gadi
 >   
     
 
-This is an additional guide useful for familiarising yourself with other HPCs, but please attend the in-person courses for both Gadi and Katana to maximise your (and their) computational potential. This includes Intro to HPC—Gadi, put on by the Data Science Pillar (DSP), and the Katana-specific course.
+This is an additional guide useful for familiarising yourself with other HPCs, but please attend the in-person courses for both Gadi and Katana to maximise your (and their) computational potential. This includes Intro to HPC—Gadi, put on by the Data Science (DS) Team , and the Katana-specific course.
 
 
 Different Scheduler Commands Across Different HPCs  
@@ -135,6 +135,6 @@ Replace `<my_UNSW_project>` and `<my_NCI_project>` as appropriate for your case.
 
 -----
 
-Written by [Simon Thing-Yew Yin](https://www.linkedin.com/in/simon-yin-76b420/) - Linux Administrator for DSP
+Written by [Simon Thing-Yew Yin](https://www.linkedin.com/in/simon-yin-76b420/) - Linux Administrator at Garvan 
 
 Edited by HK 
