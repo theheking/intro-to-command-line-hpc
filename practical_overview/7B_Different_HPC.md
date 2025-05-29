@@ -21,7 +21,7 @@ Submitting Jobs to the Wolfpack
 >   
     
 
-This is an additional guide useful for familiarising yourself with other HPCs, but please attend the in-person courses for both GADI and Katana to maximise your (and their) computational potential. This includes Intro to HPC—GADI, put on by the Data Science Pillar (DSP), and the Katana-specific course.
+This is an additional guide useful for familiarising yourself with other HPCs, but please attend the in-person courses for both Gadi and Katana to maximise your (and their) computational potential. This includes Intro to HPC—Gadi, put on by the Data Science Pillar (DSP), and the Katana-specific course.
 
 
 Different Scheduler Commands Across Different HPCs  
@@ -34,7 +34,7 @@ An example includes requesting an interactive login session. In Wolfpack, the co
 | Link | Details |
 | ---- | ---- |
 | [Garvan Wolfpack](https://gridscheduler.sourceforge.net/htmlman/htmlman1/qsub.html) | For Wolfpack HPC that is locally hosted at Garvan |
-| [NCI GADI Submission](https://opus.nci.org.au/display/Help/0.+Welcome+to+Gadi#id-0.WelcometoGadi-GadiJobs) | For Gadi HPC at NCI in Canberra |
+| [NCI Gadi Submission](https://opus.nci.org.au/display/Help/0.+Welcome+to+Gadi#id-0.WelcometoGadi-GadiJobs) | For Gadi HPC at NCI in Canberra |
 | [UNSW Katana](https://docs.restech.unsw.edu.au/using_katana/running_jobs/) | For Katana HPC at UNSW |
 
 Workflows for Beginners
