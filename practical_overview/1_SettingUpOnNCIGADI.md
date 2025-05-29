@@ -29,7 +29,7 @@ Mac users can use the Terminal program.
 - For **Mac** users, you can use the Terminal program. You can open it by spotlight searching "Terminal." Alternatively, you can use [iTerm2](https://iterm2.com/), which is a macOS terminal replacement that I prefer.
 - **Windows** users:
  - First, check if you have the Command Prompt or PowerShell program locally. You might need to enable SSH using the tutorial recommended by John Reeves: [How to Enable and Use Windows 10's Built-in SSH Commands.](https://www.howtogeek.com/336775/how-to-enable-and-use-windows-10s-built-in-ssh-commands/). 
- - Second, if you do not have either Command Prompt or PowerShell installed, it is likely that your laptop has a Windows OS version before 10. Therefore, I recommend installing [Putty](https://www.putty.org/), an open-source software. 
+ - Second, if you do not have either Command Prompt or PowerShell installed, it is likely that your laptop has a Windows OS version before 10. Therefore, I recommend installing [PuTTY](https://www.putty.org/), an open-source software. 
 
 For many of you, this is your first time using UNIX. As with all bioinformatics, the best way to learn is by trial and error. There is little that you can do wrong, with one important caveat:
 
@@ -44,16 +44,16 @@ The issue is that Microsoft Word and other traditional text editors do not forma
 
 
 **The caveat of using different operating systems on different computers.**
-It is not possible to write this website with clear instructions for all combinations of computers and software. As such, the website will be written as if you are using a Mac laptop. Please let us know if you are experiencing technical issues through the Slack channels, and we will try to help where we can. Key differences include different commands and forward and backslashes when utilising the Windows OS. 
+It is not possible to provide clear instructions for this website for all combinations of computers and software. As such, the website will be written as if you are using a Mac laptop. Please let us know if you are experiencing technical issues through the Slack channels, and we will do our best to assist you where possible. Key differences include different commands and the use of forward and backslashes when utilising the Windows OS. 
 
 **The importance of real estate.**
- One thing you will quickly learn is the importance of being able to see clearly what you are doing. This generally means making the Putty/Terminal window much bigger than it opens by default. Ideally, you want it wide enough to avoid long commands and/or screen output wrapping onto multiple lines. You also want to see as many lines as possible to keep track of the context of what you are doing, and to make sure that important messages (particularly errors) do not disappear off the top of the screen. The precise way to resize your window will depend on your computer/software combination, but you can't find out how.
+ One thing you will quickly learn is the importance of being able to see clearly what you are doing. This generally means making the PuTTY/Terminal window much bigger than it opens by default. Ideally, you want it wide enough to avoid long commands and/or screen output wrapping onto multiple lines. You also want to see as many lines as possible to keep track of the context of what you are doing, and to make sure that important messages (particularly errors) do not disappear off the top of the screen. The precise way to resize your window will depend on your computer/software combination, but you can't find out how.
 
 
 
 ### Logging on
 
-You log on to the server using your **username** and a program that lets you connect via a "secure shell (SSH)".  If you use a Mac, open the **Terminal**. Terminal is generally found in the "Other" folder in Launchpad, or search for "Terminal" with Spotlight. Once open, **Keep in Dock** for handy future access. If using Windows, either open PowerShell or PuTTy as mentioned previously.
+You log on to the server using your **username** and a program that lets you connect via a "secure shell (SSH)".  If you use a Mac, open the **Terminal**. Terminal is typically located in the "Other" folder in Launchpad, or you can search for "Terminal" using Spotlight. Once open, **Keep in Dock** for handy future access. If using Windows, either open PowerShell or PuTTy as mentioned previously.
 
 ![QSUB](../assets/img/login.png)
 Above is a schematic that displays the setup of NCI Gadi. We will explain the complicated part of the diagram concerning volumes and compute nodes in future sessions. What we are doing is the first pink arrow, logging in to the **login** nodes. Gadi has 10 login nodes that serve users in a round-robin fashion, which will be randomly allocated when you `ssh` as below.
@@ -72,7 +72,7 @@ Change the **username**.
 
 
 ## NCI Gadi Garvan help pages
-Tim Ho and other members of the DSP Pillar team have assembled the NCI section of the [Garvan Intranet](https://intranet.gimr.garvan.org.au/spaces/DSP/pages/419005260/NCI+Gadi), which is very helpful. For example, this section regarding the login node:
+Tim Ho and other members of the DSP team have assembled the NCI section of the [Garvan Intranet](https://intranet.gimr.garvan.org.au/spaces/DSP/pages/419005260/NCI+Gadi), which is very helpful. For example, this section regarding the login node:
 
 The login node is a single point of access that is primarily designed to allow users to:
 
