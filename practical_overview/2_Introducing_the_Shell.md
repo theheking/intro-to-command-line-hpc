@@ -85,8 +85,8 @@ The part of the operating system that manages files and directories is called th
 
 Several commands are frequently used to create, inspect, rename, and delete files and directories.
 
-Basic Commands - Where am I?
-============================
+> Basic Commands - Where am I?
+> ----------------------------------------------------------
 
 The dollar sign is a **prompt**, which shows us that the shell is waiting for input; your shell may use a different character as a prompt and may add information before the prompt. When typing commands, either from these lessons or from other sources, do not type the prompt; only type the commands that follow it.
 
@@ -170,14 +170,15 @@ then enter:
 > Basic Commands - Make a Directory Downloading Trial Data
 > ----------------------------------------------------------
 
-Here we are using the -p option for mkdir. This option allows mkdir to create the new directory, even if one of the parent directories does not already exist. It also supresses errors if the directory already exists, without overwriting that directory.
+Here we are using the -p option for mkdir. This option allows mkdir to create the new directory, even if one of the parent directories does not already exist. It also suppresses errors if the directory already exists, without overwriting that directory.
  `wget` is short for “world wide web get”, and it’s basic function is to _download_ web pages or data at a web address.
 
 It will take about 5 minutes to download the files.
+
 **NB. Please make sure you are in your scratch directory **
 
     $   mkdir -p /scratch/im21/[your_userid]/data/
-    $   cd data
+    $   cd /scratch/im21/[your_userid]/data/
 
     $   wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
     $   wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_2.fastq.gz
@@ -185,13 +186,12 @@ It will take about 5 minutes to download the files.
 
 These are two files with `.fastq.gz` extensions. FASTQ is a format for storing information about sequencing reads and their quality. We will be learning more about FASTQ files in a later lesson.
 
-Using tab complete can be very helpful. However, it will only autocomplete a file or directory name if you’ve typed enough characters to provide a unique identifier for the file or directory you are trying to access.
+Using tab completion can be very helpful. However, it will only autocomplete a file or directory name if you’ve typed enough characters to provide a unique identifier for the file or directory you are trying to access.
 
-For example, if we now try to list the files which names start with `SR` by using tab complete:
+For example, if we now try to list the files whose names start with `SR` by using tab completion:
 
     $ ls SR<tab>
     
-
 
 The shell auto-completes your command to `SRR2589044`, because all file names in the directory begin with this prefix. When you hit Tab again, the shell will list the possible choices.
 
