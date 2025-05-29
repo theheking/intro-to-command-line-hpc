@@ -55,9 +55,9 @@ Bash is a specific shell program that interacts with the operating system. Shell
 How to access the shell
 -----------------------
 
-On a Mac or Linux machine, you can access a shell through a program called “Terminal”, which is already available on your computer. The Terminal is a window into which we will type commands. If you’re using Windows, you must download a separate program to access the shell. More details on how to set this up can be found in the [first tutorial](https://theheking.github.io/intro-to-command-line-hpc/practical_overview/1_SettingUpOnNCIGADI/).
+On a Mac or Linux machine, you can access a shell through a program called “Terminal”, which is already available on your computer. The Terminal is a window into which we will type commands. If you’re using Windows, you must download a separate program to access the shell. More details on how to set this up can be found in the [first tutorial](https://theheking.github.io/intro-to-command-line-hpc/practical_overview/1_SettingUpOnNCIGadi/).
 
-To save time, we will be working on a remote server where all the necessary data and software are available. When we say a ‘remote server’, we are talking about a computer that is not the one you are working on right now. This is NCI GADI, where the login instructions are in the [first tutorial](https://theheking.github.io/intro-to-command-line-hpc/practical_overview/1_SettingUpOnNCIGADI/).
+To save time, we will be working on a remote server where all the necessary data and software are available. When we say a ‘remote server’, we are talking about a computer that is not the one you are working on right now. This is NCI Gadi, where the login instructions are in the [first tutorial](https://theheking.github.io/intro-to-command-line-hpc/practical_overview/1_SettingUpOnNCIGadi/).
 
     ssh –o ServerAliveInterval=60 [your_userID]@gadi.nci.org.au
 
@@ -105,7 +105,7 @@ Let’s look at how our file system is organised. We can see what files and subd
 > Basic Commands - Navigating to your directory 
 > ----------------------------------------------
 
-On the NCI GADI HPC, you will have three locations: 
+On the NCI Gadi HPC, you will have three locations: 
 
 1. Home directory - which is the location where you are when you login.
     - Small space, keep scripts or other small files here.
