@@ -60,13 +60,13 @@ By default, you can move around with the arrow keys or keystrokes.
 | Mode         | Description                                 | Navigate              |
 | ------------ | ------------------------------------------- | --------------------- |
 | Normal       | Default; for navigation and simple editing  | `Esc`                 |
-| Insert       | For explicitly inserting and modifying text | `I`                   |
+| Insert       | For explicitly inserting and modifying text | `i(lowercase)`                   |
 | Command Line | For operations like saving, exiting, etc.   |  `Control` and `[`    |
 
 Whenever in any other mode, navigate to normal mode by pressing `Esc`. 
 To navigate to Command, navigate to normal mode and press `Esc`. 
 To navigate to command line mode, press `Control` and `[`.
-This is how you can then quit without saving by entering `:q!`. Once you press Enter, you will have exited Vim.
+You can then quit without saving by entering `:q!`. Once you press Enter, you will have exited Vim.
 
 
 Saving modifications with Vim
@@ -94,7 +94,7 @@ Let's say we want to navigate to line 5.
 
       `:5`
       
-To navigate till your last line you can type `:$`.
+To navigate to your last line, you can type `:$`.
 
 
 
