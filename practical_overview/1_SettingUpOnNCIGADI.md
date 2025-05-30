@@ -18,7 +18,7 @@ When bioinformaticians run a pipeline to discover a pathogenic variant, they nee
 
 a. Locally on their laptop.
 
-b. Using a high-performance computer (HPC).
+b. Using a high-performance computing (HPC) cluster.
 
 The HPC we will use is Gadi, from the National Computational Infrastructure (NCI), which is a cluster of computational resources designed for running computationally intensive and advanced computational problems, such as discovering a pathogenic variant.
 
